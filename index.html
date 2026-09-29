@@ -1,0 +1,1530 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quille Designs — Marketing &amp; Design Studio</title>
+    <meta name="description" content="Quille Designs is an independent marketing and design studio building brands, websites and campaigns that refuse to blend in.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  </head>
+  <body class="bg-[#00050D] text-white antialiased selection:bg-[#245A86] selection:text-white overflow-x-hidden" style="font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+    <!-- Grain overlay -->
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 z-[70] opacity-[0.035]" style="background-image:url('data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 256 256%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');"></div>
+
+    <!-- NAV -->
+    <header id="nav" class="fixed inset-x-0 top-0 z-50 transition-all duration-500">
+      <div id="navInner" class="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-10 transition-all duration-500">
+        <a href="#top" class="group flex items-baseline gap-2" aria-label="Quille Designs home">
+          <span class="text-2xl font-bold tracking-tighter text-white" style="font-family:'Syne',sans-serif;">
+            Quille
+          </span>
+          <span class="text-xs font-medium uppercase tracking-[0.35em] text-white/40 transition-colors duration-300 group-hover:text-white/70">
+            Designs
+          </span>
+        </a>
+        <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
+          <a href="#top" data-nav-page="home" data-dim="text-white/60" class="group relative px-4 py-3 text-xs font-medium uppercase tracking-[0.18em] text-white/60 transition-colors hover:text-white">
+            Home
+            <span data-underline="" class="absolute bottom-2 left-4 right-4 h-px origin-left scale-x-0 bg-[#245A86] transition-transform duration-300 group-hover:scale-x-100"></span>
+          </a>
+          <a href="#services" data-nav-page="services" data-dim="text-white/60" class="group relative px-4 py-3 text-xs font-medium uppercase tracking-[0.18em] text-white/60 transition-colors hover:text-white">
+            Services
+            <span data-underline="" class="absolute bottom-2 left-4 right-4 h-px origin-left scale-x-0 bg-[#245A86] transition-transform duration-300 group-hover:scale-x-100"></span>
+          </a>
+          <a href="#work" data-nav-page="work" data-dim="text-white/60" class="group relative px-4 py-3 text-xs font-medium uppercase tracking-[0.18em] text-white/60 transition-colors hover:text-white">
+            Work
+            <span data-underline="" class="absolute bottom-2 left-4 right-4 h-px origin-left scale-x-0 bg-[#245A86] transition-transform duration-300 group-hover:scale-x-100"></span>
+          </a>
+          <a href="#contact" data-nav-page="contact" data-dim="text-white/60" class="group relative px-4 py-3 text-xs font-medium uppercase tracking-[0.18em] text-white/60 transition-colors hover:text-white">
+            Contact
+            <span data-underline="" class="absolute bottom-2 left-4 right-4 h-px origin-left scale-x-0 bg-[#245A86] transition-transform duration-300 group-hover:scale-x-100"></span>
+          </a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <a href="#contact" data-magnetic="" class="group hidden items-center gap-2 rounded-[4px] px-6 py-3 text-xs font-medium uppercase tracking-[0.18em] text-white transition-shadow duration-300 hover:shadow-[0_0_56px_rgba(36,90,134,0.7)] sm:inline-flex" style="background:linear-gradient(135deg,#2E6DA4 0%,#245A86 45%,#123555 100%);box-shadow:0 0 40px rgba(36,90,134,0.4);">
+            Start a project
+            <iconify-icon icon="solar:arrow-right-up-linear" stroke-width="1.5" class="text-base transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"></iconify-icon>
+          </a>
+          <button id="menuBtn" aria-label="Open menu" aria-expanded="false" class="flex h-11 w-11 items-center justify-center rounded-[4px] border border-white/10 text-white/80 transition-colors hover:border-white/30 hover:text-white lg:hidden">
+            <iconify-icon icon="solar:hamburger-menu-linear" stroke-width="1.5" class="text-xl"></iconify-icon>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="pointer-events-none fixed inset-0 z-[60] flex flex-col bg-[#00050D]/95 opacity-0 backdrop-blur-xl transition-opacity duration-500 lg:hidden" aria-hidden="true">
+      <div class="flex items-center justify-between px-6 py-5">
+        <span class="text-2xl font-bold tracking-tighter" style="font-family:'Syne',sans-serif;">
+          Quille
+        </span>
+        <button id="menuClose" aria-label="Close menu" class="flex h-11 w-11 items-center justify-center rounded-[4px] border border-white/10 text-white/80 hover:text-white">
+          <iconify-icon icon="solar:close-circle-linear" stroke-width="1.5" class="text-xl"></iconify-icon>
+        </button>
+      </div>
+      <nav class="flex flex-1 flex-col justify-center gap-2 px-6" aria-label="Mobile">
+        <a href="#top" data-nav-page="home" data-dim="text-white/80" class="border-b border-white/5 py-4 text-4xl font-semibold tracking-tight text-white/80 transition-colors hover:text-white" style="font-family:'Syne',sans-serif;">
+          Home
+        </a>
+        <a href="#services" data-nav-page="services" data-dim="text-white/80" class="border-b border-white/5 py-4 text-4xl font-semibold tracking-tight text-white/80 transition-colors hover:text-white" style="font-family:'Syne',sans-serif;">
+          Services
+        </a>
+        <a href="#work" data-nav-page="work" data-dim="text-white/80" class="border-b border-white/5 py-4 text-4xl font-semibold tracking-tight text-white/80 transition-colors hover:text-white" style="font-family:'Syne',sans-serif;">
+          Work
+        </a>
+        <a href="#contact" data-nav-page="contact" data-dim="text-white/80" class="py-4 text-4xl font-semibold tracking-tight text-white/80 transition-colors hover:text-white" style="font-family:'Syne',sans-serif;">
+          Contact
+          <span class="text-[#245A86]">→</span>
+        </a>
+      </nav>
+      <p class="px-6 pb-8 text-xs uppercase tracking-[0.3em] text-white/40">
+        hello@quilledesigns.com
+      </p>
+    </div>
+
+    <main id="top">
+      <!-- HERO -->
+      <section id="hero" class="relative flex min-h-[100svh] items-end overflow-hidden" data-page="home">
+        <div id="heroMedia" class="absolute inset-0 z-0">
+          <video id="heroVideo" class="h-full w-full object-cover" autoplay="" muted="" loop="" playsinline="" poster="https://www.cloudsagency.co/images/hero-bg.jpg">
+            <source src="https://video.wixstatic.com/video/837426_a0c849075c654061b0f0eacea604ff1f/1080p/mp4/file.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="absolute inset-0 z-[1]" style="background:linear-gradient(180deg,rgba(0,5,13,0.55) 0%,rgba(2,12,21,0.55) 45%,rgba(0,5,13,0.98) 100%);"></div>
+        <div class="absolute inset-0 z-[1]" style="background:radial-gradient(60% 50% at 15% 80%,rgba(36,90,134,0.35) 0%,transparent 70%);"></div>
+
+        <div id="heroContent" class="relative z-10 mx-auto w-full max-w-[1400px] px-6 pb-14 pt-40 md:px-10 md:pb-20">
+          <div data-hero-fade="" class="mb-8 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 backdrop-blur-md">
+            <span class="relative flex h-2 w-2">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#245A86] opacity-75"></span>
+              <span class="relative inline-flex h-2 w-2 rounded-full bg-[#4A86BD]"></span>
+            </span>
+            <span class="text-xs font-medium uppercase tracking-[0.3em] text-white/70">
+              Booking projects for Q3
+            </span>
+          </div>
+
+          <h1 class="text-5xl font-bold uppercase leading-[0.92] tracking-tight text-white sm:text-7xl md:text-8xl xl:text-9xl" style="font-family:'Syne',sans-serif;">
+            <span class="block overflow-hidden pb-1">
+              <span data-hero-line="" class="block">Brands that</span>
+            </span>
+            <span class="block overflow-hidden pb-1">
+              <span class="blend-rgb inline-block pr-3 font-light normal-case italic">
+                blend
+              </span>
+            </span>
+            <span class="block overflow-hidden pb-1">
+              <span data-hero-line="" class="block">
+                in
+                <span class="text-[#4A86BD]">.</span>
+              </span>
+            </span>
+          </h1>
+
+          <div class="mt-12 grid gap-10 border-t border-white/10 pt-8 md:grid-cols-12 md:items-end">
+            <p data-hero-fade="" class="max-w-md text-base leading-relaxed text-white/60 md:col-span-5">
+              Quille Designs is an independent marketing and design studio. We
+              craft identities, websites and campaigns engineered to be
+              remembered — and to perform.
+            </p>
+            <div data-hero-fade="" class="flex flex-wrap items-center gap-4 md:col-span-4 md:col-start-6">
+              <a href="#contact" data-magnetic="" class="group inline-flex items-center gap-3 rounded-[4px] px-8 py-4 text-xs font-medium uppercase tracking-[0.2em] text-white transition-shadow duration-300 hover:shadow-[0_0_64px_rgba(36,90,134,0.75)]" style="background:linear-gradient(135deg,#2E6DA4 0%,#245A86 45%,#123555 100%);box-shadow:0 0 40px rgba(36,90,134,0.45);">
+                Start a project
+                <iconify-icon icon="solar:arrow-right-linear" stroke-width="1.5" class="text-base transition-transform duration-300 group-hover:translate-x-1"></iconify-icon>
+              </a>
+              <a href="#services" class="group inline-flex items-center gap-2 px-2 py-4 text-xs font-medium uppercase tracking-[0.2em] text-white/70 transition-colors hover:text-white">
+                Our services
+                <span class="h-px w-6 bg-white/40 transition-all duration-300 group-hover:w-10 group-hover:bg-[#4A86BD]"></span>
+              </a>
+            </div>
+            <a href="#statement" data-hero-fade="" class="group hidden items-center justify-end gap-3 text-xs uppercase tracking-[0.3em] text-white/40 transition-colors hover:text-white md:col-span-3 md:flex">
+              Scroll
+              <span class="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 transition-all duration-300 group-hover:border-[#245A86] group-hover:bg-[#245A86]/20">
+                <iconify-icon icon="solar:arrow-down-linear" stroke-width="1.5" class="text-base transition-transform duration-300 group-hover:translate-y-0.5"></iconify-icon>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- MARQUEE -->
+      <section aria-label="Disciplines" class="relative overflow-hidden border-y border-white/[0.06] bg-[#020C15] py-7" data-page="home">
+        <div data-marquee="" class="flex w-max items-center whitespace-nowrap">
+          <div class="flex items-center gap-12 pr-12">
+            <span class="text-3xl font-semibold uppercase tracking-tight text-white/90 md:text-5xl" style="font-family:'Syne',sans-serif;">
+              Brand Identity
+            </span>
+            <iconify-icon icon="solar:star-shine-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+            <span class="text-3xl font-light uppercase tracking-tight text-white/30 md:text-5xl" style="font-family:'Syne',sans-serif;">
+              Web Design
+            </span>
+            <iconify-icon icon="solar:star-shine-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+            <span class="text-3xl font-semibold uppercase tracking-tight text-white/90 md:text-5xl" style="font-family:'Syne',sans-serif;">
+              Performance Marketing
+            </span>
+            <iconify-icon icon="solar:star-shine-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+            <span class="text-3xl font-light uppercase tracking-tight text-white/30 md:text-5xl" style="font-family:'Syne',sans-serif;">
+              Social &amp; Content
+            </span>
+            <iconify-icon icon="solar:star-shine-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+            <span class="text-3xl font-semibold uppercase tracking-tight text-white/90 md:text-5xl" style="font-family:'Syne',sans-serif;">
+              SEO &amp; Growth
+            </span>
+            <iconify-icon icon="solar:star-shine-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+          </div>
+          <div class="flex items-center gap-12 pr-12" aria-hidden="true">
+            <span class="text-3xl font-semibold uppercase tracking-tight text-white/90 md:text-5xl" style="font-family:'Syne',sans-serif;">
+              Brand Identity
+            </span>
+            <iconify-icon icon="solar:star-shine-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+            <span class="text-3xl font-light uppercase tracking-tight text-white/30 md:text-5xl" style="font-family:'Syne',sans-serif;">
+              Web Design
+            </span>
+            <iconify-icon icon="solar:star-shine-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+            <span class="text-3xl font-semibold uppercase tracking-tight text-white/90 md:text-5xl" style="font-family:'Syne',sans-serif;">
+              Performance Marketing
+            </span>
+            <iconify-icon icon="solar:star-shine-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+            <span class="text-3xl font-light uppercase tracking-tight text-white/30 md:text-5xl" style="font-family:'Syne',sans-serif;">
+              Social &amp; Content
+            </span>
+            <iconify-icon icon="solar:star-shine-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+            <span class="text-3xl font-semibold uppercase tracking-tight text-white/90 md:text-5xl" style="font-family:'Syne',sans-serif;">
+              SEO &amp; Growth
+            </span>
+            <iconify-icon icon="solar:star-shine-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+          </div>
+        </div>
+      </section>
+
+      <!-- STATEMENT -->
+      <section id="statement" class="relative overflow-hidden bg-white py-24 text-[#00050D] md:py-32" data-page="home">
+        <div aria-hidden="true" class="absolute -right-40 top-10 h-[32rem] w-[32rem] rounded-full" style="background:radial-gradient(circle,rgba(36,90,134,0.12) 0%,transparent 70%);"></div>
+        <div class="relative mx-auto grid max-w-[1400px] gap-10 px-6 md:grid-cols-12 md:px-10">
+          <div class="md:col-span-3">
+            <p data-reveal="" class="text-xs font-medium uppercase tracking-[0.45em] text-[#245A86]">
+              (01) — Manifesto
+            </p>
+            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/68f683a4-0c3e-4089-ae2b-0deceef7346d_800w.jpg" alt="Quille Designs logo" data-reveal="" loading="lazy" class="mt-10 w-full max-w-[220px] object-contain">
+          </div>
+          <p id="scrubText" class="text-3xl font-medium leading-[1.12] tracking-tight text-[#00050D] sm:text-4xl md:col-span-9 lg:text-6xl" style="font-family:'Syne',sans-serif;">
+            We believe good marketing is invisible and great marketing is
+            unforgettable. We pair strategic thinking with obsessive craft to
+            build brands people feel before they understand.
+          </p>
+        </div>
+      </section>
+
+      <!-- SERVICES / FEATURES -->
+      <section id="services" class="relative bg-[#020C15] py-24 md:py-32" data-page="services">
+        <div class="absolute inset-x-0 top-0 h-px" style="background:linear-gradient(90deg,transparent,rgba(36,90,134,0.6),transparent);"></div>
+        <div class="mx-auto max-w-[1400px] px-6 md:px-10">
+          <div class="mb-16 flex flex-col justify-between gap-8 md:flex-row md:items-end">
+            <div>
+              <p data-reveal="" class="mb-6 text-xs font-medium uppercase tracking-[0.45em] text-[#4A86BD]">
+                (02) — What we do
+              </p>
+              <h2 data-reveal="" class="max-w-3xl text-4xl font-bold uppercase leading-[0.92] tracking-tight sm:text-6xl lg:text-7xl" style="font-family:'Syne',sans-serif;">
+                Capabilities built
+                <span class="font-light normal-case text-white/40">
+                  for momentum
+                </span>
+              </h2>
+            </div>
+            <a href="#contact" data-reveal="" class="group inline-flex items-center gap-3 self-start px-1 py-3 text-xs font-medium uppercase tracking-[0.2em] text-white/60 transition-colors hover:text-white md:self-auto">
+              Discuss your brief
+              <span class="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 transition-all duration-300 group-hover:rotate-45 group-hover:border-[#245A86] group-hover:bg-[#245A86]">
+                <iconify-icon icon="solar:arrow-right-up-linear" stroke-width="1.5" class="text-base"></iconify-icon>
+              </span>
+            </a>
+          </div>
+
+          <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3" style="perspective:1200px;">
+            <!-- Card -->
+            <article data-tilt="" data-reveal="" class="group relative overflow-hidden rounded-[4px] border border-white/[0.07] p-8 backdrop-blur-xl transition-colors duration-500 hover:border-[#245A86]/50" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));transform-style:preserve-3d;">
+              <div class="absolute inset-x-0 top-0 h-px opacity-40 transition-opacity duration-500 group-hover:opacity-100" style="background:linear-gradient(90deg,transparent,rgba(120,170,220,0.9),transparent);"></div>
+              <div data-sheen="" class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(36,90,134,0.22),transparent 60%);"></div>
+              <div class="relative" style="transform:translateZ(40px);">
+                <div class="mb-12 flex items-start justify-between">
+                  <span class="flex h-12 w-12 items-center justify-center rounded-[4px] border border-white/10 bg-[#123555]/40 text-white/85 transition-colors duration-500 group-hover:bg-[#245A86]">
+                    <iconify-icon icon="solar:pen-new-square-linear" stroke-width="1.5" class="text-2xl"></iconify-icon>
+                  </span>
+                  <span class="text-xs tracking-[0.3em] text-white/30">01</span>
+                </div>
+                <h3 class="mb-3 text-2xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Brand Identity
+                </h3>
+                <p class="mb-8 text-sm leading-relaxed text-white/50">
+                  Naming, positioning, logo systems and visual languages that
+                  give your business a voice worth hearing.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                    Strategy
+                  </span>
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                    Logo
+                  </span>
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                    Guidelines
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <article data-tilt="" data-reveal="" class="group relative overflow-hidden rounded-[4px] border border-white/[0.07] p-8 backdrop-blur-xl transition-colors duration-500 hover:border-[#245A86]/50" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));transform-style:preserve-3d;">
+              <div class="absolute inset-x-0 top-0 h-px opacity-40 transition-opacity duration-500 group-hover:opacity-100" style="background:linear-gradient(90deg,transparent,rgba(120,170,220,0.9),transparent);"></div>
+              <div data-sheen="" class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(36,90,134,0.22),transparent 60%);"></div>
+              <div class="relative" style="transform:translateZ(40px);">
+                <div class="mb-12 flex items-start justify-between">
+                  <span class="flex h-12 w-12 items-center justify-center rounded-[4px] border border-white/10 bg-[#123555]/40 text-white/85 transition-colors duration-500 group-hover:bg-[#245A86]">
+                    <iconify-icon icon="solar:monitor-smartphone-linear" stroke-width="1.5" class="text-2xl"></iconify-icon>
+                  </span>
+                  <span class="text-xs tracking-[0.3em] text-white/30">02</span>
+                </div>
+                <h3 class="mb-3 text-2xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Web Design &amp; Build
+                </h3>
+                <p class="mb-8 text-sm leading-relaxed text-white/50">
+                  Conversion-focused websites with cinematic polish — designed,
+                  developed and optimised for every screen.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                    UX/UI
+                  </span>
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                    Development
+                  </span>
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                    CMS
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <article data-tilt="" data-reveal="" class="group relative overflow-hidden rounded-[4px] border border-white/[0.07] p-8 backdrop-blur-xl transition-colors duration-500 hover:border-[#245A86]/50" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));transform-style:preserve-3d;">
+              <div class="absolute inset-x-0 top-0 h-px opacity-40 transition-opacity duration-500 group-hover:opacity-100" style="background:linear-gradient(90deg,transparent,rgba(120,170,220,0.9),transparent);"></div>
+              <div data-sheen="" class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(36,90,134,0.22),transparent 60%);"></div>
+              <div class="relative" style="transform:translateZ(40px);">
+                <div class="mb-12 flex items-start justify-between">
+                  <span class="flex h-12 w-12 items-center justify-center rounded-[4px] border border-white/10 bg-[#123555]/40 text-white/85 transition-colors duration-500 group-hover:bg-[#245A86]">
+                    <iconify-icon icon="solar:graph-up-linear" stroke-width="1.5" class="text-2xl"></iconify-icon>
+                  </span>
+                  <span class="text-xs tracking-[0.3em] text-white/30">03</span>
+                </div>
+                <h3 class="mb-3 text-2xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Performance Marketing
+                </h3>
+                <p class="mb-8 text-sm leading-relaxed text-white/50">
+                  Paid social and search campaigns tuned weekly, measured
+                  honestly, and scaled when they win.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                    Meta
+                  </span>
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                    Google
+                  </span>
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                    TikTok
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <article data-tilt="" data-reveal="" class="group relative overflow-hidden rounded-[4px] border border-white/[0.07] p-8 backdrop-blur-xl transition-colors duration-500 hover:border-[#245A86]/50" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));transform-style:preserve-3d;">
+              <div class="absolute inset-x-0 top-0 h-px opacity-40 transition-opacity duration-500 group-hover:opacity-100" style="background:linear-gradient(90deg,transparent,rgba(120,170,220,0.9),transparent);"></div>
+              <div data-sheen="" class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(36,90,134,0.22),transparent 60%);"></div>
+              <div class="relative" style="transform:translateZ(40px);">
+                <div class="mb-12 flex items-start justify-between">
+                  <span class="flex h-12 w-12 items-center justify-center rounded-[4px] border border-white/10 bg-[#123555]/40 text-white/85 transition-colors duration-500 group-hover:bg-[#245A86]">
+                    <iconify-icon icon="solar:camera-linear" stroke-width="1.5" class="text-2xl"></iconify-icon>
+                  </span>
+                  <span class="text-xs tracking-[0.3em] text-white/30">04</span>
+                </div>
+                <h3 class="mb-3 text-2xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Content &amp; Social
+                </h3>
+                <p class="mb-8 text-sm leading-relaxed text-white/50">
+                  Scroll-stopping photo, video and copy produced in-house, with
+                  a content calendar that never runs dry.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                    Production
+                  </span>
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                    Copy
+                  </span>
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                    Community
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <article data-tilt="" data-reveal="" class="group relative overflow-hidden rounded-[4px] border border-white/[0.07] p-8 backdrop-blur-xl transition-colors duration-500 hover:border-[#245A86]/50" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));transform-style:preserve-3d;">
+              <div class="absolute inset-x-0 top-0 h-px opacity-40 transition-opacity duration-500 group-hover:opacity-100" style="background:linear-gradient(90deg,transparent,rgba(120,170,220,0.9),transparent);"></div>
+              <div data-sheen="" class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(36,90,134,0.22),transparent 60%);"></div>
+              <div class="relative" style="transform:translateZ(40px);">
+                <div class="mb-12 flex items-start justify-between">
+                  <span class="flex h-12 w-12 items-center justify-center rounded-[4px] border border-white/10 bg-[#123555]/40 text-white/85 transition-colors duration-500 group-hover:bg-[#245A86]">
+                    <iconify-icon icon="solar:magnifer-linear" stroke-width="1.5" class="text-2xl"></iconify-icon>
+                  </span>
+                  <span class="text-xs tracking-[0.3em] text-white/30">05</span>
+                </div>
+                <h3 class="mb-3 text-2xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  SEO &amp; Growth
+                </h3>
+                <p class="mb-8 text-sm leading-relaxed text-white/50">
+                  Technical audits, content strategy and local search that
+                  compound into traffic you don't pay for.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                    Technical
+                  </span>
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                    Local
+                  </span>
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                    Content
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <article data-tilt="" data-reveal="" class="group relative overflow-hidden rounded-[4px] border border-white/[0.07] p-8 backdrop-blur-xl transition-colors duration-500 hover:border-[#245A86]/50" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));transform-style:preserve-3d;">
+              <div class="absolute inset-x-0 top-0 h-px opacity-40 transition-opacity duration-500 group-hover:opacity-100" style="background:linear-gradient(90deg,transparent,rgba(120,170,220,0.9),transparent);"></div>
+              <div data-sheen="" class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" style="background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(36,90,134,0.22),transparent 60%);"></div>
+              <div class="relative" style="transform:translateZ(40px);">
+                <div class="mb-12 flex items-start justify-between">
+                  <span class="flex h-12 w-12 items-center justify-center rounded-[4px] border border-white/10 bg-[#123555]/40 text-white/85 transition-colors duration-500 group-hover:bg-[#245A86]">
+                    <iconify-icon icon="solar:target-linear" stroke-width="1.5" class="text-2xl"></iconify-icon>
+                  </span>
+                  <span class="text-xs tracking-[0.3em] text-white/30">06</span>
+                </div>
+                <h3 class="mb-3 text-2xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Campaign Strategy
+                </h3>
+                <p class="mb-8 text-sm leading-relaxed text-white/50">
+                  Launches, rebrands and seasonal pushes planned end-to-end,
+                  from insight to the final report.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                    Launch
+                  </span>
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                    Research
+                  </span>
+                  <span class="rounded-full border border-white/10 px-3 py-1 text-xs text-white/50">
+                    Reporting
+                  </span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section id="work" class="relative bg-[#00050D] py-24 md:py-32" data-page="work">
+        <div class="absolute inset-x-0 top-0 h-px" style="background:linear-gradient(90deg,transparent,rgba(36,90,134,0.6),transparent);"></div>
+        <div aria-hidden="true" class="absolute right-0 top-1/4 h-[32rem] w-[32rem] translate-x-1/3 rounded-full" style="background:radial-gradient(circle,rgba(36,90,134,0.2) 0%,transparent 70%);"></div>
+        <div class="relative mx-auto max-w-[1400px] px-6 md:px-10">
+          <div class="mb-16 flex flex-col justify-between gap-8 md:flex-row md:items-end">
+            <div>
+              <p data-reveal="" class="mb-6 text-xs font-medium uppercase tracking-[0.45em] text-[#4A86BD]">
+                (03) — Selected work
+              </p>
+              <h2 data-reveal="" class="max-w-3xl text-4xl font-bold uppercase leading-[0.92] tracking-tight sm:text-6xl lg:text-7xl" style="font-family:'Syne',sans-serif;">
+                Portfolio
+                <span class="font-light normal-case text-white/40">
+                  that performs
+                </span>
+              </h2>
+            </div>
+            <p data-reveal="" class="max-w-sm text-sm leading-relaxed text-white/55">
+              A snapshot of recent brands, websites and campaigns — each one
+              built around a measurable outcome.
+            </p>
+          </div>
+          <div class="grid gap-5 lg:grid-cols-12">
+            <a href="#contact" data-reveal="" class="group relative block overflow-hidden rounded-[4px] border border-white/[0.07] transition-colors duration-500 hover:border-[#245A86]/50 lg:col-span-7" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+              <div class="relative h-72 overflow-hidden md:h-96">
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1400&amp;q=80&amp;auto=format&amp;fit=crop" alt="Northline Coffee rebrand" loading="lazy" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(0,5,13,0.1) 40%,rgba(0,5,13,0.85) 100%);"></div>
+                <span class="absolute left-5 top-5 rounded-full border border-white/15 bg-[#00050D]/50 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/80 backdrop-blur-md">
+                  Brand Identity
+                </span>
+                <span class="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-[#00050D]/40 backdrop-blur-md transition-all duration-300 group-hover:rotate-45 group-hover:border-[#245A86] group-hover:bg-[#245A86]">
+                  <iconify-icon icon="solar:arrow-right-up-linear" stroke-width="1.5" class="text-base"></iconify-icon>
+                </span>
+              </div>
+              <div class="flex items-end justify-between gap-6 p-6 md:p-8">
+                <div>
+                  <p class="mb-2 text-xs tracking-[0.3em] text-white/30">
+                    2024
+                  </p>
+                  <h3 class="text-2xl font-semibold tracking-tight md:text-3xl" style="font-family:'Syne',sans-serif;">
+                    Northline Coffee
+                  </h3>
+                  <p class="mt-2 text-sm text-white/50">
+                    Rebrand, packaging &amp; e-commerce
+                  </p>
+                </div>
+                <div class="shrink-0 text-right">
+                  <p class="text-3xl font-semibold tracking-tight text-[#4A86BD]" style="font-family:'Syne',sans-serif;">
+                    2x
+                  </p>
+                  <p class="text-xs uppercase tracking-[0.2em] text-white/40">
+                    Inbound leads
+                  </p>
+                </div>
+              </div>
+            </a>
+            <a href="#contact" data-reveal="" class="group relative block overflow-hidden rounded-[4px] border border-white/[0.07] transition-colors duration-500 hover:border-[#245A86]/50 lg:col-span-5" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+              <div class="relative h-72 overflow-hidden md:h-96">
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&amp;q=80&amp;auto=format&amp;fit=crop" alt="Fieldwork Apparel campaign" loading="lazy" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(0,5,13,0.1) 40%,rgba(0,5,13,0.85) 100%);"></div>
+                <span class="absolute left-5 top-5 rounded-full border border-white/15 bg-[#00050D]/50 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/80 backdrop-blur-md">
+                  Performance
+                </span>
+                <span class="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-[#00050D]/40 backdrop-blur-md transition-all duration-300 group-hover:rotate-45 group-hover:border-[#245A86] group-hover:bg-[#245A86]">
+                  <iconify-icon icon="solar:arrow-right-up-linear" stroke-width="1.5" class="text-base"></iconify-icon>
+                </span>
+              </div>
+              <div class="flex items-end justify-between gap-6 p-6 md:p-8">
+                <div>
+                  <p class="mb-2 text-xs tracking-[0.3em] text-white/30">
+                    2024
+                  </p>
+                  <h3 class="text-2xl font-semibold tracking-tight md:text-3xl" style="font-family:'Syne',sans-serif;">
+                    Fieldwork Apparel
+                  </h3>
+                  <p class="mt-2 text-sm text-white/50">
+                    Paid social &amp; search
+                  </p>
+                </div>
+                <div class="shrink-0 text-right">
+                  <p class="text-3xl font-semibold tracking-tight text-[#4A86BD]" style="font-family:'Syne',sans-serif;">
+                    -41%
+                  </p>
+                  <p class="text-xs uppercase tracking-[0.2em] text-white/40">
+                    Acquisition cost
+                  </p>
+                </div>
+              </div>
+            </a>
+            <a href="#contact" data-reveal="" class="group relative block overflow-hidden rounded-[4px] border border-white/[0.07] transition-colors duration-500 hover:border-[#245A86]/50 lg:col-span-5" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+              <div class="relative h-72 overflow-hidden md:h-96">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&amp;q=80&amp;auto=format&amp;fit=crop" alt="Lumen Health launch campaign" loading="lazy" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(0,5,13,0.1) 40%,rgba(0,5,13,0.85) 100%);"></div>
+                <span class="absolute left-5 top-5 rounded-full border border-white/15 bg-[#00050D]/50 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/80 backdrop-blur-md">
+                  Campaign
+                </span>
+                <span class="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-[#00050D]/40 backdrop-blur-md transition-all duration-300 group-hover:rotate-45 group-hover:border-[#245A86] group-hover:bg-[#245A86]">
+                  <iconify-icon icon="solar:arrow-right-up-linear" stroke-width="1.5" class="text-base"></iconify-icon>
+                </span>
+              </div>
+              <div class="flex items-end justify-between gap-6 p-6 md:p-8">
+                <div>
+                  <p class="mb-2 text-xs tracking-[0.3em] text-white/30">
+                    2023
+                  </p>
+                  <h3 class="text-2xl font-semibold tracking-tight md:text-3xl" style="font-family:'Syne',sans-serif;">
+                    Lumen Health
+                  </h3>
+                  <p class="mt-2 text-sm text-white/50">
+                    Launch campaign &amp; PR creative
+                  </p>
+                </div>
+                <div class="shrink-0 text-right">
+                  <p class="text-3xl font-semibold tracking-tight text-[#4A86BD]" style="font-family:'Syne',sans-serif;">
+                    38
+                  </p>
+                  <p class="text-xs uppercase tracking-[0.2em] text-white/40">
+                    Press features
+                  </p>
+                </div>
+              </div>
+            </a>
+            <a href="#contact" data-reveal="" class="group relative block overflow-hidden rounded-[4px] border border-white/[0.07] transition-colors duration-500 hover:border-[#245A86]/50 lg:col-span-7" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+              <div class="relative h-72 overflow-hidden md:h-96">
+                <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1400&amp;q=80&amp;auto=format&amp;fit=crop" alt="Thornton &amp; Co. Architects website" loading="lazy" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(0,5,13,0.1) 40%,rgba(0,5,13,0.85) 100%);"></div>
+                <span class="absolute left-5 top-5 rounded-full border border-white/15 bg-[#00050D]/50 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/80 backdrop-blur-md">
+                  Web &amp; SEO
+                </span>
+                <span class="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-[#00050D]/40 backdrop-blur-md transition-all duration-300 group-hover:rotate-45 group-hover:border-[#245A86] group-hover:bg-[#245A86]">
+                  <iconify-icon icon="solar:arrow-right-up-linear" stroke-width="1.5" class="text-base"></iconify-icon>
+                </span>
+              </div>
+              <div class="flex items-end justify-between gap-6 p-6 md:p-8">
+                <div>
+                  <p class="mb-2 text-xs tracking-[0.3em] text-white/30">
+                    2023
+                  </p>
+                  <h3 class="text-2xl font-semibold tracking-tight md:text-3xl" style="font-family:'Syne',sans-serif;">
+                    Thornton &amp; Co.
+                  </h3>
+                  <p class="mt-2 text-sm text-white/50">
+                    Website, messaging &amp; SEO
+                  </p>
+                </div>
+                <div class="shrink-0 text-right">
+                  <p class="text-3xl font-semibold tracking-tight text-[#4A86BD]" style="font-family:'Syne',sans-serif;">
+                    3x
+                  </p>
+                  <p class="text-xs uppercase tracking-[0.2em] text-white/40">
+                    Organic traffic
+                  </p>
+                </div>
+              </div>
+            </a>
+            <a href="#contact" data-reveal="" class="group relative block overflow-hidden rounded-[4px] border border-white/[0.07] transition-colors duration-500 hover:border-[#245A86]/50 lg:col-span-6" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+              <div class="relative h-72 overflow-hidden md:h-96">
+                <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=1200&amp;q=80&amp;auto=format&amp;fit=crop" alt="Halcyon Skincare social content" loading="lazy" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(0,5,13,0.1) 40%,rgba(0,5,13,0.85) 100%);"></div>
+                <span class="absolute left-5 top-5 rounded-full border border-white/15 bg-[#00050D]/50 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/80 backdrop-blur-md">
+                  Content &amp; Social
+                </span>
+                <span class="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-[#00050D]/40 backdrop-blur-md transition-all duration-300 group-hover:rotate-45 group-hover:border-[#245A86] group-hover:bg-[#245A86]">
+                  <iconify-icon icon="solar:arrow-right-up-linear" stroke-width="1.5" class="text-base"></iconify-icon>
+                </span>
+              </div>
+              <div class="flex items-end justify-between gap-6 p-6 md:p-8">
+                <div>
+                  <p class="mb-2 text-xs tracking-[0.3em] text-white/30">
+                    2024
+                  </p>
+                  <h3 class="text-2xl font-semibold tracking-tight md:text-3xl" style="font-family:'Syne',sans-serif;">
+                    Halcyon Skincare
+                  </h3>
+                  <p class="mt-2 text-sm text-white/50">
+                    Always-on social &amp; production
+                  </p>
+                </div>
+                <div class="shrink-0 text-right">
+                  <p class="text-3xl font-semibold tracking-tight text-[#4A86BD]" style="font-family:'Syne',sans-serif;">
+                    +180%
+                  </p>
+                  <p class="text-xs uppercase tracking-[0.2em] text-white/40">
+                    Engagement
+                  </p>
+                </div>
+              </div>
+            </a>
+            <a href="#contact" data-reveal="" class="group relative block overflow-hidden rounded-[4px] border border-white/[0.07] transition-colors duration-500 hover:border-[#245A86]/50 lg:col-span-6" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+              <div class="relative h-72 overflow-hidden md:h-96">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&amp;q=80&amp;auto=format&amp;fit=crop" alt="Vantage Analytics product launch" loading="lazy" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(0,5,13,0.1) 40%,rgba(0,5,13,0.85) 100%);"></div>
+                <span class="absolute left-5 top-5 rounded-full border border-white/15 bg-[#00050D]/50 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/80 backdrop-blur-md">
+                  Web Design
+                </span>
+                <span class="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-[#00050D]/40 backdrop-blur-md transition-all duration-300 group-hover:rotate-45 group-hover:border-[#245A86] group-hover:bg-[#245A86]">
+                  <iconify-icon icon="solar:arrow-right-up-linear" stroke-width="1.5" class="text-base"></iconify-icon>
+                </span>
+              </div>
+              <div class="flex items-end justify-between gap-6 p-6 md:p-8">
+                <div>
+                  <p class="mb-2 text-xs tracking-[0.3em] text-white/30">
+                    2025
+                  </p>
+                  <h3 class="text-2xl font-semibold tracking-tight md:text-3xl" style="font-family:'Syne',sans-serif;">
+                    Vantage Analytics
+                  </h3>
+                  <p class="mt-2 text-sm text-white/50">
+                    SaaS website &amp; product launch
+                  </p>
+                </div>
+                <div class="shrink-0 text-right">
+                  <p class="text-3xl font-semibold tracking-tight text-[#4A86BD]" style="font-family:'Syne',sans-serif;">
+                    +64%
+                  </p>
+                  <p class="text-xs uppercase tracking-[0.2em] text-white/40">
+                    Demo sign-ups
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div data-reveal="" class="mt-12 flex flex-col items-start justify-between gap-6 border-t border-white/10 pt-8 sm:flex-row sm:items-center">
+            <p class="text-sm text-white/55">
+              Want the full case studies? We'll walk you through them on a call.
+            </p>
+            <a href="#contact" class="group inline-flex items-center gap-3 px-1 py-3 text-xs font-medium uppercase tracking-[0.2em] text-white/60 transition-colors hover:text-white">
+              Request our portfolio
+              <span class="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 transition-all duration-300 group-hover:rotate-45 group-hover:border-[#245A86] group-hover:bg-[#245A86]">
+                <iconify-icon icon="solar:arrow-right-up-linear" stroke-width="1.5" class="text-base"></iconify-icon>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROCESS (sticky storytelling) -->
+      <section id="process" class="relative py-24 md:py-32" data-page="services">
+        <div aria-hidden="true" class="absolute left-0 top-1/3 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full" style="background:radial-gradient(circle,rgba(36,90,134,0.25) 0%,transparent 70%);"></div>
+        <div class="relative mx-auto grid max-w-[1400px] gap-12 px-6 md:px-10 lg:grid-cols-12">
+          <div class="lg:col-span-5">
+            <div class="lg:sticky lg:top-32">
+              <p data-reveal="" class="mb-6 text-xs font-medium uppercase tracking-[0.45em] text-[#4A86BD]">
+                (04) — How we work
+              </p>
+              <h2 data-reveal="" class="mb-10 text-4xl font-bold uppercase leading-[0.92] tracking-tight sm:text-6xl" style="font-family:'Syne',sans-serif;">
+                Four moves.
+                <br>
+                <span class="font-light normal-case text-white/40">
+                  Zero guesswork.
+                </span>
+              </h2>
+              <div class="hidden items-end gap-6 lg:flex">
+                <span id="stepNum" class="text-9xl font-bold leading-[0.8] tracking-tight text-white" style="font-family:'Syne',sans-serif;">
+                  01
+                </span>
+                <div class="pb-3">
+                  <p class="text-xs uppercase tracking-[0.3em] text-white/40">
+                    Current phase
+                  </p>
+                  <p id="stepLabel" class="mt-2 text-xl font-medium tracking-tight text-white/90" style="font-family:'Syne',sans-serif;">
+                    Discover
+                  </p>
+                </div>
+              </div>
+              <div class="mt-10 hidden h-px w-full bg-white/10 lg:block">
+                <div id="processBar" class="h-px w-full origin-left scale-x-0 bg-[#4A86BD]" style="box-shadow:0 0 12px rgba(74,134,189,0.8);"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative lg:col-span-6 lg:col-start-7">
+            <div class="absolute bottom-0 left-5 top-0 w-px bg-white/[0.07] md:left-6"></div>
+            <div data-step="" data-num="01" data-label="Discover" class="relative flex gap-6 pb-16 transition-opacity duration-500 md:gap-8 lg:min-h-[60vh] lg:opacity-30">
+              <span class="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-[#00050D] text-xs text-white/70 md:h-12 md:w-12">
+                01
+              </span>
+              <div>
+                <h3 class="mb-4 text-3xl font-semibold tracking-tight sm:text-4xl" style="font-family:'Syne',sans-serif;">
+                  Discover
+                </h3>
+                <p class="max-w-md text-base leading-relaxed text-white/55">
+                  We dig into your market, audience and numbers. Workshops,
+                  competitor audits and analytics reviews uncover where the real
+                  opportunity sits.
+                </p>
+                <ul class="mt-6 space-y-3 text-sm text-white/60">
+                  <li class="flex items-center gap-3">
+                    <iconify-icon icon="solar:check-circle-linear" stroke-width="1.5" class="text-lg text-[#4A86BD]"></iconify-icon>
+                    Stakeholder workshops
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <iconify-icon icon="solar:check-circle-linear" stroke-width="1.5" class="text-lg text-[#4A86BD]"></iconify-icon>
+                    Audience &amp; competitor research
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div data-step="" data-num="02" data-label="Define" class="relative flex gap-6 pb-16 transition-opacity duration-500 md:gap-8 lg:min-h-[60vh] lg:opacity-30">
+              <span class="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-[#00050D] text-xs text-white/70 md:h-12 md:w-12">
+                02
+              </span>
+              <div>
+                <h3 class="mb-4 text-3xl font-semibold tracking-tight sm:text-4xl" style="font-family:'Syne',sans-serif;">
+                  Define
+                </h3>
+                <p class="max-w-md text-base leading-relaxed text-white/55">
+                  Insights become a sharp strategy: positioning, messaging
+                  pillars, channel mix and the KPIs we'll be held to.
+                </p>
+                <ul class="mt-6 space-y-3 text-sm text-white/60">
+                  <li class="flex items-center gap-3">
+                    <iconify-icon icon="solar:check-circle-linear" stroke-width="1.5" class="text-lg text-[#4A86BD]"></iconify-icon>
+                    Positioning &amp; messaging
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <iconify-icon icon="solar:check-circle-linear" stroke-width="1.5" class="text-lg text-[#4A86BD]"></iconify-icon>
+                    Roadmap with clear KPIs
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div data-step="" data-num="03" data-label="Design" class="relative flex gap-6 pb-16 transition-opacity duration-500 md:gap-8 lg:min-h-[60vh] lg:opacity-30">
+              <span class="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-[#00050D] text-xs text-white/70 md:h-12 md:w-12">
+                03
+              </span>
+              <div>
+                <h3 class="mb-4 text-3xl font-semibold tracking-tight sm:text-4xl" style="font-family:'Syne',sans-serif;">
+                  Design
+                </h3>
+                <p class="max-w-md text-base leading-relaxed text-white/55">
+                  Identity, website and creative come to life through fast,
+                  collaborative iterations. You see progress weekly, never a
+                  big-reveal surprise.
+                </p>
+                <ul class="mt-6 space-y-3 text-sm text-white/60">
+                  <li class="flex items-center gap-3">
+                    <iconify-icon icon="solar:check-circle-linear" stroke-width="1.5" class="text-lg text-[#4A86BD]"></iconify-icon>
+                    Weekly design reviews
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <iconify-icon icon="solar:check-circle-linear" stroke-width="1.5" class="text-lg text-[#4A86BD]"></iconify-icon>
+                    Interactive prototypes
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div data-step="" data-num="04" data-label="Deliver &amp; Grow" class="relative flex gap-6 transition-opacity duration-500 md:gap-8 lg:min-h-[50vh] lg:opacity-30">
+              <span class="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-[#00050D] text-xs text-white/70 md:h-12 md:w-12">
+                04
+              </span>
+              <div>
+                <h3 class="mb-4 text-3xl font-semibold tracking-tight sm:text-4xl" style="font-family:'Syne',sans-serif;">
+                  Deliver &amp; Grow
+                </h3>
+                <p class="max-w-md text-base leading-relaxed text-white/55">
+                  We launch, measure and optimise. Monthly reporting and test
+                  cycles turn a great launch into sustained growth.
+                </p>
+                <ul class="mt-6 space-y-3 text-sm text-white/60">
+                  <li class="flex items-center gap-3">
+                    <iconify-icon icon="solar:check-circle-linear" stroke-width="1.5" class="text-lg text-[#4A86BD]"></iconify-icon>
+                    Launch support
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <iconify-icon icon="solar:check-circle-linear" stroke-width="1.5" class="text-lg text-[#4A86BD]"></iconify-icon>
+                    Ongoing optimisation
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESULTS -->
+      <section id="results" class="relative border-y border-[#00050D]/[0.06] bg-white py-24 text-[#00050D] md:py-32" data-page="home">
+        <div class="mx-auto max-w-[1400px] px-6 md:px-10">
+          <div class="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <p data-reveal="" class="mb-6 text-xs font-medium uppercase tracking-[0.45em] text-[#245A86]">
+                (05) — Proof in numbers
+              </p>
+              <h2 data-reveal="" class="max-w-2xl text-4xl font-bold uppercase leading-[0.92] tracking-tight sm:text-6xl" style="font-family:'Syne',sans-serif;">
+                Results that
+                <span class="font-light normal-case text-[#00050D]/40">
+                  speak up
+                </span>
+              </h2>
+            </div>
+            <p data-reveal="" class="max-w-sm text-sm leading-relaxed text-[#00050D]/55">
+              Averages across active retainers over the last 12 months. Every
+              client gets a live dashboard — no vanity metrics.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 border-l border-t border-[#00050D]/10 lg:grid-cols-4">
+            <div data-reveal="" class="group relative border-b border-r border-[#00050D]/10 p-6 transition-colors duration-500 hover:bg-[#245A86]/[0.06] md:p-10">
+              <p class="text-5xl font-bold tracking-tight md:text-7xl" style="font-family:'Syne',sans-serif;">
+                <span data-count="140">140</span>
+                <span class="text-[#4A86BD]">+</span>
+              </p>
+              <p class="mt-4 text-xs uppercase tracking-[0.25em] text-[#00050D]/50">
+                Projects launched
+              </p>
+            </div>
+            <div data-reveal="" class="group relative border-b border-r border-[#00050D]/10 p-6 transition-colors duration-500 hover:bg-[#245A86]/[0.06] md:p-10">
+              <p class="text-5xl font-bold tracking-tight md:text-7xl" style="font-family:'Syne',sans-serif;">
+                <span data-count="3.8" data-decimals="1">3.8</span>
+                <span class="text-[#4A86BD]">x</span>
+              </p>
+              <p class="mt-4 text-xs uppercase tracking-[0.25em] text-[#00050D]/50">
+                Average ad return
+              </p>
+            </div>
+            <div data-reveal="" class="group relative border-b border-r border-[#00050D]/10 p-6 transition-colors duration-500 hover:bg-[#245A86]/[0.06] md:p-10">
+              <p class="text-5xl font-bold tracking-tight md:text-7xl" style="font-family:'Syne',sans-serif;">
+                <span data-count="96">96</span>
+                <span class="text-[#4A86BD]">%</span>
+              </p>
+              <p class="mt-4 text-xs uppercase tracking-[0.25em] text-[#00050D]/50">
+                Client retention
+              </p>
+            </div>
+            <div data-reveal="" class="group relative border-b border-r border-[#00050D]/10 p-6 transition-colors duration-500 hover:bg-[#245A86]/[0.06] md:p-10">
+              <p class="text-5xl font-bold tracking-tight md:text-7xl" style="font-family:'Syne',sans-serif;">
+                <span data-count="212">212</span>
+                <span class="text-[#4A86BD]">%</span>
+              </p>
+              <p class="mt-4 text-xs uppercase tracking-[0.25em] text-[#00050D]/50">
+                Avg. traffic growth
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="brands" aria-label="Trusted brands" class="relative overflow-hidden bg-[#00050D] py-16 md:py-20" data-page="home">
+        <style>
+          @keyframes quilleBrands{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.brands-track{animation:quilleBrands 40s linear infinite;}.brands-track:hover{animation-play-state:paused;}@media (prefers-reduced-motion: reduce){.brands-track{animation:none;}}
+        </style>
+        <div class="mx-auto mb-10 flex max-w-[1400px] flex-col justify-between gap-4 px-6 sm:flex-row sm:items-end md:px-10">
+          <p data-reveal="" class="text-xs font-medium uppercase tracking-[0.45em] text-[#4A86BD]">
+            Trusted by ambitious brands
+          </p>
+          <p data-reveal="" class="max-w-sm text-sm leading-relaxed text-white/55">
+            60+ teams across hospitality, retail, health and tech trust us with
+            their growth.
+          </p>
+        </div>
+        <div class="relative" style="mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);">
+          <div class="brands-track flex w-max items-center">
+            <ul class="flex items-center gap-4 pr-4">
+              <li class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+                <iconify-icon icon="solar:cup-hot-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+                <span class="whitespace-nowrap text-xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Northline
+                </span>
+              </li>
+              <li class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+                <iconify-icon icon="solar:t-shirt-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+                <span class="whitespace-nowrap text-xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Fieldwork
+                </span>
+              </li>
+              <li class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+                <iconify-icon icon="solar:heart-pulse-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+                <span class="whitespace-nowrap text-xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Lumen Health
+                </span>
+              </li>
+              <li class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+                <iconify-icon icon="solar:buildings-2-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+                <span class="whitespace-nowrap text-xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Thornton &amp; Co.
+                </span>
+              </li>
+              <li class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+                <iconify-icon icon="solar:leaf-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+                <span class="whitespace-nowrap text-xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Halcyon
+                </span>
+              </li>
+              <li class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+                <iconify-icon icon="solar:chart-2-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+                <span class="whitespace-nowrap text-xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Vantage
+                </span>
+              </li>
+              <li class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+                <iconify-icon icon="solar:planet-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+                <span class="whitespace-nowrap text-xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Orbit Labs
+                </span>
+              </li>
+              <li class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+                <iconify-icon icon="solar:mountains-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+                <span class="whitespace-nowrap text-xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Summit Outdoor
+                </span>
+              </li>
+            </ul>
+            <ul class="flex items-center gap-4 pr-4" aria-hidden="true">
+              <li class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+                <iconify-icon icon="solar:cup-hot-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+                <span class="whitespace-nowrap text-xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Northline
+                </span>
+              </li>
+              <li class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+                <iconify-icon icon="solar:t-shirt-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+                <span class="whitespace-nowrap text-xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Fieldwork
+                </span>
+              </li>
+              <li class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+                <iconify-icon icon="solar:heart-pulse-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+                <span class="whitespace-nowrap text-xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Lumen Health
+                </span>
+              </li>
+              <li class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+                <iconify-icon icon="solar:buildings-2-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+                <span class="whitespace-nowrap text-xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Thornton &amp; Co.
+                </span>
+              </li>
+              <li class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+                <iconify-icon icon="solar:leaf-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+                <span class="whitespace-nowrap text-xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Halcyon
+                </span>
+              </li>
+              <li class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+                <iconify-icon icon="solar:chart-2-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+                <span class="whitespace-nowrap text-xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Vantage
+                </span>
+              </li>
+              <li class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+                <iconify-icon icon="solar:planet-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+                <span class="whitespace-nowrap text-xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Orbit Labs
+                </span>
+              </li>
+              <li class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+                <iconify-icon icon="solar:mountains-linear" stroke-width="1.5" class="text-2xl text-[#4A86BD]"></iconify-icon>
+                <span class="whitespace-nowrap text-xl font-semibold tracking-tight" style="font-family:'Syne',sans-serif;">
+                  Summit Outdoor
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS (horizontal pinned on desktop) -->
+      <section id="testimonials" class="relative overflow-hidden py-24 md:py-32 lg:flex lg:min-h-screen lg:flex-col lg:justify-center" data-page="work">
+        <div aria-hidden="true" class="absolute right-0 top-0 h-[30rem] w-[30rem] rounded-full" style="background:radial-gradient(circle,rgba(36,90,134,0.2) 0%,transparent 70%);"></div>
+        <div class="relative mx-auto mb-14 flex w-full max-w-[1400px] flex-col justify-between gap-6 px-6 md:flex-row md:items-end md:px-10">
+          <div>
+            <p data-reveal="" class="mb-6 text-xs font-medium uppercase tracking-[0.45em] text-[#4A86BD]">
+              (06) — Kind words
+            </p>
+            <h2 data-reveal="" class="text-4xl font-bold uppercase leading-[0.92] tracking-tight sm:text-6xl" style="font-family:'Syne',sans-serif;">
+              Clients
+              <span class="font-light normal-case text-white/40">
+                on record
+              </span>
+            </h2>
+          </div>
+          <div data-reveal="" class="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-white/40">
+            <iconify-icon icon="solar:star-linear" stroke-width="1.5" class="text-base text-[#4A86BD]"></iconify-icon>
+            4.9 average from 60+ reviews
+          </div>
+        </div>
+
+        <div id="testiTrack" class="relative flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4 md:px-10 lg:w-max lg:overflow-visible lg:pb-0 lg:pl-[max(2.5rem,calc((100vw-1400px)/2+2.5rem))]" style="scrollbar-width:none;">
+          <figure class="group relative w-[85vw] shrink-0 snap-start rounded-[4px] border border-white/[0.07] p-8 backdrop-blur-xl transition-colors duration-500 hover:border-[#245A86]/50 sm:w-[28rem] md:p-10" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+            <iconify-icon icon="solar:chat-square-like-linear" stroke-width="1.5" class="mb-8 text-3xl text-[#4A86BD]"></iconify-icon>
+            <blockquote class="mb-10 text-xl leading-snug tracking-tight text-white/90" style="font-family:'Syne',sans-serif;">
+              "Quille rebuilt our brand from the ground up. Inbound leads
+              doubled within a quarter, and for the first time our website
+              actually looks like us."
+            </blockquote>
+            <figcaption class="flex items-center gap-4 border-t border-white/[0.07] pt-6">
+              <span class="flex h-11 w-11 items-center justify-center rounded-full bg-[#123555] text-sm font-medium">
+                MR
+              </span>
+              <div>
+                <p class="text-sm font-medium">Maya Reyes</p>
+                <p class="text-xs text-white/40">Founder, Northline Coffee</p>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="group relative w-[85vw] shrink-0 snap-start rounded-[4px] border border-white/[0.07] p-8 backdrop-blur-xl transition-colors duration-500 hover:border-[#245A86]/50 sm:w-[28rem] md:p-10" style="background:linear-gradient(145deg,rgba(36,90,134,0.18),rgba(255,255,255,0.01));">
+            <iconify-icon icon="solar:chat-square-like-linear" stroke-width="1.5" class="mb-8 text-3xl text-[#4A86BD]"></iconify-icon>
+            <blockquote class="mb-10 text-xl leading-snug tracking-tight text-white/90" style="font-family:'Syne',sans-serif;">
+              "Their paid team cut our acquisition cost by 41% in six weeks.
+              Transparent reporting, zero fluff — they feel like part of our
+              team."
+            </blockquote>
+            <figcaption class="flex items-center gap-4 border-t border-white/[0.07] pt-6">
+              <span class="flex h-11 w-11 items-center justify-center rounded-full bg-[#245A86] text-sm font-medium">
+                DK
+              </span>
+              <div>
+                <p class="text-sm font-medium">Daniel Kim</p>
+                <p class="text-xs text-white/40">
+                  Head of Growth, Fieldwork Apparel
+                </p>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="group relative w-[85vw] shrink-0 snap-start rounded-[4px] border border-white/[0.07] p-8 backdrop-blur-xl transition-colors duration-500 hover:border-[#245A86]/50 sm:w-[28rem] md:p-10" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+            <iconify-icon icon="solar:chat-square-like-linear" stroke-width="1.5" class="mb-8 text-3xl text-[#4A86BD]"></iconify-icon>
+            <blockquote class="mb-10 text-xl leading-snug tracking-tight text-white/90" style="font-family:'Syne',sans-serif;">
+              "The level of craft is unreal. Every detail of our launch campaign
+              was considered, and it showed in the press we received."
+            </blockquote>
+            <figcaption class="flex items-center gap-4 border-t border-white/[0.07] pt-6">
+              <span class="flex h-11 w-11 items-center justify-center rounded-full bg-[#22272B] text-sm font-medium">
+                SO
+              </span>
+              <div>
+                <p class="text-sm font-medium">Sofia Okafor</p>
+                <p class="text-xs text-white/40">CMO, Lumen Health</p>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="group relative w-[85vw] shrink-0 snap-start rounded-[4px] border border-white/[0.07] p-8 backdrop-blur-xl transition-colors duration-500 hover:border-[#245A86]/50 sm:w-[28rem] md:p-10" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));">
+            <iconify-icon icon="solar:chat-square-like-linear" stroke-width="1.5" class="mb-8 text-3xl text-[#4A86BD]"></iconify-icon>
+            <blockquote class="mb-10 text-xl leading-snug tracking-tight text-white/90" style="font-family:'Syne',sans-serif;">
+              "We came for a website and left with a whole new way of talking
+              about our business. Organic traffic is up 3x year over year."
+            </blockquote>
+            <figcaption class="flex items-center gap-4 border-t border-white/[0.07] pt-6">
+              <span class="flex h-11 w-11 items-center justify-center rounded-full bg-[#123555] text-sm font-medium">
+                JT
+              </span>
+              <div>
+                <p class="text-sm font-medium">James Thornton</p>
+                <p class="text-xs text-white/40">
+                  Director, Thornton &amp; Co. Architects
+                </p>
+              </div>
+            </figcaption>
+          </figure>
+          <figure class="relative flex w-[85vw] shrink-0 snap-start flex-col justify-between rounded-[4px] p-8 sm:w-[28rem] md:p-10" style="background:linear-gradient(135deg,#245A86 0%,#123555 100%);box-shadow:0 0 60px rgba(36,90,134,0.35);">
+            <p class="text-xs uppercase tracking-[0.35em] text-white/70">
+              Your turn
+            </p>
+            <p class="my-10 text-3xl font-semibold leading-tight tracking-tight" style="font-family:'Syne',sans-serif;">
+              Ready to be the next success story?
+            </p>
+            <a href="#contact" class="group inline-flex items-center gap-3 self-start border-b border-white/40 pb-2 text-xs font-medium uppercase tracking-[0.2em] transition-colors hover:border-white">
+              Book a discovery call
+              <iconify-icon icon="solar:arrow-right-linear" stroke-width="1.5" class="text-base transition-transform duration-300 group-hover:translate-x-1"></iconify-icon>
+            </a>
+          </figure>
+          <div class="hidden w-10 shrink-0 lg:block"></div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="relative overflow-hidden bg-[#020C15] py-24 md:py-32" data-page="contact">
+        <div class="absolute inset-x-0 top-0 h-px" style="background:linear-gradient(90deg,transparent,rgba(36,90,134,0.6),transparent);"></div>
+        <div aria-hidden="true" class="absolute -bottom-40 left-1/2 h-[40rem] w-[60rem] -translate-x-1/2 rounded-full" style="background:radial-gradient(ellipse,rgba(36,90,134,0.28) 0%,transparent 65%);"></div>
+        <div class="relative mx-auto grid max-w-[1400px] gap-16 px-6 md:px-10 lg:grid-cols-12">
+          <div class="lg:col-span-5">
+            <p data-reveal="" class="mb-6 text-xs font-medium uppercase tracking-[0.45em] text-[#4A86BD]">
+              (07) — Let's talk
+            </p>
+            <h2 data-reveal="" class="mb-8 text-5xl font-bold uppercase leading-[0.92] tracking-tight sm:text-7xl" style="font-family:'Syne',sans-serif;">
+              Make it
+              <span class="font-light normal-case italic text-white/40">
+                impossible
+              </span>
+              to ignore.
+            </h2>
+            <p data-reveal="" class="mb-12 max-w-md text-base leading-relaxed text-white/55">
+              Tell us about your goals. We reply within one business day with
+              next steps and an honest view of how we can help.
+            </p>
+            <div data-reveal="" class="space-y-5">
+              <a href="mailto:hello@quilledesigns.com" class="group flex items-center gap-4 text-white/80 transition-colors hover:text-white">
+                <span class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 transition-all duration-300 group-hover:border-[#245A86] group-hover:bg-[#245A86]">
+                  <iconify-icon icon="solar:letter-linear" stroke-width="1.5" class="text-lg"></iconify-icon>
+                </span>
+                <span class="text-sm">hello@quilledesigns.com</span>
+              </a>
+              <a href="tel:+10000000000" class="group flex items-center gap-4 text-white/80 transition-colors hover:text-white">
+                <span class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 transition-all duration-300 group-hover:border-[#245A86] group-hover:bg-[#245A86]">
+                  <iconify-icon icon="solar:phone-calling-linear" stroke-width="1.5" class="text-lg"></iconify-icon>
+                </span>
+                <span class="text-sm">+1 (000) 000-0000</span>
+              </a>
+            </div>
+          </div>
+
+          <form id="contactForm" data-reveal="" class="relative rounded-[4px] border border-white/[0.07] p-6 backdrop-blur-xl md:p-10 lg:col-span-6 lg:col-start-7" style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));" novalidate="">
+            <div class="grid gap-8 sm:grid-cols-2">
+              <label class="block">
+                <span class="text-xs uppercase tracking-[0.25em] text-white/40">
+                  Name
+                </span>
+                <input required="" name="name" type="text" placeholder="Jane Doe" class="mt-3 w-full border-0 border-b border-[#22272B] bg-transparent px-0 py-3 text-sm text-white placeholder-white/20 outline-none transition-colors duration-300 focus:border-[#4A86BD]">
+              </label>
+              <label class="block">
+                <span class="text-xs uppercase tracking-[0.25em] text-white/40">
+                  Email
+                </span>
+                <input required="" name="email" type="email" placeholder="jane@company.com" class="mt-3 w-full border-0 border-b border-[#22272B] bg-transparent px-0 py-3 text-sm text-white placeholder-white/20 outline-none transition-colors duration-300 focus:border-[#4A86BD]">
+              </label>
+            </div>
+
+            <fieldset class="mt-10">
+              <legend class="mb-4 text-xs uppercase tracking-[0.25em] text-white/40">
+                I'm interested in
+              </legend>
+              <div class="flex flex-wrap gap-2" data-chips="multi">
+                <button type="button" aria-pressed="false" class="rounded-full border border-white/10 px-4 py-2 text-xs text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white aria-pressed:border-[#245A86] aria-pressed:bg-[#245A86] aria-pressed:text-white">
+                  Branding
+                </button>
+                <button type="button" aria-pressed="false" class="rounded-full border border-white/10 px-4 py-2 text-xs text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white aria-pressed:border-[#245A86] aria-pressed:bg-[#245A86] aria-pressed:text-white">
+                  Website
+                </button>
+                <button type="button" aria-pressed="false" class="rounded-full border border-white/10 px-4 py-2 text-xs text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white aria-pressed:border-[#245A86] aria-pressed:bg-[#245A86] aria-pressed:text-white">
+                  Paid Ads
+                </button>
+                <button type="button" aria-pressed="false" class="rounded-full border border-white/10 px-4 py-2 text-xs text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white aria-pressed:border-[#245A86] aria-pressed:bg-[#245A86] aria-pressed:text-white">
+                  Social
+                </button>
+                <button type="button" aria-pressed="false" class="rounded-full border border-white/10 px-4 py-2 text-xs text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white aria-pressed:border-[#245A86] aria-pressed:bg-[#245A86] aria-pressed:text-white">
+                  SEO
+                </button>
+              </div>
+            </fieldset>
+
+            <fieldset class="mt-10">
+              <legend class="mb-4 text-xs uppercase tracking-[0.25em] text-white/40">
+                Budget
+              </legend>
+              <div class="flex flex-wrap gap-2" data-chips="single">
+                <button type="button" aria-pressed="false" class="rounded-[4px] border border-white/10 px-4 py-2 text-xs text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white aria-pressed:border-[#245A86] aria-pressed:bg-[#245A86]/25 aria-pressed:text-white">
+                  &lt; $5k
+                </button>
+                <button type="button" aria-pressed="false" class="rounded-[4px] border border-white/10 px-4 py-2 text-xs text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white aria-pressed:border-[#245A86] aria-pressed:bg-[#245A86]/25 aria-pressed:text-white">
+                  $5k – $15k
+                </button>
+                <button type="button" aria-pressed="false" class="rounded-[4px] border border-white/10 px-4 py-2 text-xs text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white aria-pressed:border-[#245A86] aria-pressed:bg-[#245A86]/25 aria-pressed:text-white">
+                  $15k – $40k
+                </button>
+                <button type="button" aria-pressed="false" class="rounded-[4px] border border-white/10 px-4 py-2 text-xs text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white aria-pressed:border-[#245A86] aria-pressed:bg-[#245A86]/25 aria-pressed:text-white">
+                  $40k+
+                </button>
+              </div>
+            </fieldset>
+
+            <label class="mt-10 block">
+              <span class="text-xs uppercase tracking-[0.25em] text-white/40">
+                Project details
+              </span>
+              <textarea name="message" rows="3" placeholder="What are you looking to achieve?" class="mt-3 w-full resize-none border-0 border-b border-[#22272B] bg-transparent px-0 py-3 text-sm text-white placeholder-white/20 outline-none transition-colors duration-300 focus:border-[#4A86BD]"></textarea>
+            </label>
+
+            <div class="mt-10 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+              <p id="formStatus" class="text-xs text-white/40" aria-live="polite">
+                We never share your details.
+              </p>
+              <button type="submit" data-magnetic="" class="group inline-flex items-center gap-3 rounded-[4px] px-8 py-4 text-xs font-medium uppercase tracking-[0.2em] text-white transition-shadow duration-300 hover:shadow-[0_0_64px_rgba(36,90,134,0.75)]" style="background:linear-gradient(135deg,#2E6DA4 0%,#245A86 45%,#123555 100%);box-shadow:0 0 40px rgba(36,90,134,0.45);">
+                <span id="submitLabel">Send enquiry</span>
+                <iconify-icon icon="solar:plain-2-linear" stroke-width="1.5" class="text-base transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-1"></iconify-icon>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="relative overflow-hidden bg-[#00050D] pt-24">
+      <div class="mx-auto max-w-[1400px] px-6 md:px-10">
+        <div class="grid gap-12 border-b border-white/[0.07] pb-16 md:grid-cols-12">
+          <div class="md:col-span-4">
+            <a href="#top" class="flex items-baseline gap-2" aria-label="Back to top">
+              <span class="text-3xl font-bold tracking-tighter" style="font-family:'Syne',sans-serif;">
+                Quille
+              </span>
+              <span class="text-xs font-medium uppercase tracking-[0.35em] text-white/40">
+                Designs
+              </span>
+            </a>
+            <p class="mt-6 max-w-xs text-sm leading-relaxed text-white/45">
+              An independent marketing &amp; design studio building brands that
+              refuse to blend in.
+            </p>
+            <div class="mt-8 flex gap-3">
+              <a href="#" aria-label="Instagram" class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/60 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#245A86] hover:bg-[#245A86] hover:text-white">
+                <iconify-icon icon="solar:camera-minimalistic-linear" stroke-width="1.5" class="text-lg"></iconify-icon>
+              </a>
+              <a href="#" aria-label="LinkedIn" class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/60 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#245A86] hover:bg-[#245A86] hover:text-white">
+                <iconify-icon icon="solar:case-minimalistic-linear" stroke-width="1.5" class="text-lg"></iconify-icon>
+              </a>
+              <a href="#" aria-label="Dribbble" class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/60 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#245A86] hover:bg-[#245A86] hover:text-white">
+                <iconify-icon icon="solar:basketball-linear" stroke-width="1.5" class="text-lg"></iconify-icon>
+              </a>
+            </div>
+          </div>
+          <div class="md:col-span-2 md:col-start-6">
+            <p class="mb-5 text-xs uppercase tracking-[0.3em] text-white/35">
+              Studio
+            </p>
+            <ul class="space-y-3 text-sm text-white/60">
+              <li>
+                <a href="#services" class="transition-colors hover:text-white">
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="#work" class="transition-colors hover:text-white">
+                  Work
+                </a>
+              </li>
+              <li>
+                <a href="#process" class="transition-colors hover:text-white">
+                  Process
+                </a>
+              </li>
+              <li>
+                <a href="#results" class="transition-colors hover:text-white">
+                  Results
+                </a>
+              </li>
+              <li>
+                <a href="#testimonials" class="transition-colors hover:text-white">
+                  Clients
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="md:col-span-2">
+            <p class="mb-5 text-xs uppercase tracking-[0.3em] text-white/35">
+              Services
+            </p>
+            <ul class="space-y-3 text-sm text-white/60">
+              <li>
+                <a href="#services" class="transition-colors hover:text-white">
+                  Brand Identity
+                </a>
+              </li>
+              <li>
+                <a href="#services" class="transition-colors hover:text-white">
+                  Web Design
+                </a>
+              </li>
+              <li>
+                <a href="#services" class="transition-colors hover:text-white">
+                  Paid Media
+                </a>
+              </li>
+              <li>
+                <a href="#services" class="transition-colors hover:text-white">
+                  SEO
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="md:col-span-3">
+            <p class="mb-5 text-xs uppercase tracking-[0.3em] text-white/35">
+              Contact
+            </p>
+            <ul class="space-y-3 text-sm text-white/60">
+              <li>
+                <a href="mailto:hello@quilledesigns.com" class="transition-colors hover:text-white">
+                  hello@quilledesigns.com
+                </a>
+              </li>
+              <li>
+                <a href="#contact" class="transition-colors hover:text-white">
+                  Start a project
+                </a>
+              </li>
+              <li class="text-white/40">Mon – Fri, 9am – 6pm</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-between gap-4 py-8 text-xs text-white/35 sm:flex-row sm:items-center">
+          <p>
+            ©
+            <span id="year">2025</span>
+            Quille Designs. All rights reserved.
+          </p>
+          <div class="flex items-center gap-6">
+            <a href="#" class="transition-colors hover:text-white">Privacy</a>
+            <a href="#" class="transition-colors hover:text-white">Terms</a>
+            <a href="#top" class="group inline-flex items-center gap-2 uppercase tracking-[0.25em] transition-colors hover:text-white">
+              Top
+              <iconify-icon icon="solar:arrow-up-linear" stroke-width="1.5" class="text-sm transition-transform duration-300 group-hover:-translate-y-0.5"></iconify-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="overflow-hidden" aria-hidden="true">
+        <p id="footerMark" class="select-none text-center text-8xl font-bold uppercase leading-[0.8] tracking-tighter sm:text-9xl" style="font-family:'Syne',sans-serif;background:linear-gradient(180deg,#245A86 0%,rgba(18,53,85,0.15) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;">
+          Quille
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isFine = window.matchMedia('(pointer: fine)').matches;
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      /* ---------- Mobile menu ---------- */
+      const menu = document.getElementById('mobileMenu');
+      const menuBtn = document.getElementById('menuBtn');
+      function openMenu(){ menu.classList.remove('pointer-events-none','opacity-0'); menu.setAttribute('aria-hidden','false'); menuBtn.setAttribute('aria-expanded','true'); if(window.lenisInstance) lenisInstance.stop(); }
+      function closeMenu(){ menu.classList.add('pointer-events-none','opacity-0'); menu.setAttribute('aria-hidden','true'); menuBtn.setAttribute('aria-expanded','false'); if(window.lenisInstance) lenisInstance.start(); }
+      menuBtn.addEventListener('click', openMenu);
+      document.getElementById('menuClose').addEventListener('click', closeMenu);
+      document.addEventListener('keydown', e => { if(e.key === 'Escape') closeMenu(); });
+
+      /* ---------- Chips + form ---------- */
+      document.querySelectorAll('[data-chips]').forEach(group => {
+        const single = group.dataset.chips === 'single';
+        group.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => {
+          const on = btn.getAttribute('aria-pressed') === 'true';
+          if(single) group.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed','false'));
+          btn.setAttribute('aria-pressed', single ? 'true' : String(!on));
+        }));
+      });
+      const form = document.getElementById('contactForm');
+      const status = document.getElementById('formStatus');
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const name = form.name.value.trim(), email = form.email.value.trim();
+        if(!name || !/^\S+@\S+\.\S+$/.test(email)){
+          status.textContent = 'Please add your name and a valid email.';
+          status.className = 'text-xs text-[#7FB2E0]';
+          return;
+        }
+        document.getElementById('submitLabel').textContent = 'Sent';
+        status.textContent = `Thanks ${name.split(' ')[0]} — we'll be in touch within one business day.`;
+        status.className = 'text-xs text-white/80';
+        form.reset();
+        form.querySelectorAll('[aria-pressed]').forEach(b => b.setAttribute('aria-pressed','false'));
+      });
+
+      /* ---------- Nav state ---------- */
+      const nav = document.getElementById('nav');
+      const navInner = document.getElementById('navInner');
+      let lastY = 0;
+      function onNavScroll(){
+        const y = window.scrollY;
+        const scrolled = y > 40;
+        nav.classList.toggle('bg-[#00050D]/70', scrolled);
+        nav.classList.toggle('backdrop-blur-xl', scrolled);
+        nav.classList.toggle('border-b', scrolled);
+        nav.classList.toggle('border-white/[0.06]', scrolled);
+        navInner.classList.toggle('py-5', !scrolled);
+        navInner.classList.toggle('py-3', scrolled);
+        if(!reduceMotion) nav.style.transform = (y > lastY && y > 400) ? 'translateY(-100%)' : 'translateY(0)';
+        lastY = y;
+      }
+      window.addEventListener('scroll', onNavScroll, { passive: true });
+      onNavScroll();
+
+      /* ---------- Reduced motion fallback ---------- */
+      if(reduceMotion){
+        const v = document.getElementById('heroVideo'); v.removeAttribute('autoplay'); v.pause();
+        document.querySelectorAll('[data-step]').forEach(s => s.classList.remove('lg:opacity-30'));
+        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', () => closeMenu()));
+      }
+
+      /* ---------- Motion ---------- */
+      if(!reduceMotion && window.gsap){
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Smooth scroll
+        if(window.Lenis){
+          window.lenisInstance = new Lenis({ duration: 1.15, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
+          lenisInstance.on('scroll', ScrollTrigger.update);
+          gsap.ticker.add(t => lenisInstance.raf(t * 1000));
+          gsap.ticker.lagSmoothing(0);
+        }
+        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+          const id = a.getAttribute('href');
+          const target = id.length > 1 ? document.querySelector(id) : null;
+          if(!target) return;
+          e.preventDefault(); closeMenu();
+          if(window.lenisInstance) lenisInstance.scrollTo(target, { offset: 0, duration: 1.4 });
+          else target.scrollIntoView({ behavior: 'smooth' });
+        }));
+
+        // Hero intro
+        gsap.set('[data-hero-line]', { yPercent: 110 });
+        gsap.set('[data-hero-fade]', { autoAlpha: 0, y: 24 });
+        gsap.set('#heroMedia', { scale: 1.15 });
+        gsap.timeline({ defaults: { ease: 'expo.out' } })
+          .to('#heroMedia', { scale: 1, duration: 2.4 }, 0)
+          .to('[data-hero-line]', { yPercent: 0, duration: 1.4, stagger: 0.12 }, 0.2)
+          .to('[data-hero-fade]', { autoAlpha: 1, y: 0, duration: 1.1, stagger: 0.08 }, 0.7);
+
+        // Hero exit
+        gsap.to('#heroContent', { yPercent: -18, opacity: 0.2, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
+        gsap.to('#heroVideo', { yPercent: 12, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
+
+        // Marquee with scroll velocity
+        const marquee = gsap.to('[data-marquee]', { xPercent: -50, repeat: -1, duration: 32, ease: 'none' });
+        ScrollTrigger.create({
+          onUpdate: self => {
+            const v = Math.min(Math.abs(self.getVelocity()) / 400, 4);
+            gsap.to(marquee, { timeScale: (self.direction === 1 ? 1 : -1) * (1 + v), duration: 0.3, overwrite: true });
+            gsap.to(marquee, { timeScale: self.direction === 1 ? 1 : -1, duration: 1.2, delay: 0.3 });
+          }
+        });
+
+        // Generic reveals
+        gsap.utils.toArray('[data-reveal]').forEach(el => {
+          gsap.from(el, { y: 40, autoAlpha: 0, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+        });
+
+        // Word scrub (inline spans, spaces preserved)
+        const scrub = document.getElementById('scrubText');
+        const words = scrub.textContent.trim().split(/\s+/);
+        scrub.innerHTML = words.map(w => `<span data-word style="display:inline">${w}</span>`).join(' ');
+        gsap.fromTo('[data-word]', { opacity: 0.14 }, { opacity: 1, stagger: 0.05, ease: 'none', scrollTrigger: { trigger: scrub, start: 'top 80%', end: 'bottom 45%', scrub: true } });
+
+        // Process storytelling
+        const mm = gsap.matchMedia();
+        mm.add('(min-width: 1024px)', () => {
+          const num = document.getElementById('stepNum');
+          const label = document.getElementById('stepLabel');
+          const steps = gsap.utils.toArray('[data-step]');
+          const setActive = step => {
+            steps.forEach(s => s.style.opacity = s === step ? '1' : '0.3');
+            if(num.textContent !== step.dataset.num){
+              gsap.fromTo([num, label], { yPercent: 40, autoAlpha: 0 }, { yPercent: 0, autoAlpha: 1, duration: 0.6, ease: 'expo.out' });
+              num.textContent = step.dataset.num;
+              label.textContent = step.dataset.label;
+            }
+          };
+          steps.forEach(step => ScrollTrigger.create({ trigger: step, start: 'top 55%', end: 'bottom 55%', onToggle: self => self.isActive && setActive(step) }));
+          gsap.to('#processBar', { scaleX: 1, ease: 'none', scrollTrigger: { trigger: '#process', start: 'top 40%', end: 'bottom 70%', scrub: true } });
+
+          // Horizontal testimonials
+          const track = document.getElementById('testiTrack');
+          const dist = () => track.scrollWidth - window.innerWidth;
+          gsap.to(track, { x: () => -dist(), ease: 'none', scrollTrigger: { trigger: '#testimonials', start: 'top top', end: () => '+=' + dist(), pin: true, scrub: 1, invalidateOnRefresh: true } });
+          return () => steps.forEach(s => s.style.opacity = '');
+        });
+
+        // Counters
+        document.querySelectorAll('[data-count]').forEach(el => {
+          const end = parseFloat(el.dataset.count), dec = parseInt(el.dataset.decimals || 0);
+          const obj = { v: 0 };
+          ScrollTrigger.create({ trigger: el, start: 'top 90%', once: true, onEnter: () => gsap.to(obj, { v: end, duration: 2, ease: 'power3.out', onUpdate: () => el.textContent = obj.v.toFixed(dec) }) });
+        });
+
+        // Footer wordmark
+        gsap.from('#footerMark', { yPercent: 60, ease: 'none', scrollTrigger: { trigger: 'footer', start: 'top bottom', end: 'bottom bottom', scrub: true } });
+
+        // 3D tilt service cards
+        if(isFine){
+          document.querySelectorAll('[data-tilt]').forEach(card => {
+            card.addEventListener('mousemove', e => {
+              const r = card.getBoundingClientRect();
+              const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+              card.style.setProperty('--mx', (px * 100) + '%');
+              card.style.setProperty('--my', (py * 100) + '%');
+              gsap.to(card, { rotationY: (px - 0.5) * 10, rotationX: (0.5 - py) * 10, transformPerspective: 1200, duration: 0.6, ease: 'power3.out' });
+            });
+            card.addEventListener('mouseleave', () => gsap.to(card, { rotationX: 0, rotationY: 0, duration: 0.9, ease: 'expo.out' }));
+          });
+
+          // Magnetic buttons
+          document.querySelectorAll('[data-magnetic]').forEach(btn => {
+            btn.addEventListener('mousemove', e => {
+              const r = btn.getBoundingClientRect();
+              gsap.to(btn, { x: (e.clientX - r.left - r.width / 2) * 0.25, y: (e.clientY - r.top - r.height / 2) * 0.35, duration: 0.4, ease: 'power3.out' });
+            });
+            btn.addEventListener('mouseleave', () => gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.4)' }));
+          });
+        }
+
+        window.addEventListener('load', () => ScrollTrigger.refresh());
+      }
+    </script>
+
+    <style>
+      @keyframes quilleBlueShift{0%{background-position:0% 50%}100%{background-position:200% 50%}}.blend-rgb{background-image:linear-gradient(90deg,#245A86 0%,#2E6DA4 20%,#4A86BD 40%,#7FB2E0 50%,#4A86BD 60%,#2E6DA4 80%,#245A86 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:quilleBlueShift 4s linear infinite;filter:drop-shadow(0 0 28px rgba(74,134,189,0.45));}@media (prefers-reduced-motion: reduce){.blend-rgb{animation:none;}}
+    </style>
+  
+</body></html>
