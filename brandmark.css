@@ -1,0 +1,89 @@
+.site-brandmark {
+  position: relative;
+  display: block;
+  flex: 0 0 auto;
+  width: 178px;
+  height: 72px;
+  overflow: hidden;
+}
+.site-brandmark img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  transform: translate(-50%, -50%);
+}
+.site-brandmark-link:focus-visible {
+  outline: 2px solid #245a86;
+  outline-offset: 5px;
+}
+.site-brandmark-link { display: inline-flex; }
+.site-footer-brandmark {
+  position: relative;
+  width: min(86vw, 760px);
+  aspect-ratio: 1774 / 887;
+  margin-inline: auto;
+  overflow: hidden;
+}
+.site-footer-brandmark img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+}
+
+:root {
+  --brand-surface: #e6eff7;
+  --brand-ink: #123555;
+  --brand-line: rgba(18, 53, 85, 0.14);
+}
+
+#nav {
+  background-color: var(--brand-surface) !important;
+  border-bottom: 1px solid var(--brand-line);
+  box-shadow: 0 8px 24px rgba(0, 5, 13, 0.1);
+  backdrop-filter: blur(16px);
+}
+#nav nav > a {
+  color: var(--brand-ink) !important;
+}
+#nav nav > a:hover {
+  color: #2e6da4 !important;
+}
+#nav nav [data-underline] {
+  background-color: #2e6da4 !important;
+}
+#nav #menuBtn,
+#mobileMenu #menuClose {
+  color: var(--brand-ink) !important;
+  border-color: var(--brand-line) !important;
+}
+#mobileMenu > div:first-child {
+  background-color: var(--brand-surface);
+}
+
+body > footer {
+  color: var(--brand-ink);
+  background: linear-gradient(180deg, #e6eff7 0%, #dce9f5 100%) !important;
+  border-top: 1px solid var(--brand-line);
+}
+body > footer [class*="text-white/90"] { color: #123555 !important; }
+body > footer [class*="text-white/80"] { color: #1b4263 !important; }
+body > footer [class*="text-white/60"] { color: #365d7c !important; }
+body > footer [class*="text-white/50"] { color: #496c88 !important; }
+body > footer [class*="text-white/45"] { color: #56758e !important; }
+body > footer [class*="text-white/40"] { color: #607f96 !important; }
+body > footer [class*="text-white/35"] { color: #6a879d !important; }
+body > footer [class*="hover:text-white"]:hover { color: #ffffff !important; }
+body > footer [class*="border-white"] { border-color: var(--brand-line) !important; }
+@media (max-width: 420px) {
+  .site-brandmark { width: 152px; height: 62px; }
+}

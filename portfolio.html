@@ -12,6 +12,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <link rel="stylesheet" href="services.css" />
+    <link rel="stylesheet" href="showcase.css" />
+    <link rel="stylesheet" href="brandmark.css" />
   </head>
   <body class="bg-[#00050D] text-white antialiased selection:bg-[#245A86] selection:text-white overflow-x-clip" style="font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
     <div aria-hidden="true" class="pointer-events-none fixed inset-0 z-[70] opacity-[0.035]" style="background-image:url('data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 256 256%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 fill=%22white%22/%3E%3C/svg%3E');"></div>
@@ -23,22 +25,8 @@
         id="navInner"
         class="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-10 transition-all duration-500"
       >
-        <a
-          href="index.html#top"
-          class="group flex items-baseline gap-2"
-          aria-label="Quille Designs home"
-        >
-          <span
-            class="text-2xl font-bold tracking-tighter text-white"
-            style="font-family:'Syne',sans-serif;"
-          >
-            Quille
-          </span>
-          <span
-            class="text-xs font-medium uppercase tracking-[0.35em] text-white/40 transition-colors duration-300 group-hover:text-white/70"
-          >
-            Designs
-          </span>
+        <a href="index.html#top" class="site-brandmark-link" aria-label="Quille Designs home">
+          <span class="site-brandmark"><img src="assets/branding/quille-designs.png" width="1774" height="887" alt="" fetchpriority="high" /></span>
         </a>
         <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
           <a
@@ -848,13 +836,7 @@
         </div>
       </div>
       <div class="overflow-hidden" aria-hidden="true">
-        <p
-          id="footerMark"
-          class="select-none text-center text-8xl font-bold uppercase leading-[0.8] tracking-tighter sm:text-9xl"
-          style="font-family:'Syne',sans-serif;background:linear-gradient(180deg,#245A86 0%,rgba(18,53,85,0.15) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;"
-        >
-          Quille
-        </p>
+        <div id="footerMark" class="site-footer-brandmark"><img src="assets/branding/quille-designs.png" width="1774" height="887" alt="" loading="lazy" decoding="async" /></div>
       </div>
     </footer>
     <script>

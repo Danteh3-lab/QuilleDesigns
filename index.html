@@ -17,6 +17,8 @@
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
     <link rel="stylesheet" href="services.css" />
     <link rel="stylesheet" href="showcase.css" />
+    <link rel="stylesheet" href="brandmark.css" />
+    <link rel="stylesheet" href="process-images.css" />
   </head>
   <body
     class="bg-[#00050D] text-white antialiased selection:bg-[#245A86] selection:text-white overflow-x-clip"
@@ -38,22 +40,8 @@
         id="navInner"
         class="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-10 transition-all duration-500"
       >
-        <a
-          href="#top"
-          class="group flex items-baseline gap-2"
-          aria-label="Quille Designs home"
-        >
-          <span
-            class="text-2xl font-bold tracking-tighter text-white"
-            style="font-family:'Syne',sans-serif;"
-          >
-            Quille
-          </span>
-          <span
-            class="text-xs font-medium uppercase tracking-[0.35em] text-white/40 transition-colors duration-300 group-hover:text-white/70"
-          >
-            Designs
-          </span>
+        <a href="#top" class="site-brandmark-link" aria-label="Quille Designs home">
+          <span class="site-brandmark"><img src="assets/branding/quille-designs.png" width="1774" height="887" alt="" fetchpriority="high" /></span>
         </a>
         <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
           <a
@@ -224,7 +212,7 @@
             poster="https://www.cloudsagency.co/images/hero-bg.jpg"
           >
             <source
-              src="https://video.wixstatic.com/video/837426_a0c849075c654061b0f0eacea604ff1f/1080p/mp4/file.mp4"
+              src="assets/Landingpage/LandingpageQuille.mp4"
               type="video/mp4"
             />
           </video>
@@ -682,7 +670,7 @@
       <!-- PROCESS (sticky storytelling) -->
       <section
         id="process"
-        class="relative py-24 md:py-32"
+        class="relative py-24 md:py-32 process-has-images"
         data-page="services"
       >
         <div
@@ -694,7 +682,7 @@
           class="relative mx-auto grid max-w-[1400px] gap-12 px-6 md:px-10 lg:grid-cols-12"
         >
           <div class="lg:col-span-5">
-            <div class="lg:sticky lg:top-32">
+            <div class="process-sticky lg:sticky lg:top-32">
               <p
                 data-reveal=""
                 class="mb-6 text-xs font-medium uppercase tracking-[0.45em] text-[#4A86BD]"
@@ -740,6 +728,12 @@
                   style="box-shadow:0 0 12px rgba(74,134,189,0.8);"
                 ></div>
               </div>
+              <figure class="process-image-frame" aria-label="Current process phase image">
+                <img src="assets/process/discover.jpg" width="1200" height="900" alt="Workshop notes and research materials for discovery" class="is-active" data-process-image="0" />
+                <img src="assets/process/define.jpg" width="1200" height="900" alt="Positioning and messaging plans for the define phase" data-process-image="1" />
+                <img src="assets/process/design.jpg" width="1200" height="900" alt="Design work in progress for the design phase" data-process-image="2" />
+                <img src="assets/process/deliver.jpg" width="1200" height="900" alt="Finished brand materials prepared for delivery" data-process-image="3" />
+              </figure>
             </div>
           </div>
 
@@ -786,6 +780,7 @@
                     Audience &amp; competitor research
                   </li>
                 </ul>
+                <img class="process-step-picture" src="assets/process/discover.jpg" width="1200" height="900" alt="Workshop notes and research materials for discovery" loading="lazy" decoding="async" />
               </div>
             </div>
             <div
@@ -827,6 +822,7 @@
                     Roadmap with clear KPIs
                   </li>
                 </ul>
+                <img class="process-step-picture" src="assets/process/define.jpg" width="1200" height="900" alt="Positioning and messaging plans for the define phase" loading="lazy" decoding="async" />
               </div>
             </div>
             <div
@@ -868,6 +864,7 @@
                     Interactive prototypes
                   </li>
                 </ul>
+                <img class="process-step-picture" src="assets/process/design.jpg" width="1200" height="900" alt="Design work in progress for the design phase" loading="lazy" decoding="async" />
               </div>
             </div>
             <div
@@ -909,6 +906,7 @@
                     Ongoing optimisation
                   </li>
                 </ul>
+                <img class="process-step-picture" src="assets/process/deliver.jpg" width="1200" height="900" alt="Finished brand materials prepared for delivery" loading="lazy" decoding="async" />
               </div>
             </div>
           </div>
@@ -1934,13 +1932,7 @@
         </div>
       </div>
       <div class="overflow-hidden" aria-hidden="true">
-        <p
-          id="footerMark"
-          class="select-none text-center text-8xl font-bold uppercase leading-[0.8] tracking-tighter sm:text-9xl"
-          style="font-family:'Syne',sans-serif;background:linear-gradient(180deg,#245A86 0%,rgba(18,53,85,0.15) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;"
-        >
-          Quille
-        </p>
+        <div id="footerMark" class="site-footer-brandmark"><img src="assets/branding/quille-designs.png" width="1774" height="887" alt="" loading="lazy" decoding="async" /></div>
       </div>
     </footer>
     <script>
@@ -2153,8 +2145,11 @@
           const num = document.getElementById('stepNum');
           const label = document.getElementById('stepLabel');
           const steps = gsap.utils.toArray('[data-step]');
+          const phaseImages = gsap.utils.toArray('[data-process-image]');
           const setActive = step => {
             steps.forEach(s => s.style.opacity = s === step ? '1' : '0.3');
+            const activeIndex = steps.indexOf(step);
+            phaseImages.forEach((image, index) => image.classList.toggle('is-active', index === activeIndex));
             if(num.textContent !== step.dataset.num){
               gsap.fromTo([num, label], { yPercent: 40, autoAlpha: 0 }, { yPercent: 0, autoAlpha: 1, duration: 0.6, ease: 'expo.out' });
               num.textContent = step.dataset.num;
