@@ -126,7 +126,7 @@
           media.addEventListener('load', () => {
             status.textContent = 'If playback is unavailable, open this video on YouTube.';
           }, options);
-          media.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(youtubeId) + '?autoplay=1&playsinline=1&rel=0';
+          media.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(youtubeId) + '?autoplay=1&mute=1&controls=1&playsinline=1&rel=0';
         } else if (!youtubeId) {
           media.controls = true;
           media.playsInline = true;
