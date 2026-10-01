@@ -100,6 +100,58 @@
     .filter(section => category === 'all' || section.dataset.category === category)
     .reduce((count, section) => count + section.querySelectorAll('[data-media]').length, 0);
 
+  document.querySelectorAll('[data-count-category]').forEach(element => {
+    element.textContent = String(countFor(element.dataset.countCategory)).padStart(2, '0');
+  });
+
+  const ticker = document.querySelector('.collection-ticker');
+  const tickerToggle = document.getElementById('tickerToggle');
+  const tickerCopy = ticker.querySelector('.ticker-group').cloneNode(true);
+  tickerCopy.classList.add('ticker-copy');
+  tickerCopy.setAttribute('aria-hidden', 'true');
+  ticker.querySelector('.ticker-track').append(tickerCopy);
+  ticker.classList.add('ticker-ready');
+  tickerToggle.addEventListener('click', () => {
+    const paused = ticker.classList.toggle('ticker-paused');
+    tickerToggle.setAttribute('aria-pressed', String(paused));
+    tickerToggle.setAttribute('aria-label', paused ? 'Resume project ticker' : 'Pause project ticker');
+    tickerToggle.firstElementChild.textContent = paused ? '▶' : 'Ⅱ';
+  });
+
+  const process = document.getElementById('process');
+  const runway = process.querySelector('.process-runway');
+  const scene = process.querySelector('.process-scene');
+  const steps = [...process.querySelectorAll('.process-step')];
+  const photos = [...process.querySelectorAll('.process-photo')];
+  const desktop = window.matchMedia('(min-width: 1024px) and (min-height: 700px)');
+  let processFrame = null;
+  function updateProcess() {
+    processFrame = null;
+    if (!process.classList.contains('process-enhanced')) return;
+    const distance = Math.max(1, runway.offsetHeight - scene.offsetHeight);
+    const progress = Math.min(1, Math.max(0, (104 - runway.getBoundingClientRect().top) / distance));
+    const phase = Math.min(steps.length - 1, Math.floor(progress * steps.length));
+    steps.forEach((step, index) => step.classList.toggle('is-active', index === phase));
+    photos.forEach((photo, index) => photo.classList.toggle('is-active', index === phase));
+    process.style.setProperty('--story-progress', progress);
+    document.getElementById('processPhase').textContent = `${String(phase + 1).padStart(2, '0')} / 04`;
+    document.getElementById('processPhaseName').textContent = steps[phase].querySelector('h3').textContent;
+  }
+  function scheduleProcess() {
+    if (processFrame === null) processFrame = window.requestAnimationFrame(updateProcess);
+  }
+  function syncMotion() {
+    document.body.classList.toggle('motion-reduced', motionPreference.matches);
+    tickerToggle.hidden = motionPreference.matches;
+    process.classList.toggle('process-enhanced', desktop.matches && !motionPreference.matches);
+    scheduleProcess();
+  }
+  window.addEventListener('scroll', scheduleProcess, { passive: true });
+  window.addEventListener('resize', scheduleProcess);
+  desktop.addEventListener('change', syncMotion);
+  motionPreference.addEventListener('change', syncMotion);
+  syncMotion();
+
   filterButtons.forEach(button => {
     button.querySelector('span').textContent = String(countFor(button.dataset.filter)).padStart(2, '0');
     button.addEventListener('click', () => {
