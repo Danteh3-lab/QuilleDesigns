@@ -1,3 +1,4 @@
-# The video masters are stored and served from R2, outside the static asset bundle.
+# Keep Git metadata and video masters out of the static asset bundle.
+**/.git
 *.mp4
 
