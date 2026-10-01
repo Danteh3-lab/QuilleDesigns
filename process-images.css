@@ -1,18 +1,20 @@
-/* Image additions only: keep the existing process typography and timeline. */
-.process-image-frame { display: none; position: relative; width: 100%; height: clamp(140px, 26vh, 280px); margin: 28px 0 0; overflow: hidden; border-radius: 4px; background: #123555; }
-.process-image-frame img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .45s ease; }
-.process-image-frame img.is-active { opacity: 1; }
-.process-step-picture { display: block; width: 100%; max-width: 28rem; aspect-ratio: 4 / 3; margin-top: 28px; border-radius: 4px; object-fit: cover; background: #123555; }
-#process:not(.process-has-images) [data-step] { opacity: 1; }
-@media (min-width: 1024px) {
-  .process-has-images .process-image-frame { display: block; }
-  .process-has-images .process-step-picture { display: none; }
-}
+/* Full-bleed Mage EV frame sequence, scrubbed through the process section. */
+#process { position: relative; isolation: isolate; background: #00050D; }
+.process-backdrop { position: sticky; z-index: 0; top: 0; width: 100%; height: 100vh; height: 100svh; margin-bottom: -100vh; margin-bottom: -100svh; overflow: hidden; isolation: isolate; background: #00050D; pointer-events: none; }
+.process-background-still, .process-sequence-canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 58%; }
+.process-background-still { z-index: 0; }
+.process-sequence-canvas { z-index: 1; opacity: 0; transition: opacity .38s ease; }
+.process-sequence-canvas.is-ready { opacity: 1; }
+.process-video-vignette { position: absolute; z-index: 2; inset: 0; background: linear-gradient(90deg, rgba(0,5,13,.80) 0%, rgba(0,5,13,.67) 42%, rgba(0,5,13,.79) 100%), linear-gradient(180deg, rgba(0,5,13,.58) 0%, rgba(0,5,13,.16) 38%, rgba(0,5,13,.28) 66%, rgba(0,5,13,.78) 100%); }
+.process-sequence-status { position: absolute; z-index: 20; top: 18px; right: clamp(16px, calc((100vw - 1400px) / 2 + 24px), 72px); max-width: min(440px, calc(100% - 32px)); padding: 10px 13px; border: 1px solid rgba(255,255,255,.14); border-radius: 3px; color: #F3F7FA; background: rgba(0,5,13,.88); font-size: 12px; line-height: 1.5; }
+.process-sequence-status a { color: #A9C8E3; text-decoration: underline; text-underline-offset: 3px; pointer-events: auto; }
+.process-sequence-status[hidden] { display: none; }
+#process [data-step] { opacity: 1; }
 @media (min-width: 1024px) and (max-height: 740px) {
   #process .process-sticky { top: 80px; }
-  .process-image-frame { height: clamp(120px, calc(100svh - 510px), 190px); margin-top: 20px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .process-image-frame img { transition: none; }
-  .process-has-images [data-step] { transition: none; }
+  .process-sequence-canvas { display: none; transition: none; }
+  #process [data-step] { transition: none; }
 }
+
