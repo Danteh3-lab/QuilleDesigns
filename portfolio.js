@@ -118,37 +118,10 @@
     tickerToggle.firstElementChild.textContent = paused ? '▶' : 'Ⅱ';
   });
 
-  const process = document.getElementById('process');
-  const runway = process.querySelector('.process-runway');
-  const scene = process.querySelector('.process-scene');
-  const steps = [...process.querySelectorAll('.process-step')];
-  const photos = [...process.querySelectorAll('.process-photo')];
-  const desktop = window.matchMedia('(min-width: 1024px) and (min-height: 700px)');
-  let processFrame = null;
-  function updateProcess() {
-    processFrame = null;
-    if (!process.classList.contains('process-enhanced')) return;
-    const distance = Math.max(1, runway.offsetHeight - scene.offsetHeight);
-    const progress = Math.min(1, Math.max(0, (104 - runway.getBoundingClientRect().top) / distance));
-    const phase = Math.min(steps.length - 1, Math.floor(progress * steps.length));
-    steps.forEach((step, index) => step.classList.toggle('is-active', index === phase));
-    photos.forEach((photo, index) => photo.classList.toggle('is-active', index === phase));
-    process.style.setProperty('--story-progress', progress);
-    document.getElementById('processPhase').textContent = `${String(phase + 1).padStart(2, '0')} / 04`;
-    document.getElementById('processPhaseName').textContent = steps[phase].querySelector('h3').textContent;
-  }
-  function scheduleProcess() {
-    if (processFrame === null) processFrame = window.requestAnimationFrame(updateProcess);
-  }
   function syncMotion() {
     document.body.classList.toggle('motion-reduced', motionPreference.matches);
     tickerToggle.hidden = motionPreference.matches;
-    process.classList.toggle('process-enhanced', desktop.matches && !motionPreference.matches);
-    scheduleProcess();
   }
-  window.addEventListener('scroll', scheduleProcess, { passive: true });
-  window.addEventListener('resize', scheduleProcess);
-  desktop.addEventListener('change', syncMotion);
   motionPreference.addEventListener('change', syncMotion);
   syncMotion();
 
