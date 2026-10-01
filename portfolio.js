@@ -93,32 +93,41 @@
       const options = { signal: mediaEvents.signal };
       const isVideo = link.dataset.media === 'video';
       const youtubeId = link.dataset.youtubeId;
+      const filePreview = window.location.protocol === 'file:';
+      const canEmbedYouTube = Boolean(youtubeId) && !filePreview;
       document.getElementById('viewerTitle').textContent = link.dataset.title;
       document.getElementById('viewerCategory').textContent = isVideo ? 'Video' : 'Logo design';
       document.getElementById('viewerHint').textContent = isVideo ? 'Video playback' : 'Complete original artwork';
       source.href = link.href;
       source.textContent = isVideo ? (youtubeId ? 'Open on YouTube ↗' : 'Open video ↗') : 'Open original ↗';
-      status.textContent = isVideo ? (youtubeId ? 'Loading YouTube player…' : 'Loading video…') : 'Loading artwork…';
+      status.textContent = isVideo
+        ? (youtubeId
+          ? (canEmbedYouTube ? 'Loading YouTube player…' : 'This local file preview cannot identify the embed to YouTube. Open the hosted site, or use “Open on YouTube”.')
+          : 'Loading video…')
+        : 'Loading artwork…';
 
-      const media = document.createElement(isVideo && youtubeId ? 'iframe' : (isVideo ? 'video' : 'img'));
+      const media = canEmbedYouTube
+        ? document.createElement('iframe')
+        : (isVideo && !youtubeId ? document.createElement('video') : (isVideo ? null : document.createElement('img')));
       const showError = () => {
         status.textContent = isVideo
           ? 'The video player could not be loaded. Try “Open on YouTube” below.'
           : 'This artwork could not be loaded. Try the “Open original” link below.';
       };
-      media.addEventListener('error', showError, options);
+      media?.addEventListener('error', showError, options);
       if (isVideo) {
-        if (youtubeId) {
+        if (canEmbedYouTube) {
           media.title = link.dataset.title + ' video player';
           media.allow = 'autoplay; encrypted-media; picture-in-picture; web-share';
           media.allowFullscreen = true;
           media.loading = 'eager';
           media.referrerPolicy = 'strict-origin-when-cross-origin';
+          media.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
           media.addEventListener('load', () => {
             status.textContent = 'If playback is unavailable, open this video on YouTube.';
           }, options);
           media.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(youtubeId) + '?autoplay=1&playsinline=1&rel=0';
-        } else {
+        } else if (!youtubeId) {
           media.controls = true;
           media.playsInline = true;
           media.preload = 'metadata';
@@ -135,7 +144,7 @@
         media.addEventListener('load', () => { status.textContent = ''; }, options);
         media.src = link.href;
       }
-      mediaContainer.append(media);
+      if (media) mediaContainer.append(media);
       viewer.showModal();
       if (isVideo && !youtubeId) {
         // This play request follows an explicit click; no media is fetched at page load.
