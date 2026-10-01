@@ -72,6 +72,8 @@
   function releaseMedia() {
     mediaEvents?.abort();
     mediaEvents = null;
+    const iframe = mediaContainer.querySelector('iframe');
+    if (iframe) iframe.src = 'about:blank';
     const video = mediaContainer.querySelector('video');
     if (video) {
       video.pause();
@@ -90,38 +92,52 @@
       mediaEvents = new AbortController();
       const options = { signal: mediaEvents.signal };
       const isVideo = link.dataset.media === 'video';
+      const youtubeId = link.dataset.youtubeId;
       document.getElementById('viewerTitle').textContent = link.dataset.title;
       document.getElementById('viewerCategory').textContent = isVideo ? 'Video' : 'Logo design';
       document.getElementById('viewerHint').textContent = isVideo ? 'Video playback' : 'Complete original artwork';
       source.href = link.href;
-      source.textContent = isVideo ? 'Open video ↗' : 'Open original ↗';
-      status.textContent = isVideo ? 'Loading video…' : 'Loading artwork…';
+      source.textContent = isVideo ? (youtubeId ? 'Open on YouTube ↗' : 'Open video ↗') : 'Open original ↗';
+      status.textContent = isVideo ? (youtubeId ? 'Loading YouTube player…' : 'Loading video…') : 'Loading artwork…';
 
-      const media = document.createElement(isVideo ? 'video' : 'img');
+      const media = document.createElement(isVideo && youtubeId ? 'iframe' : (isVideo ? 'video' : 'img'));
       const showError = () => {
         status.textContent = isVideo
-          ? 'This video could not be played. Try the “Open video” link below to view or download the original.'
+          ? 'The video player could not be loaded. Try “Open on YouTube” below.'
           : 'This artwork could not be loaded. Try the “Open original” link below.';
       };
       media.addEventListener('error', showError, options);
       if (isVideo) {
-        media.controls = true;
-        media.playsInline = true;
-        media.preload = 'metadata';
-        media.poster = link.dataset.poster;
-        media.setAttribute('aria-label', `${link.dataset.title} video`);
-        media.addEventListener('loadeddata', () => { status.textContent = ''; }, options);
-        media.addEventListener('playing', () => { status.textContent = ''; }, options);
-        media.addEventListener('waiting', () => { status.textContent = 'Buffering video…'; }, options);
-        media.addEventListener('stalled', () => { status.textContent = 'The video is taking longer to load. You can also use “Open video” below.'; }, options);
+        if (youtubeId) {
+          media.title = link.dataset.title + ' video player';
+          media.allow = 'autoplay; encrypted-media; picture-in-picture; web-share';
+          media.allowFullscreen = true;
+          media.loading = 'eager';
+          media.referrerPolicy = 'strict-origin-when-cross-origin';
+          media.addEventListener('load', () => {
+            status.textContent = 'If playback is unavailable, open this video on YouTube.';
+          }, options);
+          media.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(youtubeId) + '?autoplay=1&playsinline=1&rel=0';
+        } else {
+          media.controls = true;
+          media.playsInline = true;
+          media.preload = 'metadata';
+          media.poster = link.dataset.poster;
+          media.setAttribute('aria-label', `${link.dataset.title} video`);
+          media.addEventListener('loadeddata', () => { status.textContent = ''; }, options);
+          media.addEventListener('playing', () => { status.textContent = ''; }, options);
+          media.addEventListener('waiting', () => { status.textContent = 'Buffering video…'; }, options);
+          media.addEventListener('stalled', () => { status.textContent = 'The video is taking longer to load. You can also use “Open video” below.'; }, options);
+          media.src = link.href;
+        }
       } else {
         media.alt = link.querySelector('img').alt;
         media.addEventListener('load', () => { status.textContent = ''; }, options);
+        media.src = link.href;
       }
-      media.src = link.href;
       mediaContainer.append(media);
       viewer.showModal();
-      if (isVideo) {
+      if (isVideo && !youtubeId) {
         // This play request follows an explicit click; no media is fetched at page load.
         media.play().catch(() => {
           if (media.isConnected && !media.error) status.textContent = 'Press play to start the video.';
@@ -141,7 +157,7 @@
     // Keep keyboard traversal inside the dialog, including at browser-chrome boundaries.
     dialog.addEventListener('keydown', event => {
       if (event.key !== 'Tab') return;
-      const targets = [...dialog.querySelectorAll('a[href], button:not([disabled]), video[controls]')]
+      const targets = [...dialog.querySelectorAll('a[href], button:not([disabled]), video[controls], iframe')]
         .filter(element => element.getClientRects().length > 0);
       const first = targets[0];
       const last = targets[targets.length - 1];

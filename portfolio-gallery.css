@@ -144,7 +144,8 @@ html:has(.portfolio-gallery)::-webkit-scrollbar-thumb:active, .portfolio-gallery
 .icon-button { flex-shrink: 0; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--gallery-line); border-radius: 50%; background: transparent; color: var(--gallery-ink); font-size: 28px !important; line-height: 1; }
 .icon-button:hover { background: var(--gallery-line); }
 .viewer-media { min-height: 160px; background: var(--gallery-bg); }
-.viewer-media :is(img,video) { display: block; width: 100%; height: min(65dvh, 760px); object-fit: contain; }
+.viewer-media :is(img,video,iframe) { display: block; width: 100%; height: min(65dvh, 760px); object-fit: contain; }
+.viewer-media iframe { aspect-ratio: 16 / 9; border: 0; background: #000; }
 .viewer-status { padding: 12px 24px 0; min-height: 32px; color: var(--gallery-muted); font-size: 12px; }
 .viewer-status:empty { padding: 0; min-height: 0; }
 .viewer-footer { display: flex; justify-content: space-between; gap: 20px; padding: 16px 24px; color: var(--gallery-muted); font-size: 11px; }
@@ -234,7 +235,7 @@ html:has(dialog[open]) { overflow: hidden; }
 @media (forced-colors: active) {
   html:has(.portfolio-gallery), .portfolio-gallery * { scrollbar-color: auto; }
   .portfolio-filters button[aria-pressed=true] { outline: 2px solid Highlight; }
-  .portfolio-gallery :is(a,button,video):focus-visible { outline-color: Highlight; }
+  .portfolio-gallery :is(a,button,video,iframe):focus-visible { outline-color: Highlight; }
   .media-link, .play-icon { border: 1px solid ButtonText; }
 }
 
