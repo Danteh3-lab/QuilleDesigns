@@ -1,0 +1,3 @@
+# The video masters are stored and served from R2, outside the static asset bundle.
+*.mp4
+
