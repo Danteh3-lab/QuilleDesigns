@@ -4,7 +4,8 @@
   const englishToDutch = new Map(Object.entries({
     'Quille Designs | Marketing & Design Studio': 'Quille Designs | Marketing- en ontwerpbureau',
     'Our work | Quille Designs': 'Ons werk | Quille Designs',
-    'Quille Designs is an independent marketing and design studio. We help businesses get their message across through brand identity, web and campaign design.': 'Quille Designs is een onafhankelijk marketing- en ontwerpbureau. Met merkidentiteit, webdesign en campagnes helpen we bedrijven hun boodschap helder over te brengen.',
+    'Quille Designs is an independent creative studio. We create commercials, posters, logos and business cards, and manage social media for businesses.': 'Quille Designs is een onafhankelijke creatieve studio. We maken reclames, posters, logo’s en visitekaartjes en beheren social media voor bedrijven.',
+    'We create commercials, posters, logos and business cards for businesses, and manage their social media.': 'We maken reclames, posters, logo’s en visitekaartjes voor bedrijven en beheren hun social media.',
     'Explore brand identities and films by Quille Designs. Browse selected projects and view the artwork in full.': 'Bekijk het werk van Quille Designs: merkidentiteiten, films en volledige projectbeelden.',
     'Services': 'Diensten',
     'Start a project': 'Project starten',
@@ -17,6 +18,11 @@
     'Our services': 'Onze diensten',
     'Scroll': 'Scrollen',
     'Brand Identity': 'Merkidentiteit',
+    'Promo Production': 'Reclameproductie',
+    'Poster Design': 'Posterontwerp',
+    'Logo Design': 'Logo-ontwerp',
+    'Business Card Design': 'Visitekaartjesontwerp',
+    'Social Media Management': 'Socialmediabeheer',
     'Web Design': 'Webdesign',
     'Performance Marketing': 'Resultaatgerichte marketing',
     'Social & Content': 'Social media & content',
@@ -24,12 +30,20 @@
     '(01) / Manifesto': '(01) / Manifest',
     'Good marketing starts with a clear idea. We turn that idea into a brand people recognise and remember.': 'Goede marketing begint met een helder idee. We vertalen dat idee naar een merk dat mensen herkennen en onthouden.',
     '(02) / What we do': '(02) / Wat we doen',
-    'Make your brand easier': 'Maak je merk makkelijker',
-    'to understand.': 'te begrijpen.',
-    'From your logo and website to your next campaign, we keep the message clear and the design consistent.': 'Van je logo en website tot je volgende campagne: we houden de boodschap helder en het ontwerp herkenbaar.',
+    'Make your business': 'Maak je bedrijf',
+    'easy to recognise.': 'herkenbaar.',
+    'We produce commercials, design posters, logos and business cards, and manage social media for your business.': 'We maken reclames, ontwerpen posters, logo’s en visitekaartjes. Ook beheren we de social media van je bedrijf.',
     'Discuss your brief': 'Bespreek je briefing',
-    'One team for your brand.': 'Eén team voor je merk.',
+    'Video, print and social media for your business.': 'Video, drukwerk en social media voor je bedrijf.',
     'Identity': 'Identiteit',
+    'Promo production': 'Reclameproductie',
+    'Commercials': 'Reclames',
+    'for businesses': 'voor bedrijven',
+    'We produce commercials for businesses, from the shoot to the finished edit.': 'We maken reclames voor bedrijven, van de opnames tot de montage.',
+    'Promo production services': 'Diensten voor reclameproductie',
+    'Commercial shoots': 'Reclameshoots',
+    'Video editing': 'Videomontage',
+    'Promo videos': 'Promovideo’s',
     'Brand identity': 'Merkidentiteit',
     '& logo design': '& logo-ontwerp',
     'We design logos and visual identities that fit your business and are easy to recognise.': 'We ontwerpen logo’s en visuele identiteiten die bij je bedrijf passen en je bedrijf herkenbaar maken.',
@@ -38,29 +52,35 @@
     'Brand guidelines': 'Merkrichtlijnen',
     'Stationery': 'Huisstijldrukwerk',
     'Print': 'Drukwerk',
-    'Flyer &': 'Flyer- en',
-    'poster design': 'posterontwerp',
-    'Flyers, posters and brochures for events, promotions or launches, ready for print.': 'Flyers, posters en brochures voor evenementen, acties of lanceringen, klaar voor de drukker.',
-    'Event flyers': 'Evenementflyers',
+    'We design posters for events, promotions and campaigns.': 'We ontwerpen posters voor evenementen, acties en campagnes.',
+    'Poster design services': 'Posterontwerpdiensten',
+    'Event posters': 'Evenementposters',
+    'Promotional posters': 'Actieposters',
+    'Campaign posters': 'Campagneposters',
     'Posters': 'Posters',
-    'Brochures': 'Brochures',
-    'Print-ready files': 'Drukklare bestanden',
+    'for campaigns': 'voor campagnes',
+    'Design': 'Ontwerp',
+    'Logos &': 'Logo’s &',
+    'business cards': 'visitekaartjes',
+    'We design logos and business cards that give your business a clear, recognisable look.': 'We ontwerpen logo’s en visitekaartjes die je bedrijf een duidelijke, herkenbare uitstraling geven.',
+    'Logo and business card design services': 'Diensten voor logo- en visitekaartjesontwerp',
+    'Business card design': 'Visitekaartjesontwerp',
+    'Poster design': 'Posterontwerp',
+    'Logo & business card design': 'Logo- en visitekaartjesontwerp',
+    'Social media management': 'Socialmediabeheer',
+    'Content planning': 'Contentplanning',
+    'Publishing': 'Berichten plaatsen',
+    'We take care of the day-to-day social media for your business, so you can focus on running it.': 'We verzorgen het dagelijkse beheer van je social media, zodat jij je op je bedrijf kunt richten.',
+    'Social media management services': 'Diensten voor socialmediabeheer',
     'Campaigns': 'Campagnes',
     'Advertising': 'Advertentie',
-    'design': 'ontwerp',
-    'We design ads for print and digital that make your offer easy to understand.': 'We ontwerpen advertenties voor drukwerk en online die meteen duidelijk maken wat je aanbiedt.',
-    'Social ads': 'Social advertenties',
-    'Display banners': 'Displaybanners',
-    'Billboards': 'Billboards',
-    'Print ads': 'Printadvertenties',
     'Social': 'Social media',
     'Social media': 'Social media',
+    'social media': 'social media',
+    'Managing': 'Beheer van',
     'management': 'beheer',
-    'We plan, design and publish your posts, so your social channels stay active while you focus on the business.': 'We plannen, ontwerpen en plaatsen je berichten. Zo blijven je socialmediakanalen actief terwijl jij je bedrijf runt.',
-    'Content calendar': 'Contentkalender',
     'Post design': 'Postontwerp',
     'Scheduling': 'Inplannen',
-    'Community & insights': 'Community & inzichten',
     'Choose a service to see what we can do.': 'Kies een dienst en bekijk wat we voor je kunnen doen.',
     '(03) / Selected explorations': '(03) / Geselecteerde projecten',
     'Ideas,': 'Ideeën,',
@@ -93,7 +113,6 @@
     'Deliver': 'Opleveren',
     'We deliver videos and design files ready for the channels they’re made for. We also manage social media for businesses that want ongoing support.': 'We leveren video’s en ontwerpen klaar voor de kanalen waarvoor ze zijn gemaakt. We beheren ook social media voor bedrijven die daar doorlopend hulp bij willen.',
     'Ready-to-use files': 'Bestanden klaar voor gebruik',
-    'Social media management': 'Beheer van social media',
     '(05) / Proof in numbers': '(05) / Cijfers die tellen',
     'The results': 'De resultaten',
     'in numbers.': 'in cijfers.',
@@ -136,7 +155,6 @@
     'I’m interested in': 'Ik heb interesse in',
     "I'm interested in": 'Ik heb interesse in',
     'Branding': 'Branding',
-    'Website': 'Website',
     'Paid Ads': 'Betaalde advertenties',
     'Budget': 'Budget',
     '$5k to $15k': '$5k tot $15k',
@@ -199,7 +217,6 @@
     'Advertising design': 'Advertentieontwerp',
     'We design ads for print and digital that make your offer easy to understand.': 'We ontwerpen advertenties voor print en online die meteen duidelijk maken wat je aanbiedt.',
     'Social ads · Banners · Billboards': 'Social advertenties · Banners · Billboards',
-    'Social media management': 'Socialmediamanagement',
     'We plan, design and publish your posts, so your social channels stay active while you focus on the business.': 'We plannen, ontwerpen en plaatsen je berichten. Zo blijven je socialmediakanalen actief terwijl jij je bedrijf runt.',
     'Content · Scheduling · Insights': 'Content · Inplannen · Inzichten',
     'Bring us an idea. We’ll help you shape it.': 'Vertel ons je idee. We denken met je mee.',
@@ -326,7 +343,7 @@
 
   function shouldSkipText(node) {
     const parent = node.parentElement;
-    return !parent || !!parent.closest('script,style,#scrubText,.showcase-art,.showcase-mockup');
+    return !parent || !!parent.closest('script,style,#scrubText,.showcase-art,.showcase-mockup,[data-marquee]');
   }
 
   function localizeTextNode(node, language) {
@@ -357,13 +374,13 @@
     }
     if (root.nodeType !== Node.ELEMENT_NODE && root !== document.body) return;
     const element = root.nodeType === Node.ELEMENT_NODE ? root : null;
-    if (element && element.closest('script,style,.showcase-art,.showcase-mockup')) return;
+    if (element && element.closest('script,style,.showcase-art,.showcase-mockup,[data-marquee]')) return;
     if (element) translatedAttributes.forEach(name => localizeAttribute(element, name, language));
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
     let node;
     while ((node = walker.nextNode())) localizeTextNode(node, language);
     if (element) element.querySelectorAll(translatedAttributes.map(name => `[${name}]`).join(',')).forEach(child => {
-      if (!child.closest('.showcase-art,.showcase-mockup')) translatedAttributes.forEach(name => localizeAttribute(child, name, language));
+      if (!child.closest('.showcase-art,.showcase-mockup,[data-marquee]')) translatedAttributes.forEach(name => localizeAttribute(child, name, language));
     });
   }
 
