@@ -14,6 +14,12 @@
 .site-primary-nav a::after { content: ''; position: absolute; bottom: 8px; inset-inline: 16px; height: 1px; background: #2e6da4; transform: scaleX(0); transform-origin: left; transition: transform .3s; }
 .site-primary-nav a:hover::after, .site-primary-nav a[aria-current=page]::after { transform: scaleX(1); }
 .site-nav-actions { display: flex; align-items: center; gap: 12px; }
+.site-language-toggle { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 7px; min-height: 40px; padding: 8px 12px; border: 1px solid var(--brand-line); border-radius: 4px; color: var(--brand-ink); background: rgb(230 239 247 / .72); font: 600 10px/16px 'Plus Jakarta Sans',system-ui,sans-serif; letter-spacing: .12em; cursor: pointer; transition: border-color .25s,background-color .25s; }
+.site-language-toggle:hover { border-color: #245a86; background: #e6eff7; }
+.site-language-toggle .language-option { color: var(--brand-ink); opacity: .42; }
+.site-language-toggle .language-option.is-active { color: #245a86; opacity: 1; }
+.site-language-toggle .language-divider { color: #7892a9; opacity: .7; }
+.site-menu-actions { display: flex; align-items: center; gap: 10px; }
 .site-project-link { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 4px; color: #fff !important; background: linear-gradient(135deg,#2e6da4 0%,#245a86 45%,#123555 100%); font-size: 12px; line-height: 16px; font-weight: 500; text-transform: uppercase; letter-spacing: .18em; }
 .site-project-link svg { width: 16px; height: 16px; flex-shrink: 0; transition: transform .3s; }
 .site-project-link:hover svg { transform: translate(2px,-2px); }
@@ -68,6 +74,8 @@ html:has(.site-mobile-menu[open]) { overflow: hidden; }
   .site-footer-about, .site-footer-studio, .site-footer-services, .site-footer-contact { grid-column: auto; }
 }
 @media (max-width: 639px) {
+  .site-nav-inner, .site-nav-actions { gap: 8px; }
+  .site-language-toggle { gap: 5px; min-height: 40px; padding-inline: 9px; font-size: 9px; }
   .site-project-link { display: none; }
   .site-footer .site-footer-bottom { flex-direction: column; align-items: flex-start; }
 }
