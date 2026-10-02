@@ -16,9 +16,9 @@ omitted:
 # Quille Designs — Portfolio
 
 ## Overview
-The latest supplied reference replaces the dark editorial portfolio with a pale patterned page, framed panels, the shared homepage navigation, split hero, project ticker, asymmetric work grid, capabilities, studio manifesto, dark contact invitation and the shared homepage footer. Use Quille's navy and pale blue colors.
+The latest supplied reference replaces the dark editorial portfolio with a pale patterned page, framed panels, the shared homepage navigation, split hero, project ticker, format-aware project galleries, capabilities, studio manifesto, dark contact invitation and the shared homepage footer. Use Quille's navy and pale blue colors.
 
-All ten real projects appear: three films and seven logo identities. Captions sit beneath complete artwork. Logo posters retain original pricing and contact text, use object-fit: contain and open the complete originals. Film posters come from actual films. Replace the reference's fictional metrics, clients, reviews and contact form with accurate collection counts, existing services, Quille's manifesto and working contact links. No invented outcomes or response-time promises.
+All twelve real projects appear: five films and seven logo identities. Captions sit beneath complete artwork. Logo posters retain original pricing and contact text, use object-fit: contain and open the complete originals. Film posters use stills from the films. Replace the reference's fictional metrics, clients, reviews and contact form with accurate collection counts, existing services, Quille's manifesto and working contact links. No invented outcomes or response-time promises.
 
 ## Colors
 Model B: runtime CSS is canonical. Shared brand tokens remain in brandmark.css; scoped portfolio aliases remain in portfolio-gallery.css.
@@ -44,7 +44,7 @@ Shared colors: pale blue #e6eff7 and navy #123555. Scoped colors: accent #245a86
 Inter Tight 300/400/500/600 owns --gallery-font-display and --gallery-font-body. Instrument Serif owns italic emphasis and manifesto text via --gallery-font-serif. JetBrains Mono owns utility labels via --gallery-font-mono. System/Georgia fallbacks preserve readability. Large headlines use tight tracking and responsive sizes. Site copy supports Dutch by default and English as an alternate; original artwork keeps its own language.
 
 ## Layout
-A centered 1280px maximum shell contains framed panels with corner marks. The full-width homepage navigation sits above a split hero and four statistics. Work uses a 12-column grid with alternating 7/5 cards followed by six 4-column identities. Filtered categories use equal columns. Tablets use two columns; phones stack. All original identity posters stay fully visible and unoccluded.
+A centered 1280px maximum shell contains framed panels with corner marks. The full-width homepage navigation sits above a split hero and four statistics. The portfolio separates films from brand identities: two landscape films sit in a matched row, portrait films share a three-card row, and square logo posters form a centered three-column gallery. Each media frame follows its source format, while all original identity posters stay fully visible and unoccluded. Tablet and phone grids center incomplete final rows and keep captions aligned.
 
 The work collection leads directly into capabilities. Capabilities use two columns, followed by manifesto, three principles, navy contact and the full-width shared footer. Preserve natural scrolling, stable media geometry and anchor clearance.
 
@@ -60,12 +60,12 @@ Native SVG arrows, play triangles and close marks. Decorative glyphs are hidden 
 ## Motion
 Native CSS/IntersectionObserver handle entrances and reveals. A duplicated, assistive-technology-hidden project ticker moves slowly with a visible pause/resume control. Reduced motion shows one static wrapped list. No animation dependencies or scroll hijacking.
 
-Films autoplay muted and inline when visible. Set muting in HTML and JavaScript before loading sources. Shared Pause previews pauses all films. Playback stops offscreen, in background tabs, with dialogs open, when filtered out and with reduced motion. Reduced motion shows posters without automatic video requests.
+Portfolio films autoplay muted and inline when visible, including Smartwigi and Terzol. The two homepage cards stay on their normal thumbnails until visitors choose to play them. Set muting in HTML and JavaScript before loading preview sources. Shared Pause previews pauses eligible films. Playback stops offscreen, in background tabs, with dialogs open, when filtered out and with reduced motion. Reduced motion shows posters without automatic video requests.
 
 The separate homepage retains its existing process frame sequence and hero film.
 
 ## Components
-Ten static project articles work without JavaScript through real media links. Filters use aria-pressed, hide individual cards and announce resulting counts. Hero/filter counts derive from markup.
+Twelve static project articles work without JavaScript through real media links. Filters use aria-pressed, hide individual cards and announce resulting counts. Hero/filter counts derive from markup.
 
 Native modal dialogs contain focus, close with Escape, restore focus and release media on close. Selecting a film opens a native player with sound/controls after explicit interaction. Persistent source links remain available beside loading errors. Both pages use the same fullscreen native mobile dialog with focus restoration, Escape support and scroll suspension. Portfolio previews pause while this menu is open.
 

@@ -82,16 +82,29 @@
     'Post design': 'Postontwerp',
     'Scheduling': 'Inplannen',
     'Choose a service to see what we can do.': 'Kies een dienst en bekijk wat we voor je kunnen doen.',
-    '(03) / Selected explorations': '(03) / Geselecteerde projecten',
+    '(03) / Selected projects': '(03) / Geselecteerde projecten',
     'Ideas,': 'Ideeën,',
     'out in the world.': 'klaar voor de wereld.',
-    'Three concept brands we made to try out ideas. Take a closer look at the designs, then see how they work in context.': 'Drie conceptmerken waarmee we ideeën uitprobeerden. Bekijk de ontwerpen van dichtbij en zie daarna hoe ze in de praktijk werken.',
-    'Brand identity & packaging': 'Merkidentiteit & verpakking',
-    'Concept project': 'Conceptproject',
-    'Show mockup': 'Mock-up tonen',
-    'Art direction & poster design': 'Art direction & posterontwerp',
-    'Social strategy & content design': 'Social strategie & contentontwerp',
-    'View portfolio': 'Bekijk portfolio',
+    'Commercial films for Smartwigi and Terzol.': 'Reclamefilms voor Smartwigi en Terzol.',
+    'Selected projects, scroll horizontally to explore': 'Geselecteerde projecten, scroll horizontaal om ze te bekijken',
+    'Commercial film': 'Reclamefilm',
+    'Logo identity': 'Logo-identiteit',
+    'View project': 'Project bekijken',
+    'View all projects': 'Bekijk alle projecten',
+    'View Smartwigi project': 'Bekijk het project van Smartwigi',
+    'View Yuchel Solutions project': 'Bekijk het project van Yuchel Solutions',
+    'View Sranang Basi project': 'Bekijk het project van Sranang Basi',
+    'Watch Smartwigi commercial': 'Bekijk de reclamefilm van Smartwigi',
+    'Play Smartwigi commercial': 'Speel de reclamefilm van Smartwigi af',
+    'Smartwigi commercial video': 'Reclamefilm van Smartwigi',
+    'The video could not be loaded. Open the project in the portfolio to try again.': 'De video kan niet worden geladen. Open het project in het portfolio om het opnieuw te proberen.',
+    'A Smartwigi team member sits on a branded vehicle beside Reolink partner branding': 'Een Smartwigi-medewerker zit op een bedrijfswagen, met Reolink-partnerbranding in beeld',
+    'Aerial view of the Terzol land plot on Martin Luther Kingweg': 'Luchtbeeld van het Terzol-perceel aan de Martin Luther Kingweg',
+    'A commercial for Smartwigi.': 'Een reclamefilm voor Smartwigi.',
+    'A commercial for Terzol.': 'Een reclamefilm voor Terzol.',
+    'Play Terzol commercial': 'Speel de reclamefilm van Terzol af',
+    'Watch Terzol commercial': 'Bekijk de reclamefilm van Terzol',
+    'View Terzol project': 'Bekijk het project van Terzol',
     'Frame sequence unavailable.': 'Beeldreeks niet beschikbaar.',
     'Open the original Mage EV financing film ↗': 'Open de originele financieringsfilm van Mage EV ↗',
     'As you scroll, the Mage EV financing film changes with the four process steps. A still image appears when reduced motion is enabled.': 'Tijdens het scrollen verandert de film van Mage EV mee met de vier processtappen. Als je minder beweging hebt ingesteld, zie je een stilstaand beeld.',
@@ -193,6 +206,7 @@
     'All work': 'Al het werk',
     'Films': 'Films',
     'Identities': 'Merkidentiteiten',
+    'Brand identities': 'Merkidentiteiten',
     'Pause previews': 'Voorvertoningen pauzeren',
     'Resume previews': 'Voorvertoningen hervatten',
     'Commercial': 'Reclamefilm',
@@ -203,7 +217,6 @@
     'Original identity': 'Originele identiteit',
     'Logo design & visual identity.': 'Logo-ontwerp & visuele identiteit.',
     'View artwork': 'Bekijk het ontwerp',
-    '10 projects': '10 projecten',
     'Discuss your next project': 'Bespreek je volgende project',
     '[ 02 ] Capabilities': '[ 02 ] Expertise',
     'Brand identity & logo design': 'Merkidentiteit & logo-ontwerp',
@@ -262,8 +275,8 @@
     'Watch Mage EV video': 'Bekijk de video van Mage EV',
     'Watch Fake Alexa video': 'Bekijk de video van Fake Alexa',
     'Watch Baby video': 'Bekijk de video van Baby',
-    'Previous project view': 'Vorige projectweergave',
-    'Next project view': 'Volgende projectweergave',
+    'Previous project': 'Vorig project',
+    'Next project': 'Volgend project',
     'Close viewer': 'Viewer sluiten',
     'Switch language to English': 'Wissel de taal naar Engels',
     'Switch language to Dutch': 'Wissel de taal naar Nederlands',
@@ -277,10 +290,6 @@
     'Print services': 'Diensten voor drukwerk',
     'Campaigns services': 'Diensten voor campagnes',
     'Social services': 'Diensten voor social media',
-    'Concept projects, scroll horizontally to explore': 'Conceptprojecten, scroll horizontaal om ze te bekijken',
-    'Morrow Coffee concept: a brown serif wordmark on soft green, applied to a folded coffee bag.': 'Concept voor Morrow Coffee: een bruin schreeflogo op zachtgroen, toegepast op een gevouwen koffiezak.',
-    'After Hours concept: an orange and indigo event poster with oversized lettering, shown flat or pasted to a street wall.': 'Concept voor After Hours: een oranje en indigo evenementposter met grote letters, plat getoond of op een muur geplakt.',
-    'Forma Studio concept: lavender, peach and sage social campaign tiles, applied to a phone feed and a floating post.': 'Concept voor Forma Studio: lavendel-, perzik- en saliegroene socialcampagnebeelden op een telefoonfeed en een zwevende post.',
     'Trusted brands': 'Merken die ons vertrouwen',
     'Portfolio at a glance': 'Het portfolio in het kort',
     'Projects in the collection': 'Projecten in de collectie',
@@ -325,16 +334,12 @@
       if ((match = text.match(/^Thanks (.+)\. We'll be in touch within one business day\.$/))) return `Bedankt, ${match[1]}. We nemen binnen één werkdag contact met je op.`;
       if ((match = text.match(/^(\d+) projects?$/i))) return `${match[1]} ${match[1] === '1' ? 'project' : 'projecten'}`;
       if ((match = text.match(/^View (\d+) of (\d+)$/))) return `Weergave ${match[1]} van ${match[2]}`;
-      if ((match = text.match(/^Show mockup for (.+)$/))) return `Mock-up tonen voor ${match[1]}`;
-      if ((match = text.match(/^Show artwork for (.+)$/))) return `Ontwerp tonen voor ${match[1]}`;
       if ((match = text.match(/^View complete (.+) poster$/))) return `Volledige poster van ${match[1]} bekijken`;
       if ((match = text.match(/^(.+) video$/))) return `Video van ${match[1]}`;
     } else {
       if ((match = text.match(/^Bedankt, (.+)\. We nemen binnen één werkdag contact met je op\.$/))) return `Thanks ${match[1]}. We'll be in touch within one business day.`;
       if ((match = text.match(/^(\d+) projecten?$/i))) return `${match[1]} ${match[1] === '1' ? 'project' : 'projects'}`;
       if ((match = text.match(/^Weergave (\d+) van (\d+)$/))) return `View ${match[1]} of ${match[2]}`;
-      if ((match = text.match(/^Mock-up tonen voor (.+)$/))) return `Show mockup for ${match[1]}`;
-      if ((match = text.match(/^Ontwerp tonen voor (.+)$/))) return `Show artwork for ${match[1]}`;
       if ((match = text.match(/^Volledige poster van (.+) bekijken$/))) return `View complete ${match[1]} poster`;
       if ((match = text.match(/^Video van (.+)$/))) return `${match[1]} video`;
     }

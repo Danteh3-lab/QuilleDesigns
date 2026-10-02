@@ -1,31 +1,38 @@
-/* Concept showcase: artwork colours are intentionally local to each project. */
+/* Selected work carousel, using Quille's navy and pale-blue palette. */
 .showcase { --sc-ink: #00050d; --sc-blue: #7fb2e0; --sc-line: #314353; --sc-muted: #b1beca; background: var(--sc-ink); color: #fff; padding: 96px 0 72px; }
 .showcase-shell { max-width: 1400px; margin: auto; padding: 0 40px; }
 .showcase-eyebrow { margin: 0 0 28px; color: var(--sc-blue); font-size: 11px; font-weight: 600; letter-spacing: .23em; text-transform: uppercase; }
 .showcase-heading { display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 42px; }
 .showcase-heading h2 { margin: 0; font-family: 'Syne', sans-serif; font-size: clamp(38px, 4.4vw, 64px); font-weight: 600; line-height: 1.04; letter-spacing: -.045em; }
 .showcase-heading h2 span { color: var(--sc-blue); font-weight: 400; }
-.showcase-heading p { max-width: 285px; margin: 0 0 3px; color: var(--sc-muted); font-size: 14px; line-height: 1.8; }
+.showcase-heading p { max-width: 360px; margin: 0 0 3px; color: var(--sc-muted); font-size: 14px; line-height: 1.8; }
 .showcase-track { display: flex; gap: 24px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: 0; padding: 8px 0 22px; scrollbar-width: thin; scrollbar-color: #58758c #14202c; }
 .showcase-track::-webkit-scrollbar { height: 7px; }
 .showcase-track::-webkit-scrollbar-track { background: #14202c; }
 .showcase-track::-webkit-scrollbar-thumb { background: #58758c; border-radius: 4px; }
 .showcase-track::-webkit-scrollbar-thumb:hover { background: #7fb2e0; }
-.showcase-card { flex: 0 0 calc((100% - 56px) / 2.12); min-width: 0; scroll-snap-align: start; }
-.showcase-visual { position: relative; overflow: hidden; aspect-ratio: 4 / 3; isolation: isolate; container-type: inline-size; }
-.showcase-art, .showcase-mockup { position: absolute; inset: 0; overflow: hidden; transition: opacity .5s ease, transform .7s cubic-bezier(.2,.65,.3,1); }
-.showcase-art { opacity: 1; transform: scale(1); }
-.showcase-mockup { opacity: 0; transform: scale(1.035); pointer-events: none; }
-.showcase-card[data-view="mockup"] .showcase-art { opacity: 0; transform: scale(.98); }
-.showcase-card[data-view="mockup"] .showcase-mockup { opacity: 1; transform: scale(1); }
-.showcase-project-info { display: flex; justify-content: space-between; align-items: start; gap: 16px; padding: 22px 0 10px; }
-.showcase-project-info h3 { margin: 0 0 7px; font-family: 'Syne', sans-serif; font-size: 23px; line-height: 1.2; font-weight: 600; letter-spacing: -.03em; }
-.showcase-discipline { margin: 0; color: var(--sc-muted); font-size: 12px; line-height: 1.6; }
-.showcase-concept { display: block; margin-top: 12px; color: var(--sc-blue); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
-.showcase-toggle { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 5px 0; border: 0; border-bottom: 1px solid var(--sc-line); background: none; color: #fff; font: inherit; font-size: 11px; white-space: nowrap; cursor: pointer; }
-.showcase-toggle::after { content: '↗'; font-size: 18px; color: var(--sc-blue); }
-.showcase-toggle:hover { color: var(--sc-blue); border-color: var(--sc-blue); }
-.showcase-toggle:active { opacity: .75; }
+.showcase-card { display: block; flex: 0 0 calc((100% - 56px) / 2.12); min-width: 0; color: inherit; text-decoration: none; scroll-snap-align: start; }
+a.showcase-card { cursor: pointer; }
+.showcase-visual { position: relative; overflow: hidden; aspect-ratio: 16 / 9; isolation: isolate; border: 1px solid rgb(255 255 255 / .12); background: #dce9f5; transition: border-color .3s, transform .5s cubic-bezier(.2,.65,.3,1); }
+.showcase-visual-smartwigi { background: #fff; }
+.showcase-image, .showcase-video { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .6s cubic-bezier(.2,.65,.3,1); }
+.showcase-video { position: absolute; inset: 0; background: #00050d; }
+.showcase-play { position: absolute; inset: 50% auto auto 50%; display: inline-flex; align-items: center; gap: 10px; min-height: 50px; padding: 0 18px; border: 1px solid rgb(255 255 255 / .7); border-radius: 40px; background: rgb(0 5 13 / .88); color: #fff; font: inherit; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; transform: translate(-50%, -50%); transition: background .2s, border-color .2s, color .2s; }
+.showcase-play svg { width: 17px; height: 17px; }
+.showcase-play:hover { border-color: var(--sc-blue); background: #123555; color: #fff; }
+.showcase-video-status { position: absolute; inset: auto 12px 12px; margin: 0; padding: 8px 10px; background: rgb(0 5 13 / .9); color: #fff; font-size: 11px; line-height: 1.5; }
+.showcase-video-status[hidden] { display: none; }
+.showcase-visual-identity { background: #c4d5e4; }
+.showcase-card:hover .showcase-visual { border-color: var(--sc-blue); transform: translateY(-3px); }
+.showcase-card:hover .showcase-image { transform: scale(1.015); }
+.showcase-project-info { display: flex; min-height: 108px; justify-content: space-between; align-items: end; gap: 16px; padding: 18px 0 14px; border-bottom: 1px solid var(--sc-line); }
+.showcase-project-info h3 { margin: 6px 0 0; font-family: 'Syne', sans-serif; font-size: 23px; line-height: 1.2; font-weight: 600; letter-spacing: -.03em; }
+.showcase-project-info h3 a { color: inherit; text-decoration: none; }
+.showcase-project-info h3 a:hover, .showcase-project-info h3 a:focus-visible { color: var(--sc-blue); }
+.showcase-project-kind { color: var(--sc-blue); font-size: 10px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
+.showcase-project-action { display: inline-flex; align-items: center; gap: 9px; color: var(--sc-muted); font-size: 11px; text-decoration: none; white-space: nowrap; transition: color .2s; }
+.showcase-project-action span { color: var(--sc-blue); font-size: 20px; line-height: 1; }
+.showcase-card:hover .showcase-project-action, .showcase-card:focus-visible .showcase-project-action { color: #fff; }
 .showcase-bottom { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 25px; }
 .showcase-navigation { display: flex; align-items: center; gap: 10px; }
 .showcase-arrow { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--sc-line); border-radius: 50%; background: transparent; color: #fff; cursor: pointer; transition: background .2s, border-color .2s; }
@@ -41,70 +48,10 @@
 .showcase :is(button, a, .showcase-track):focus-visible { outline: 2px solid var(--sc-blue); outline-offset: 5px; }
 .showcase [hidden] { display: none !important; }
 
-/* MORROW — a coffee identity, from the wordmark to a folded bag. */
-.morrow-art { background: #e1e7ba; color: #57392d; }
-.morrow-topline { position: absolute; top: 8%; left: 8%; right: 8%; display: flex; justify-content: space-between; font-size: 1.65cqw; font-weight: 600; letter-spacing: .13em; }
-.morrow-wordmark { position: absolute; left: 7%; top: 25%; font-family: Georgia, serif; font-weight: 700; font-size: 20cqw; line-height: .85; letter-spacing: -.085em; }
-.morrow-wordmark small { display: block; margin: 5% 0 0 2%; font-family: Arial, sans-serif; font-size: 2cqw; font-weight: 400; letter-spacing: .42em; }
-.morrow-orbit { position: absolute; right: 10%; bottom: 11%; width: 19%; aspect-ratio: 1; border: 1px solid currentColor; border-radius: 50%; }
-.morrow-orbit::before, .morrow-orbit::after { content: ''; position: absolute; inset: 12%; border: 1px solid currentColor; border-radius: 50%; }
-.morrow-orbit::after { inset: 26%; background: #57392d; }
-.morrow-bottom { position: absolute; bottom: 11%; left: 8%; font-family: Georgia, serif; font-size: 3.5cqw; line-height: 1.2; }
-.morrow-mockup { background: #aeb889; }
-.morrow-mockup::before { content: ''; position: absolute; width: 110%; height: 50%; left: -5%; bottom: -28%; background: #909d6e; transform: rotate(-12deg); }
-.morrow-bag { position: absolute; left: 30%; top: 11%; width: 41%; height: 75%; background: linear-gradient(90deg,#b8bf90,#e1e7ba 13%,#e1e7ba 83%,#c2c99d); color: #57392d; clip-path: polygon(4% 0,96% 0,100% 100%,0 100%); transform: rotate(-9deg); filter: drop-shadow(12px 20px 12px #35402555); }
-.morrow-bag::before { content: ''; position: absolute; left: 7%; right: 7%; top: 4%; height: 4%; border-top: 1px solid #57392d55; border-bottom: 1px solid #57392d55; }
-.morrow-bag-logo { display: block; margin-top: 35%; text-align: center; font-family: Georgia, serif; font-weight: 700; font-size: 8.3cqw; letter-spacing: -.08em; }
-.morrow-bag-type { display: block; margin-top: 2%; text-align: center; font-size: 1.15cqw; letter-spacing: .3em; }
-.morrow-bag-label { position: absolute; bottom: 9%; left: 12%; right: 12%; padding: 10% 8%; color: #e1e7ba; background: #57392d; font-size: 1.35cqw; line-height: 1.7; letter-spacing: .08em; }
-.morrow-bag-label strong { display: block; font-family: Georgia, serif; font-size: 3.3cqw; letter-spacing: -.03em; }
-.morrow-stamp { position: absolute; left: 9%; bottom: 13%; width: 22%; aspect-ratio: 1; display: grid; place-content: center; border-radius: 50%; background: #57392d; color: #e1e7ba; transform: rotate(12deg); font-family: Georgia, serif; font-size: 3.1cqw; line-height: 1.05; text-align: center; box-shadow: 0 9px 15px #35402525; }
-
-/* AFTER HOURS — bold letterforms and an orbital event motif. */
-.after-art, .after-poster { background: #ff633b; color: #291c4d; }
-.after-art::before, .after-poster::before { content: ''; position: absolute; width: 56%; aspect-ratio: 1; right: -18%; top: 12%; border: 3.2cqw solid #291c4d; border-radius: 50%; box-shadow: 0 0 0 1.6cqw #ff633b,0 0 0 1.8cqw #291c4d; }
-.after-topline { position: absolute; top: 7%; left: 7%; font-size: 1.55cqw; letter-spacing: .16em; font-weight: 700; }
-.after-title { position: absolute; top: 24%; left: 6%; font-family: Impact, 'Arial Narrow', sans-serif; font-size: 19cqw; line-height: .82; letter-spacing: -.04em; }
-.after-title span { display: block; }
-.after-bottom { position: absolute; left: 7%; right: 7%; bottom: 7%; display: flex; justify-content: space-between; border-top: 1px solid currentColor; padding-top: 3%; font-size: 1.5cqw; letter-spacing: .08em; font-weight: 600; }
-.after-mockup { background: #282a35; }
-.after-wall { position: absolute; inset: 0; background: repeating-linear-gradient(0deg,transparent 0,transparent 24%,#0d142a44 24.2%,transparent 24.8%),linear-gradient(125deg,#595a68,#242532); }
-.after-poster { position: absolute; left: 24%; top: 6%; width: 52%; height: 87%; overflow: hidden; transform: rotate(7deg); box-shadow: 10px 15px 20px #0007; }
-.after-poster .after-title { top: 29%; font-size: 13cqw; }
-.after-poster .after-topline { font-size: 1cqw; }
-.after-poster .after-bottom { font-size: 1cqw; }
-.after-poster::before { border-width: 1.8cqw; }
-.after-tape { position: absolute; width: 14%; height: 5%; background: #d4ccab99; top: 5%; left: 41%; transform: rotate(-5deg); }
-.after-caption { position: absolute; bottom: 9%; right: 3%; color: #e9e6f2; font-size: 1.4cqw; writing-mode: vertical-rl; letter-spacing: .18em; }
-
-/* FORMA — a modular social campaign and a phone/feed composition. */
-.forma-art { background: #dcd4ed; color: #433253; }
-.forma-topline { position: absolute; left: 7%; right: 7%; top: 7%; display: flex; align-items: baseline; justify-content: space-between; }
-.forma-logo { font-family: Georgia, serif; font-size: 7.5cqw; letter-spacing: -.06em; }
-.forma-topline small { font-size: 1.5cqw; letter-spacing: .13em; }
-.forma-tiles { position: absolute; top: 31%; left: 7%; right: 7%; display: grid; grid-template-columns: repeat(3,1fr); gap: 3%; transform: rotate(-5deg); }
-.forma-tile { position: relative; aspect-ratio: 4 / 5; overflow: hidden; padding: 10%; font-family: Georgia, serif; font-size: 4.3cqw; line-height: 1.05; }
-.forma-tile-one { background: #433253; color: #f1d9cb; }
-.forma-tile-one span { position: absolute; bottom: 10%; left: 10%; }
-.forma-tile-two { background: #eac5af; }
-.forma-tile-two::before { content: ''; position: absolute; width: 48%; height: 70%; bottom: -6%; left: 25%; border-radius: 50% 50% 4% 4%; background: #dcd4ed; transform: rotate(25deg); box-shadow: 9px 8px 0 #433253; }
-.forma-tile-three { display: flex; align-items: center; text-align: center; background: #b5bfaa; }
-.forma-bottom { position: absolute; bottom: 7%; left: 7%; font-size: 1.55cqw; letter-spacing: .15em; }
-.forma-mockup { background: #b6a8cd; color: #433253; }
-.forma-floating { position: absolute; left: 7%; top: 22%; width: 36%; height: 55%; padding: 6%; background: #433253; color: #f1d9cb; transform: rotate(-12deg); font-family: Georgia, serif; font-size: 6.8cqw; line-height: 1.05; box-shadow: 8px 14px 20px #30203933; }
-.forma-floating small { display: block; margin-top: 20%; font-family: Arial,sans-serif; font-size: 1.4cqw; letter-spacing: .08em; }
-.forma-phone { position: absolute; top: 6%; left: 47%; width: 34%; height: 90%; border: 1.2cqw solid #302839; border-radius: 5cqw; background: #f6f1ec; transform: rotate(9deg); box-shadow: 10px 17px 20px #30203955; overflow: hidden; }
-.forma-phone::before { content: ''; position: absolute; left: 36%; top: 2%; width: 28%; height: 2.5%; border-radius: 20px; background: #302839; }
-.forma-phone-header { padding: 18% 10% 10%; font-family: Georgia, serif; font-size: 3.8cqw; }
-.forma-phone-art { position: relative; margin: 0 4%; height: 52%; background: #eac5af; overflow: hidden; }
-.forma-phone-art::before { content: ''; position: absolute; width: 55%; height: 68%; bottom: -4%; left: 25%; border-radius: 50% 50% 0 0; background: #dcd4ed; transform: rotate(20deg); box-shadow: 8px 5px 0 #433253; }
-.forma-phone-caption { padding: 10%; font-size: 1.5cqw; line-height: 1.7; }
-.forma-phone-caption strong { display: block; font-family: Georgia, serif; font-size: 2.3cqw; }
-
 @media (max-width: 900px) {
   .showcase { padding: 80px 0 56px; }
   .showcase-heading { align-items: start; }
-  .showcase-heading p { max-width: 230px; font-size: 13px; }
+  .showcase-heading p { max-width: 300px; font-size: 13px; }
   .showcase-card { flex-basis: 72%; }
 }
 @media (max-width: 540px) {
@@ -115,9 +62,9 @@
   .showcase-eyebrow { font-size: 10px; letter-spacing: .16em; }
   .showcase-track { gap: 16px; }
   .showcase-card { flex-basis: 90%; }
-  .showcase-project-info { flex-direction: column; gap: 8px; padding-top: 18px; }
+  .showcase-project-info { min-height: 100px; padding-top: 16px; }
   .showcase-project-info h3 { font-size: 22px; }
-  .showcase-toggle { font-size: 12px; }
+  .showcase-project-action { gap: 6px; font-size: 10px; }
   .showcase-bottom { flex-wrap: wrap; gap: 20px; padding-top: 20px; }
   .showcase-portfolio { gap: 18px; }
 }
@@ -129,4 +76,3 @@
   .showcase-visual { forced-color-adjust: none; }
   .showcase-arrow:disabled { color: GrayText; opacity: 1; }
 }
-

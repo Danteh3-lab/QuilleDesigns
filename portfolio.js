@@ -8,6 +8,7 @@
   const source = document.getElementById('viewerSource');
   const filters = document.querySelector('.portfolio-filters');
   const sections = [...document.querySelectorAll('[data-category]')];
+  const projectGroups = [...document.querySelectorAll('[data-project-group]')];
   const filterButtons = [...filters.querySelectorAll('button')];
   let opener = null;
   let mediaEvents = null;
@@ -129,6 +130,7 @@
       const category = button.dataset.filter;
       filterButtons.forEach(filter => filter.setAttribute('aria-pressed', String(filter === button)));
       sections.forEach(section => { section.hidden = category !== 'all' && section.dataset.category !== category; });
+      projectGroups.forEach(group => { group.hidden = !group.querySelector('[data-category]:not([hidden])'); });
       syncPreviews();
       const count = countFor(category);
       document.querySelector('.collection-count').textContent = `${count} ${count === 1 ? 'project' : 'projects'}`;
