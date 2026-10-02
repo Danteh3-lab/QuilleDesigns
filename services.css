@@ -5,7 +5,8 @@
   --service-muted: #586775;
   --service-paper: #f2f6f9;
   --service-line: #d7e0e7;
-  background: #fff;
+  background-color: var(--brand-surface);
+  background-image: var(--brand-paper-pattern);
   color: var(--service-ink);
   padding: 96px 0;
   scroll-margin-top: 76px;
@@ -76,4 +77,3 @@
 @media (prefers-reduced-motion: reduce) {
   #services *, #services *::before, #services *::after { transition: none; }
 }
-

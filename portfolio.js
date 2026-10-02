@@ -3,7 +3,6 @@
 
   const viewer = document.getElementById('mediaViewer');
   const menu = document.getElementById('mobileMenu');
-  const menuButton = document.getElementById('menuBtn');
   const mediaContainer = document.getElementById('viewerMedia');
   const status = document.getElementById('viewerStatus');
   const source = document.getElementById('viewerSource');
@@ -92,7 +91,6 @@
   motionPreference.addEventListener('change', syncPreviews);
   syncPreviews();
 
-  document.getElementById('year').textContent = new Date().getFullYear();
 
   // The full collection and direct media links remain usable without JavaScript.
   filters.hidden = false;
@@ -162,19 +160,7 @@
       element.addEventListener('animationend', () => { element.style.animation = 'none'; }, { once: true });
     });
   }
-  menuButton.hidden = false;
-  menuButton.addEventListener('click', () => {
-    menu.showModal();
-    syncPreviews();
-    menuButton.setAttribute('aria-expanded', 'true');
-  });
-  document.getElementById('menuClose').addEventListener('click', () => menu.close());
-  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => menu.close()));
-  menu.addEventListener('close', () => {
-    syncPreviews();
-    menuButton.setAttribute('aria-expanded', 'false');
-    menuButton.focus({ preventScroll: true });
-  });
+  document.addEventListener('site-menu-change', syncPreviews);
 
   function releaseMedia() {
     mediaEvents?.abort();
@@ -247,7 +233,7 @@
     opener?.focus({ preventScroll: true });
   });
 
-  [viewer, menu].forEach(dialog => {
+  [viewer].forEach(dialog => {
     // Keep keyboard traversal inside the dialog, including at browser-chrome boundaries.
     dialog.addEventListener('keydown', event => {
       if (event.key !== 'Tab') return;

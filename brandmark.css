@@ -42,6 +42,7 @@
 
 :root {
   --brand-surface: #e6eff7;
+  --brand-paper-pattern: repeating-linear-gradient(135deg, rgb(18 53 85 / .035) 0 1px, transparent 1px 16px);
   --brand-ink: #123555;
   --brand-line: rgba(18, 53, 85, 0.14);
 }
@@ -88,3 +89,8 @@ body > footer [class*="border-white"] { border-color: var(--brand-line) !importa
   .site-brandmark { width: 152px; height: 62px; }
 }
 
+/* Match the portfolio paper in the homepage's light sections. */
+#statement, #services, #results {
+  background-color: var(--brand-surface);
+  background-image: var(--brand-paper-pattern);
+}

@@ -15,10 +15,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-    <link rel="stylesheet" href="services.css" />
+    <link rel="stylesheet" href="services.css?v=shared-chrome-1" />
     <link rel="stylesheet" href="showcase.css" />
-    <link rel="stylesheet" href="brandmark.css" />
+    <link rel="stylesheet" href="brandmark.css?v=shared-chrome-1" />
     <link rel="stylesheet" href="process-images.css" />
+    <link rel="stylesheet" href="site-chrome.css" />
+    <script src="site-chrome.js" defer></script>
   </head>
   <body
     class="bg-[#00050D] text-white antialiased selection:bg-[#245A86] selection:text-white overflow-x-clip"
@@ -31,169 +33,18 @@
       style="background-image:url('data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 256 256%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');"
     ></div>
 
-    <!-- NAV -->
-    <header
-      id="nav"
-      class="fixed inset-x-0 top-0 z-50 transition-all duration-500"
-    >
-      <div
-        id="navInner"
-        class="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-10 transition-all duration-500"
-      >
-        <a href="#top" class="site-brandmark-link" aria-label="Quille Designs home">
-          <span class="site-brandmark"><img src="assets/branding/quille-designs.png" width="1774" height="887" alt="" fetchpriority="high" /></span>
-        </a>
-        <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
-          <a
-            href="#top"
-            data-nav-page="home"
-            data-dim="text-white/60"
-            class="group relative px-4 py-3 text-xs font-medium uppercase tracking-[0.18em] text-white/60 transition-colors hover:text-white"
-          >
-            Home
-            <span
-              data-underline=""
-              class="absolute bottom-2 left-4 right-4 h-px origin-left scale-x-0 bg-[#245A86] transition-transform duration-300 group-hover:scale-x-100"
-            ></span>
-          </a>
-          <a
-            href="#services"
-            data-nav-page="services"
-            data-dim="text-white/60"
-            class="group relative px-4 py-3 text-xs font-medium uppercase tracking-[0.18em] text-white/60 transition-colors hover:text-white"
-          >
-            Services
-            <span
-              data-underline=""
-              class="absolute bottom-2 left-4 right-4 h-px origin-left scale-x-0 bg-[#245A86] transition-transform duration-300 group-hover:scale-x-100"
-            ></span>
-          </a>
-          <a
-            href="portfolio.html"
-            data-nav-page="portfolio"
-            data-dim="text-white/60"
-            class="group relative px-4 py-3 text-xs font-medium uppercase tracking-[0.18em] text-white/60 transition-colors hover:text-white"
-          >
-            Portfolio
-            <span
-              data-underline=""
-              class="absolute bottom-2 left-4 right-4 h-px origin-left scale-x-0 bg-[#245A86] transition-transform duration-300 group-hover:scale-x-100"
-            ></span>
-          </a>
-          <a
-            href="#contact"
-            data-nav-page="contact"
-            data-dim="text-white/60"
-            class="group relative px-4 py-3 text-xs font-medium uppercase tracking-[0.18em] text-white/60 transition-colors hover:text-white"
-          >
-            Contact
-            <span
-              data-underline=""
-              class="absolute bottom-2 left-4 right-4 h-px origin-left scale-x-0 bg-[#245A86] transition-transform duration-300 group-hover:scale-x-100"
-            ></span>
-          </a>
-        </nav>
-        <div class="flex items-center gap-3">
-          <a
-            href="#contact"
-            data-magnetic=""
-            class="group hidden items-center gap-2 rounded-[4px] px-6 py-3 text-xs font-medium uppercase tracking-[0.18em] text-white  sm:inline-flex"
-            style="background:linear-gradient(135deg,#2E6DA4 0%,#245A86 45%,#123555 100%);"
-          >
-            Start a project
-            <iconify-icon
-              icon="solar:arrow-right-up-linear"
-              stroke-width="1.5"
-              class="text-base transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-            ></iconify-icon>
-          </a>
-          <button
-            id="menuBtn"
-            aria-label="Open menu"
-            aria-expanded="false"
-            class="flex h-11 w-11 items-center justify-center rounded-[4px] border border-white/10 text-white/80 transition-colors hover:border-white/30 hover:text-white lg:hidden"
-          >
-            <iconify-icon
-              icon="solar:hamburger-menu-linear"
-              stroke-width="1.5"
-              class="text-xl"
-            ></iconify-icon>
-          </button>
-        </div>
-      </div>
-    </header>
-
-    <!-- Mobile menu -->
-    <div
-      id="mobileMenu"
-      class="pointer-events-none fixed inset-0 z-[60] flex flex-col bg-[#00050D]/95 opacity-0 backdrop-blur-xl transition-opacity duration-500 lg:hidden"
-      aria-hidden="true"
-    >
-      <div class="flex items-center justify-between px-6 py-5">
-        <span
-          class="text-2xl font-bold tracking-tighter"
-          style="font-family:'Syne',sans-serif;"
-        >
-          Quille
-        </span>
-        <button
-          id="menuClose"
-          aria-label="Close menu"
-          class="flex h-11 w-11 items-center justify-center rounded-[4px] border border-white/10 text-white/80 hover:text-white"
-        >
-          <iconify-icon
-            icon="solar:close-circle-linear"
-            stroke-width="1.5"
-            class="text-xl"
-          ></iconify-icon>
-        </button>
-      </div>
-      <nav
-        class="flex flex-1 flex-col justify-center gap-2 px-6"
-        aria-label="Mobile"
-      >
-        <a
-          href="#top"
-          data-nav-page="home"
-          data-dim="text-white/80"
-          class="border-b border-white/5 py-4 text-4xl font-semibold tracking-tight text-white/80 transition-colors hover:text-white"
-          style="font-family:'Syne',sans-serif;"
-        >
-          Home
-        </a>
-        <a
-          href="#services"
-          data-nav-page="services"
-          data-dim="text-white/80"
-          class="border-b border-white/5 py-4 text-4xl font-semibold tracking-tight text-white/80 transition-colors hover:text-white"
-          style="font-family:'Syne',sans-serif;"
-        >
-          Services
-        </a>
-        <a
-          href="portfolio.html"
-          data-nav-page="portfolio"
-          data-dim="text-white/80"
-          class="border-b border-white/5 py-4 text-4xl font-semibold tracking-tight text-white/80 transition-colors hover:text-white"
-          style="font-family:'Syne',sans-serif;"
-        >
-          Portfolio
-        </a>
-        <a
-          href="#contact"
-          data-nav-page="contact"
-          data-dim="text-white/80"
-          class="py-4 text-4xl font-semibold tracking-tight text-white/80 transition-colors hover:text-white"
-          style="font-family:'Syne',sans-serif;"
-        >
-          Contact
-          <span class="text-[#245A86]">→</span>
-        </a>
-      </nav>
-      <p class="px-6 pb-8 text-xs uppercase tracking-[0.3em] text-white/40">
-        hello@quilledesigns.com
-      </p>
-    </div>
+    <header id="nav" class="site-header">
+  <div id="navInner" class="site-nav-inner">
+    <a href="#top" class="site-brandmark-link" aria-label="Quille Designs home"><span class="site-brandmark"><img src="assets/branding/quille-designs.png" width="1774" height="887" alt="" fetchpriority="high" /></span></a>
+    <nav class="site-primary-nav" aria-label="Primary"><a href="#top" data-nav-page="home">Home</a><a href="#services" data-nav-page="services">Services</a><a href="portfolio.html" data-nav-page="portfolio">Portfolio</a><a href="#contact" data-nav-page="contact">Contact</a></nav>
+    <div class="site-nav-actions"><a href="#contact" class="site-project-link">Start a project <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 19 19 5M5 5h14v14"/></svg></a><button id="menuBtn" class="site-menu-button" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false" hidden><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></div>
+  </div>
+</header>
+<dialog id="mobileMenu" class="site-mobile-menu" aria-labelledby="menuTitle" data-lenis-prevent>
+  <div class="site-menu-heading"><span id="menuTitle">Quille</span><button id="menuClose" class="site-menu-button" type="button" aria-label="Close menu" autofocus><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="m8 8 8 8M16 8l-8 8"/></svg></button></div>
+  <nav aria-label="Mobile"><a href="#top" data-nav-page="home">Home</a><a href="#services" data-nav-page="services">Services</a><a href="portfolio.html" data-nav-page="portfolio">Portfolio</a><a href="#contact" data-nav-page="contact">Contact</a></nav>
+  <a class="site-menu-email" href="mailto:hello@quilledesigns.com">hello@quilledesigns.com</a>
+</dialog>
     <main id="top">
       <!-- HERO -->
       <section
@@ -1751,182 +1602,18 @@
       </section>
     </main>
     <!-- FOOTER -->
-    <footer class="relative overflow-hidden bg-[#00050D] pt-24">
-      <div class="mx-auto max-w-[1400px] px-6 md:px-10">
-        <div
-          class="grid gap-12 border-b border-white/[0.07] pb-16 md:grid-cols-12"
-        >
-          <div class="md:col-span-4">
-            <a
-              href="#top"
-              class="flex items-baseline gap-2"
-              aria-label="Back to top"
-            >
-              <span
-                class="text-3xl font-bold tracking-tighter"
-                style="font-family:'Syne',sans-serif;"
-              >
-                Quille
-              </span>
-              <span
-                class="text-xs font-medium uppercase tracking-[0.35em] text-white/40"
-              >
-                Designs
-              </span>
-            </a>
-            <p class="mt-6 max-w-xs text-sm leading-relaxed text-white/45">
-              An independent marketing &amp; design studio building brands that
-              refuse to blend in.
-            </p>
-            <div class="mt-8 flex gap-3">
-              <a
-                href="#"
-                aria-label="Instagram"
-                class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/60 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#245A86] hover:bg-[#245A86] hover:text-white"
-              >
-                <iconify-icon
-                  icon="solar:camera-minimalistic-linear"
-                  stroke-width="1.5"
-                  class="text-lg"
-                ></iconify-icon>
-              </a>
-              <a
-                href="#"
-                aria-label="LinkedIn"
-                class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/60 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#245A86] hover:bg-[#245A86] hover:text-white"
-              >
-                <iconify-icon
-                  icon="solar:case-minimalistic-linear"
-                  stroke-width="1.5"
-                  class="text-lg"
-                ></iconify-icon>
-              </a>
-              <a
-                href="#"
-                aria-label="Dribbble"
-                class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/60 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#245A86] hover:bg-[#245A86] hover:text-white"
-              >
-                <iconify-icon
-                  icon="solar:basketball-linear"
-                  stroke-width="1.5"
-                  class="text-lg"
-                ></iconify-icon>
-              </a>
-            </div>
-          </div>
-          <div class="md:col-span-2 md:col-start-6">
-            <p class="mb-5 text-xs uppercase tracking-[0.3em] text-white/35">
-              Studio
-            </p>
-            <ul class="space-y-3 text-sm text-white/60">
-              <li>
-                <a href="#services" class="transition-colors hover:text-white">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="portfolio.html" class="transition-colors hover:text-white">
-                  Portfolio
-                </a>
-              </li>
-              <li>
-                <a href="#process" class="transition-colors hover:text-white">
-                  Process
-                </a>
-              </li>
-              <li>
-                <a href="#results" class="transition-colors hover:text-white">
-                  Results
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#testimonials"
-                  class="transition-colors hover:text-white"
-                >
-                  Clients
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="md:col-span-2">
-            <p class="mb-5 text-xs uppercase tracking-[0.3em] text-white/35">
-              Services
-            </p>
-            <ul class="space-y-3 text-sm text-white/60">
-              <li>
-                <a href="#services" class="transition-colors hover:text-white">
-                  Brand Identity
-                </a>
-              </li>
-              <li>
-                <a href="#services" class="transition-colors hover:text-white">
-                  Web Design
-                </a>
-              </li>
-              <li>
-                <a href="#services" class="transition-colors hover:text-white">
-                  Paid Media
-                </a>
-              </li>
-              <li>
-                <a href="#services" class="transition-colors hover:text-white">
-                  SEO
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="md:col-span-3">
-            <p class="mb-5 text-xs uppercase tracking-[0.3em] text-white/35">
-              Contact
-            </p>
-            <ul class="space-y-3 text-sm text-white/60">
-              <li>
-                <a
-                  href="mailto:hello@quilledesigns.com"
-                  class="transition-colors hover:text-white"
-                >
-                  hello@quilledesigns.com
-                </a>
-              </li>
-              <li>
-                <a href="#contact" class="transition-colors hover:text-white">
-                  Start a project
-                </a>
-              </li>
-              <li class="text-white/40">Mon to Fri, 9am to 6pm</li>
-            </ul>
-          </div>
-        </div>
-        <div
-          class="flex flex-col justify-between gap-4 py-8 text-xs text-white/35 sm:flex-row sm:items-center"
-        >
-          <p>
-            ©
-            <span id="year">2025</span>
-            Quille Designs. All rights reserved.
-          </p>
-          <div class="flex items-center gap-6">
-            <a href="#" class="transition-colors hover:text-white">Privacy</a>
-            <a href="#" class="transition-colors hover:text-white">Terms</a>
-            <a
-              href="#top"
-              class="group inline-flex items-center gap-2 uppercase tracking-[0.25em] transition-colors hover:text-white"
-            >
-              Top
-              <iconify-icon
-                icon="solar:arrow-up-linear"
-                stroke-width="1.5"
-                class="text-sm transition-transform duration-300 group-hover:-translate-y-0.5"
-              ></iconify-icon>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="overflow-hidden" aria-hidden="true">
-        <div id="footerMark" class="site-footer-brandmark"><img src="assets/branding/quille-designs.png" width="1774" height="887" alt="" loading="lazy" decoding="async" /></div>
-      </div>
-    </footer>
+    <footer class="site-footer">
+  <div class="site-footer-shell">
+    <div class="site-footer-grid">
+      <div class="site-footer-about"><a href="#top" class="site-footer-wordmark" aria-label="Quille Designs home"><span>Quille</span><span>Designs</span></a><p>An independent marketing &amp; design studio building brands that refuse to blend in.</p></div>
+      <nav class="site-footer-studio" aria-label="Studio"><h2>Studio</h2><ul><li><a href="#services">Services</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="#process">Process</a></li><li><a href="#results">Results</a></li><li><a href="#testimonials">Clients</a></li></ul></nav>
+      <nav class="site-footer-services" aria-label="Services"><h2>Services</h2><ul><li><a href="#services">Brand Identity</a></li><li><a href="#services">Web Design</a></li><li><a href="#services">Paid Media</a></li><li><a href="#services">SEO</a></li></ul></nav>
+      <nav class="site-footer-contact" aria-label="Contact"><h2>Contact</h2><ul><li><a href="mailto:hello@quilledesigns.com">hello@quilledesigns.com</a></li><li><a href="#contact">Start a project</a></li><li class="site-hours">Mon to Fri, 9am to 6pm</li></ul></nav>
+    </div>
+    <div class="site-footer-bottom"><p>© <span id="year">2026</span> Quille Designs. All rights reserved.</p><a href="#top" class="site-back-top">Top <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V4m-7 7 7-7 7 7"/></svg></a></div>
+  </div>
+  <div class="site-footer-art" aria-hidden="true"><div id="footerMark" class="site-footer-brandmark"><img src="assets/branding/quille-designs.png" width="1774" height="887" alt="" loading="lazy" decoding="async" /></div></div>
+</footer>
     <script>
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const isFine = window.matchMedia('(pointer: fine)').matches;
@@ -2008,7 +1695,6 @@
           cards.forEach(card => observer.observe(card));
         }
       })();
-      document.getElementById('year').textContent = new Date().getFullYear();
 
       document.querySelectorAll('.service-item').forEach(item => {
         item.addEventListener('toggle', () => {
@@ -2016,14 +1702,7 @@
         });
       });
 
-      /* ---------- Mobile menu ---------- */
-      const menu = document.getElementById('mobileMenu');
-      const menuBtn = document.getElementById('menuBtn');
-      function openMenu(){ menu.classList.remove('pointer-events-none','opacity-0'); menu.setAttribute('aria-hidden','false'); menuBtn.setAttribute('aria-expanded','true'); if(window.lenisInstance) lenisInstance.stop(); }
-      function closeMenu(){ menu.classList.add('pointer-events-none','opacity-0'); menu.setAttribute('aria-hidden','true'); menuBtn.setAttribute('aria-expanded','false'); if(window.lenisInstance) lenisInstance.start(); }
-      menuBtn.addEventListener('click', openMenu);
-      document.getElementById('menuClose').addEventListener('click', closeMenu);
-      document.addEventListener('keydown', e => { if(e.key === 'Escape') closeMenu(); });
+      const closeMenu = () => window.quilleSite?.closeMenu();
 
       /* ---------- Chips + form ---------- */
       document.querySelectorAll('[data-chips]').forEach(group => {
@@ -2050,25 +1729,6 @@
         form.reset();
         form.querySelectorAll('[aria-pressed]').forEach(b => b.setAttribute('aria-pressed','false'));
       });
-
-      /* ---------- Nav state ---------- */
-      const nav = document.getElementById('nav');
-      const navInner = document.getElementById('navInner');
-      let lastY = 0;
-      function onNavScroll(){
-        const y = window.scrollY;
-        const scrolled = y > 40;
-        nav.classList.toggle('bg-[#00050D]/70', scrolled);
-        nav.classList.toggle('backdrop-blur-xl', scrolled);
-        nav.classList.toggle('border-b', scrolled);
-        nav.classList.toggle('border-white/[0.06]', scrolled);
-        navInner.classList.toggle('py-5', !scrolled);
-        navInner.classList.toggle('py-3', scrolled);
-        if(!reduceMotion) nav.style.transform = (y > lastY && y > 400) ? 'translateY(-100%)' : 'translateY(0)';
-        lastY = y;
-      }
-      window.addEventListener('scroll', onNavScroll, { passive: true });
-      onNavScroll();
 
       /* ---------- Reduced motion fallback ---------- */
       if(reduceMotion){
@@ -2334,4 +1994,3 @@
     </style>
   </body>
 </html>
-

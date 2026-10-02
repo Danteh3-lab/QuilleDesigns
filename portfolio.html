@@ -8,23 +8,25 @@
   <title>Our work | Quille Designs</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="brandmark.css" /><link rel="stylesheet" href="portfolio-gallery.css" />
-  <script src="portfolio.js" defer></script>
+  <link rel="stylesheet" href="brandmark.css?v=shared-chrome-1" /><link rel="stylesheet" href="portfolio-gallery.css?v=shared-chrome-1" />
+  <link rel="stylesheet" href="site-chrome.css" />
+  <script src="site-chrome.js" defer></script>
+  <script src="portfolio.js?v=shared-chrome-1" defer></script>
 </head>
 <body class="portfolio-gallery" id="top">
   <a class="skip-link" href="#portfolio">Skip to selected work</a>
-  <header class="portfolio-nav" id="portfolioNav">
-    <div class="floating-nav portfolio-shell">
-      <a href="index.html#top" class="site-brandmark-link" aria-label="Quille Designs home"><span class="site-brandmark"><img src="assets/branding/quille-designs.png" width="1774" height="887" alt="" fetchpriority="high" /></span></a>
-      <nav class="desktop-nav" aria-label="Primary"><a href="#work" aria-current="page">Work</a><a href="#capabilities">Capabilities</a><a href="#approach">Studio</a></nav>
-      <div class="nav-actions"><span class="nav-note mono">Design / Film</span><a class="button button-primary nav-cta" href="#contact">Let’s talk <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 19 19 5M5 5h14v14"/></svg></a><button id="menuBtn" class="menu-toggle" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false" hidden><span aria-hidden="true">☰</span></button></div>
-    </div>
-  </header>
-  <dialog class="mobile-menu" id="mobileMenu" aria-labelledby="menuTitle">
-    <div class="menu-heading"><span id="menuTitle">Quille Designs</span><button type="button" id="menuClose" class="icon-button" aria-label="Close menu" autofocus>×</button></div>
-    <nav aria-label="Mobile"><a href="#work">Work</a><a href="#capabilities">Capabilities</a><a href="#approach">Studio</a><a href="#contact">Let’s talk</a></nav>
-    <a class="menu-email" href="mailto:hello@quilledesigns.com">hello@quilledesigns.com</a>
-  </dialog>
+  <header id="nav" class="site-header">
+  <div id="navInner" class="site-nav-inner">
+    <a href="index.html#top" class="site-brandmark-link" aria-label="Quille Designs home"><span class="site-brandmark"><img src="assets/branding/quille-designs.png" width="1774" height="887" alt="" fetchpriority="high" /></span></a>
+    <nav class="site-primary-nav" aria-label="Primary"><a href="index.html#top" data-nav-page="home">Home</a><a href="index.html#services" data-nav-page="services">Services</a><a href="portfolio.html" data-nav-page="portfolio">Portfolio</a><a href="index.html#contact" data-nav-page="contact">Contact</a></nav>
+    <div class="site-nav-actions"><a href="index.html#contact" class="site-project-link">Start a project <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 19 19 5M5 5h14v14"/></svg></a><button id="menuBtn" class="site-menu-button" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false" hidden><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></div>
+  </div>
+</header>
+<dialog id="mobileMenu" class="site-mobile-menu" aria-labelledby="menuTitle" data-lenis-prevent>
+  <div class="site-menu-heading"><span id="menuTitle">Quille</span><button id="menuClose" class="site-menu-button" type="button" aria-label="Close menu" autofocus><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="m8 8 8 8M16 8l-8 8"/></svg></button></div>
+  <nav aria-label="Mobile"><a href="index.html#top" data-nav-page="home">Home</a><a href="index.html#services" data-nav-page="services">Services</a><a href="portfolio.html" data-nav-page="portfolio">Portfolio</a><a href="index.html#contact" data-nav-page="contact">Contact</a></nav>
+  <a class="site-menu-email" href="mailto:hello@quilledesigns.com">hello@quilledesigns.com</a>
+</dialog>
 
   <main class="portfolio-shell portfolio-page" id="portfolio">
     <section class="panel portfolio-intro" aria-labelledby="portfolio-title"><span class="panel-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -199,11 +201,19 @@
       <div class="contact-grid"><div><p class="section-index mono">[ 04 ] Start here</p><h2 id="contact-title">Have a project on the <em>horizon?</em></h2><p>Tell us what you’re creating. We’ll start with your brief and work out the next steps together.</p></div><div class="contact-box"><p class="mono">Let’s make something yours.</p><a class="contact-email" href="mailto:hello@quilledesigns.com">hello@quilledesigns.com <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 19 19 5M5 5h14v14"/></svg></a><a class="button button-light" href="index.html#contact">Discuss your brief <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 19 19 5M5 5h14v14"/></svg></a><p class="contact-note">A real conversation about your next project.</p></div></div>
     </section>
 
-    <footer class="panel portfolio-footer"><span class="panel-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      <div class="footer-grid"><div class="footer-about"><a href="index.html#top" class="footer-wordmark" aria-label="Quille Designs home">Quille<span>Designs.</span></a><p>An independent marketing &amp; design studio. Identities, films and campaigns with character.</p></div><nav aria-label="Studio"><p class="mono">Studio</p><a href="#work">Work</a><a href="#capabilities">Capabilities</a><a href="#approach">Our approach</a></nav><nav aria-label="Contact"><p class="mono">Contact</p><a href="mailto:hello@quilledesigns.com">hello@quilledesigns.com</a><a href="index.html#contact">Start a project ↗</a><a href="index.html#top">Visit our homepage ↗</a></nav></div>
-      <div class="footer-ghost" aria-hidden="true">Quille Designs.</div><div class="footer-bottom mono"><p>© <span id="year">2026</span> Quille Designs.</p><a href="#top">Back to top <span aria-hidden="true">↑</span></a></div>
-    </footer>
   </main>
+  <footer class="site-footer">
+  <div class="site-footer-shell">
+    <div class="site-footer-grid">
+      <div class="site-footer-about"><a href="index.html#top" class="site-footer-wordmark" aria-label="Quille Designs home"><span>Quille</span><span>Designs</span></a><p>An independent marketing &amp; design studio building brands that refuse to blend in.</p></div>
+      <nav class="site-footer-studio" aria-label="Studio"><h2>Studio</h2><ul><li><a href="index.html#services">Services</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="index.html#process">Process</a></li><li><a href="index.html#results">Results</a></li><li><a href="index.html#testimonials">Clients</a></li></ul></nav>
+      <nav class="site-footer-services" aria-label="Services"><h2>Services</h2><ul><li><a href="index.html#services">Brand Identity</a></li><li><a href="index.html#services">Web Design</a></li><li><a href="index.html#services">Paid Media</a></li><li><a href="index.html#services">SEO</a></li></ul></nav>
+      <nav class="site-footer-contact" aria-label="Contact"><h2>Contact</h2><ul><li><a href="mailto:hello@quilledesigns.com">hello@quilledesigns.com</a></li><li><a href="index.html#contact">Start a project</a></li><li class="site-hours">Mon to Fri, 9am to 6pm</li></ul></nav>
+    </div>
+    <div class="site-footer-bottom"><p>© <span id="year">2026</span> Quille Designs. All rights reserved.</p><a href="#top" class="site-back-top">Top <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V4m-7 7 7-7 7 7"/></svg></a></div>
+  </div>
+  <div class="site-footer-art" aria-hidden="true"><div id="footerMark" class="site-footer-brandmark"><img src="assets/branding/quille-designs.png" width="1774" height="887" alt="" loading="lazy" decoding="async" /></div></div>
+</footer>
 
   <dialog class="media-viewer" id="mediaViewer" aria-labelledby="viewerTitle"><div class="viewer-header"><div><p class="mono" id="viewerCategory">Selected work</p><h2 id="viewerTitle">Selected work</h2></div><button type="button" id="viewerClose" class="icon-button" aria-label="Close viewer" autofocus>×</button></div><div id="viewerMedia" class="viewer-media"></div><p id="viewerStatus" class="viewer-status" role="status" aria-live="polite"></p><div class="viewer-footer"><p id="viewerHint">Complete original artwork</p><a id="viewerSource" href="assets/Material/logo%201.jpeg" target="_blank" rel="noopener">Open original ↗</a></div></dialog>
 </body>
