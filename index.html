@@ -323,9 +323,9 @@
           <div class="md:col-span-3">
             <p
               data-reveal=""
-              class="text-xs font-medium uppercase tracking-[0.45em] text-[#245A86]"
+              class="home-section-eyebrow home-section-eyebrow--light"
             >
-              (01) / Manifesto
+              What we believe
             </p>
             <img
               src="assets/branding/quille-designs.png"
@@ -349,7 +349,7 @@
       <!-- SERVICES / FEATURES -->
       <section id="services" data-page="services" aria-labelledby="services-title">
         <div class="services-shell">
-          <p class="services-kicker">(02) / What we do</p>
+          <p class="home-section-eyebrow home-section-eyebrow--light services-section-label">Services</p>
           <div class="services-layout">
             <div class="services-intro">
               <h2 id="services-title" class="services-title">Make your business <span>easy to recognise.</span></h2>
@@ -439,7 +439,7 @@
       <!-- SELECTED WORK -->
       <section id="explorations" class="showcase" data-page="home" aria-labelledby="showcase-title">
         <div class="showcase-shell">
-          <p class="showcase-eyebrow">(03) / Selected projects</p>
+          <p class="home-section-eyebrow home-section-eyebrow--dark showcase-eyebrow">Selected work</p>
           <div class="showcase-heading">
             <h2 id="showcase-title">Ideas, <span>out in the world.</span></h2>
             <p>Commercial films for Smartwigi and Terzol.</p>
@@ -499,9 +499,9 @@
             <div class="process-sticky lg:sticky lg:top-32">
               <p
                 data-reveal=""
-                class="mb-6 text-xs font-medium uppercase tracking-[0.45em] text-[#4A86BD]"
+                class="mb-6 home-section-eyebrow home-section-eyebrow--dark"
               >
-                (04) / About us
+                About us
               </p>
               <h2
                 data-reveal=""
@@ -733,9 +733,9 @@
             <div>
               <p
                 data-reveal=""
-                class="mb-6 text-xs font-medium uppercase tracking-[0.45em] text-[#245A86]"
+                class="mb-6 home-section-eyebrow home-section-eyebrow--light"
               >
-                (05) / Proof in numbers
+                Results
               </p>
               <h2
                 data-reveal=""
@@ -943,9 +943,9 @@
           <div>
             <p
               data-reveal=""
-              class="mb-6 text-xs font-medium uppercase tracking-[0.45em] text-[#4A86BD]"
+              class="mb-6 home-section-eyebrow home-section-eyebrow--dark"
             >
-              (06) / Kind words
+              Client feedback
             </p>
             <h2
               data-reveal=""
@@ -1151,9 +1151,9 @@
           <div class="lg:col-span-5">
             <p
               data-reveal=""
-              class="mb-6 text-xs font-medium uppercase tracking-[0.45em] text-[#4A86BD]"
+              class="mb-6 home-section-eyebrow home-section-eyebrow--dark"
             >
-              (07) / Let's talk
+              Contact
             </p>
             <h2
               data-reveal=""
@@ -1792,6 +1792,10 @@
       })();
     </script>
     <style>
+      .home-section-eyebrow{display:flex;align-items:center;gap:.75rem;color:var(--section-label-color,#245A86);font-size:10px;font-weight:600;letter-spacing:.18em;line-height:1.4;text-transform:uppercase;}
+      .home-section-eyebrow::before{content:"";width:1.5rem;height:1px;flex:0 0 1.5rem;background:currentColor;opacity:.9;}
+      .home-section-eyebrow--light{--section-label-color:#245A86;}
+      .home-section-eyebrow--dark{--section-label-color:#7FB2E0;}
       html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}.lenis.lenis-stopped{overflow:hidden}.lenis.lenis-smooth iframe{pointer-events:none}
       @keyframes quilleBlueShift{0%{background-position:0% 50%}100%{background-position:200% 50%}}.blend-rgb{background-image:linear-gradient(90deg,#245A86 0%,#2E6DA4 20%,#4A86BD 40%,#7FB2E0 50%,#4A86BD 60%,#2E6DA4 80%,#245A86 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:quilleBlueShift 4s linear infinite;filter:drop-shadow(0 0 28px rgba(74,134,189,0.45));}@media (prefers-reduced-motion: reduce){.blend-rgb{animation:none;}}
     </style>

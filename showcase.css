@@ -1,7 +1,7 @@
 /* Selected work carousel, using Quille's navy and pale-blue palette. */
 .showcase { --sc-ink: #00050d; --sc-blue: #7fb2e0; --sc-line: #314353; --sc-muted: #b1beca; background: var(--sc-ink); color: #fff; padding: 96px 0 72px; }
 .showcase-shell { max-width: 1400px; margin: auto; padding: 0 40px; }
-.showcase-eyebrow { margin: 0 0 28px; color: var(--sc-blue); font-size: 11px; font-weight: 600; letter-spacing: .23em; text-transform: uppercase; }
+.showcase-eyebrow { margin: 0 0 28px; }
 .showcase-heading { display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 42px; }
 .showcase-heading h2 { margin: 0; font-family: 'Syne', sans-serif; font-size: clamp(38px, 4.4vw, 64px); font-weight: 600; line-height: 1.04; letter-spacing: -.045em; }
 .showcase-heading h2 span { color: var(--sc-blue); font-weight: 400; }
@@ -59,7 +59,6 @@ a.showcase-card { cursor: pointer; }
   .showcase-shell { padding: 0 24px; }
   .showcase-heading { flex-direction: column; gap: 20px; margin-bottom: 28px; }
   .showcase-heading p { max-width: 300px; }
-  .showcase-eyebrow { font-size: 10px; letter-spacing: .16em; }
   .showcase-track { gap: 16px; }
   .showcase-card { flex-basis: 90%; }
   .showcase-project-info { min-height: 100px; padding-top: 16px; }

@@ -13,8 +13,7 @@
 }
 
 .services-shell { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-.services-kicker { display: flex; align-items: center; gap: 16px; margin-bottom: 44px; color: var(--service-blue); font-size: 11px; font-weight: 600; letter-spacing: .23em; text-transform: uppercase; }
-.services-kicker::after { content: ''; width: 64px; height: 1px; background: var(--service-blue); }
+.services-section-label { margin-bottom: 44px; }
 .services-layout { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
 .services-intro { position: sticky; top: 116px; padding-bottom: 24px; }
 .services-title { margin: 0; font-family: 'Syne', sans-serif; font-size: clamp(42px, 4.25vw, 64px); font-weight: 700; line-height: 1.04; letter-spacing: -.055em; }
@@ -59,7 +58,7 @@
   .services-title span { display: inline; }
   .services-description { max-width: 460px; margin: 24px 0; }
   .services-note { margin-top: 24px; }
-  .services-kicker { margin-bottom: 32px; }
+  .services-section-label { margin-bottom: 32px; }
   .service-summary h3 span { display: inline; }
 }
 @media (max-width: 540px) {
