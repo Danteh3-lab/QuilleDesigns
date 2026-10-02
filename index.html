@@ -833,12 +833,27 @@
 
       <section
         id="brands"
-        aria-label="Trusted brands"
+        aria-label="Trusted partners"
         class="relative overflow-hidden bg-[#00050D] py-16 md:py-20"
         data-page="home"
       >
         <style>
-          @keyframes quilleBrands{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.brands-track{animation:quilleBrands 40s linear infinite;}.brands-track:hover{animation-play-state:paused;}@media (prefers-reduced-motion: reduce){.brands-track{animation:none;}}
+          @keyframes quilleBrands{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+          .brands-track{animation:quilleBrands 40s linear infinite;}
+          .brands-track:hover{animation-play-state:paused;}
+          .brands-track.is-paused{animation-play-state:paused;}
+          .partner-logo-card{width:15rem;height:10rem;}
+          .partner-logo-card img{display:block;max-width:100%;max-height:100%;object-fit:contain;} .partner-logo-incrediently{filter:brightness(0) invert(1);}
+          .partner-logo-card .partner-logo-smartwigi{width:100%;height:4rem;object-fit:cover;object-position:center;}
+          @media(max-width:639px){.partner-logo-card{width:12rem;height:8.5rem;}}
+          @media(prefers-reduced-motion:reduce){
+            .brands-track{animation:none;width:auto;flex-wrap:wrap;justify-content:center;}
+            .brands-viewport{-webkit-mask-image:none!important;mask-image:none!important;}
+            .partner-logo-list{width:100%;flex-wrap:wrap;justify-content:center;padding:0 1.5rem;}
+            .brands-clone{display:none;}
+            .partner-logo-card{transition:none!important;transform:none!important;}
+            .brands-motion-toggle{display:none;}
+          }
         </style>
         <div
           class="mx-auto mb-10 flex max-w-[1400px] flex-col justify-between gap-4 px-6 sm:flex-row sm:items-end md:px-10"
@@ -847,285 +862,70 @@
             data-reveal=""
             class="text-xs font-medium uppercase tracking-[0.45em] text-[#4A86BD]"
           >
-            Teams we’ve worked with
+            Partners we’ve worked with
           </p>
-          <p
-            data-reveal=""
-            class="max-w-sm text-sm leading-relaxed text-white/55"
-          >
-              More than 60 teams in hospitality, retail, health and tech have
-              worked with us.
-          </p>
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+            <p
+              data-reveal=""
+              class="max-w-sm text-sm leading-relaxed text-white/55"
+            >
+              A few of the businesses we’ve worked with.
+            </p>
+            <button
+              type="button"
+              data-brands-toggle
+              aria-label="Pause partner logo animation"
+              aria-pressed="false"
+              class="brands-motion-toggle flex w-fit shrink-0 items-center gap-2 rounded-[4px] border border-white/15 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/60 transition-colors hover:border-white/30 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4A86BD]"
+            >
+              <svg data-brands-pause aria-hidden="true" viewBox="0 0 16 16" class="h-3 w-3 fill-current"><path d="M4 3h3v10H4zM9 3h3v10H9z" /></svg>
+              <svg data-brands-play aria-hidden="true" viewBox="0 0 16 16" class="h-3 w-3 fill-current" hidden><path d="M5 3.5 13 8l-8 4.5z" /></svg>
+              <span data-brands-toggle-label>Pause</span>
+            </button>
+          </div>
         </div>
         <div
-          class="relative"
+          class="brands-viewport relative"
           style="mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);"
         >
           <div class="brands-track flex w-max items-center">
-            <ul class="flex items-center gap-4 pr-4">
-              <li
-                class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white"
-                style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));"
-              >
-                <iconify-icon
-                  icon="solar:cup-hot-linear"
-                  stroke-width="1.5"
-                  class="text-2xl text-[#4A86BD]"
-                ></iconify-icon>
-                <span
-                  class="whitespace-nowrap text-xl font-semibold tracking-tight"
-                  style="font-family:'Syne',sans-serif;"
-                >
-                  Northline
-                </span>
+            <ul class="partner-logo-list flex items-center gap-4 pr-4" aria-label="Partner logos">
+              <li class="partner-logo-card flex shrink-0 items-center justify-center p-4 transition-transform duration-500 hover:-translate-y-1">
+                <img class="partner-logo-incrediently" src="assets/partners/Incrediently%20Partner.png" alt="Incrediently" width="1254" height="1254" loading="lazy" decoding="async" />
               </li>
-              <li
-                class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white"
-                style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));"
-              >
-                <iconify-icon
-                  icon="solar:t-shirt-linear"
-                  stroke-width="1.5"
-                  class="text-2xl text-[#4A86BD]"
-                ></iconify-icon>
-                <span
-                  class="whitespace-nowrap text-xl font-semibold tracking-tight"
-                  style="font-family:'Syne',sans-serif;"
-                >
-                  Fieldwork
-                </span>
+              <li class="partner-logo-card flex shrink-0 items-center justify-center p-4 transition-transform duration-500 hover:-translate-y-1">
+                <img src="assets/partners/Sansoer%20Partner.png" alt="Sansoers Imports" width="1254" height="1254" loading="lazy" decoding="async" />
               </li>
-              <li
-                class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white"
-                style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));"
-              >
-                <iconify-icon
-                  icon="solar:heart-pulse-linear"
-                  stroke-width="1.5"
-                  class="text-2xl text-[#4A86BD]"
-                ></iconify-icon>
-                <span
-                  class="whitespace-nowrap text-xl font-semibold tracking-tight"
-                  style="font-family:'Syne',sans-serif;"
-                >
-                  Lumen Health
-                </span>
+              <li class="partner-logo-card flex shrink-0 items-center justify-center p-4 transition-transform duration-500 hover:-translate-y-1">
+                <img class="partner-logo-smartwigi" src="assets/partners/smartwigi.png" alt="Smartwigi" width="1254" height="1254" loading="lazy" decoding="async" />
               </li>
-              <li
-                class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white"
-                style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));"
-              >
-                <iconify-icon
-                  icon="solar:buildings-2-linear"
-                  stroke-width="1.5"
-                  class="text-2xl text-[#4A86BD]"
-                ></iconify-icon>
-                <span
-                  class="whitespace-nowrap text-xl font-semibold tracking-tight"
-                  style="font-family:'Syne',sans-serif;"
-                >
-                  Thornton &amp; Co.
-                </span>
+              <li class="partner-logo-card flex shrink-0 items-center justify-center p-4 transition-transform duration-500 hover:-translate-y-1">
+                <img src="assets/partners/Terzol%20Partner.png" alt="Terzol Vastgoed" width="1254" height="1254" loading="lazy" decoding="async" />
               </li>
-              <li
-                class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white"
-                style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));"
-              >
-                <iconify-icon
-                  icon="solar:leaf-linear"
-                  stroke-width="1.5"
-                  class="text-2xl text-[#4A86BD]"
-                ></iconify-icon>
-                <span
-                  class="whitespace-nowrap text-xl font-semibold tracking-tight"
-                  style="font-family:'Syne',sans-serif;"
-                >
-                  Halcyon
-                </span>
-              </li>
-              <li
-                class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white"
-                style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));"
-              >
-                <iconify-icon
-                  icon="solar:chart-2-linear"
-                  stroke-width="1.5"
-                  class="text-2xl text-[#4A86BD]"
-                ></iconify-icon>
-                <span
-                  class="whitespace-nowrap text-xl font-semibold tracking-tight"
-                  style="font-family:'Syne',sans-serif;"
-                >
-                  Vantage
-                </span>
-              </li>
-              <li
-                class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white"
-                style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));"
-              >
-                <iconify-icon
-                  icon="solar:planet-linear"
-                  stroke-width="1.5"
-                  class="text-2xl text-[#4A86BD]"
-                ></iconify-icon>
-                <span
-                  class="whitespace-nowrap text-xl font-semibold tracking-tight"
-                  style="font-family:'Syne',sans-serif;"
-                >
-                  Orbit Labs
-                </span>
-              </li>
-              <li
-                class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white"
-                style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));"
-              >
-                <iconify-icon
-                  icon="solar:mountains-linear"
-                  stroke-width="1.5"
-                  class="text-2xl text-[#4A86BD]"
-                ></iconify-icon>
-                <span
-                  class="whitespace-nowrap text-xl font-semibold tracking-tight"
-                  style="font-family:'Syne',sans-serif;"
-                >
-                  Summit Outdoor
-                </span>
+              <li class="partner-logo-card flex shrink-0 items-center justify-center p-4 transition-transform duration-500 hover:-translate-y-1">
+                <img src="assets/partners/Xu%27s%20Partner.png" alt="Xu’s Super Store" width="1254" height="1254" loading="lazy" decoding="async" />
               </li>
             </ul>
-            <ul class="flex items-center gap-4 pr-4" aria-hidden="true">
-              <li
-                class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white"
-                style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));"
-              >
-                <iconify-icon
-                  icon="solar:cup-hot-linear"
-                  stroke-width="1.5"
-                  class="text-2xl text-[#4A86BD]"
-                ></iconify-icon>
-                <span
-                  class="whitespace-nowrap text-xl font-semibold tracking-tight"
-                  style="font-family:'Syne',sans-serif;"
-                >
-                  Northline
-                </span>
+            <ul class="partner-logo-list brands-clone flex items-center gap-4 pr-4" aria-hidden="true">
+              <li class="partner-logo-card flex shrink-0 items-center justify-center p-4">
+                <img class="partner-logo-incrediently" src="assets/partners/Incrediently%20Partner.png" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
               </li>
-              <li
-                class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white"
-                style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));"
-              >
-                <iconify-icon
-                  icon="solar:t-shirt-linear"
-                  stroke-width="1.5"
-                  class="text-2xl text-[#4A86BD]"
-                ></iconify-icon>
-                <span
-                  class="whitespace-nowrap text-xl font-semibold tracking-tight"
-                  style="font-family:'Syne',sans-serif;"
-                >
-                  Fieldwork
-                </span>
+              <li class="partner-logo-card flex shrink-0 items-center justify-center p-4">
+                <img src="assets/partners/Sansoer%20Partner.png" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
               </li>
-              <li
-                class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white"
-                style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));"
-              >
-                <iconify-icon
-                  icon="solar:heart-pulse-linear"
-                  stroke-width="1.5"
-                  class="text-2xl text-[#4A86BD]"
-                ></iconify-icon>
-                <span
-                  class="whitespace-nowrap text-xl font-semibold tracking-tight"
-                  style="font-family:'Syne',sans-serif;"
-                >
-                  Lumen Health
-                </span>
+              <li class="partner-logo-card flex shrink-0 items-center justify-center p-4">
+                <img class="partner-logo-smartwigi" src="assets/partners/smartwigi.png" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
               </li>
-              <li
-                class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white"
-                style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));"
-              >
-                <iconify-icon
-                  icon="solar:buildings-2-linear"
-                  stroke-width="1.5"
-                  class="text-2xl text-[#4A86BD]"
-                ></iconify-icon>
-                <span
-                  class="whitespace-nowrap text-xl font-semibold tracking-tight"
-                  style="font-family:'Syne',sans-serif;"
-                >
-                  Thornton &amp; Co.
-                </span>
+              <li class="partner-logo-card flex shrink-0 items-center justify-center p-4">
+                <img src="assets/partners/Terzol%20Partner.png" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
               </li>
-              <li
-                class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white"
-                style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));"
-              >
-                <iconify-icon
-                  icon="solar:leaf-linear"
-                  stroke-width="1.5"
-                  class="text-2xl text-[#4A86BD]"
-                ></iconify-icon>
-                <span
-                  class="whitespace-nowrap text-xl font-semibold tracking-tight"
-                  style="font-family:'Syne',sans-serif;"
-                >
-                  Halcyon
-                </span>
-              </li>
-              <li
-                class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white"
-                style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));"
-              >
-                <iconify-icon
-                  icon="solar:chart-2-linear"
-                  stroke-width="1.5"
-                  class="text-2xl text-[#4A86BD]"
-                ></iconify-icon>
-                <span
-                  class="whitespace-nowrap text-xl font-semibold tracking-tight"
-                  style="font-family:'Syne',sans-serif;"
-                >
-                  Vantage
-                </span>
-              </li>
-              <li
-                class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white"
-                style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));"
-              >
-                <iconify-icon
-                  icon="solar:planet-linear"
-                  stroke-width="1.5"
-                  class="text-2xl text-[#4A86BD]"
-                ></iconify-icon>
-                <span
-                  class="whitespace-nowrap text-xl font-semibold tracking-tight"
-                  style="font-family:'Syne',sans-serif;"
-                >
-                  Orbit Labs
-                </span>
-              </li>
-              <li
-                class="flex h-20 items-center gap-3 rounded-[4px] border border-white/[0.07] px-8 text-white/50 transition-colors duration-500 hover:border-[#245A86]/50 hover:text-white"
-                style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));"
-              >
-                <iconify-icon
-                  icon="solar:mountains-linear"
-                  stroke-width="1.5"
-                  class="text-2xl text-[#4A86BD]"
-                ></iconify-icon>
-                <span
-                  class="whitespace-nowrap text-xl font-semibold tracking-tight"
-                  style="font-family:'Syne',sans-serif;"
-                >
-                  Summit Outdoor
-                </span>
+              <li class="partner-logo-card flex shrink-0 items-center justify-center p-4">
+                <img src="assets/partners/Xu%27s%20Partner.png" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
               </li>
             </ul>
           </div>
         </div>
       </section>
-
       <!-- TESTIMONIALS (horizontal pinned on desktop) -->
       <section
         id="testimonials"
@@ -1959,6 +1759,37 @@
 
         window.addEventListener('load', () => ScrollTrigger.refresh());
       }
+    </script>
+    <script>
+      (() => {
+        const button = document.querySelector('[data-brands-toggle]');
+        const track = document.querySelector('.brands-track');
+        if (!button || !track) return;
+
+        const pauseIcon = button.querySelector('[data-brands-pause]');
+        const playIcon = button.querySelector('[data-brands-play]');
+        const label = button.querySelector('[data-brands-toggle-label]');
+        const updateControl = () => {
+          const paused = track.classList.contains('is-paused');
+          const english = document.documentElement.lang === 'en';
+          button.setAttribute('aria-pressed', String(paused));
+          button.setAttribute('aria-label', paused
+            ? (english ? 'Resume partner logo animation' : 'Hervat de partnerlogo-animatie')
+            : (english ? 'Pause partner logo animation' : 'Pauzeer de partnerlogo-animatie'));
+          label.textContent = paused
+            ? (english ? 'Resume' : 'Hervatten')
+            : (english ? 'Pause' : 'Pauzeren');
+          pauseIcon.hidden = paused;
+          playIcon.hidden = !paused;
+        };
+
+        button.addEventListener('click', () => {
+          track.classList.toggle('is-paused');
+          updateControl();
+        });
+        document.addEventListener('quille-language-change', updateControl);
+        updateControl();
+      })();
     </script>
     <style>
       html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}.lenis.lenis-stopped{overflow:hidden}.lenis.lenis-smooth iframe{pointer-events:none}
