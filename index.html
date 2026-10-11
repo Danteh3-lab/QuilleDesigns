@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="process-images.css" />
     <link rel="stylesheet" href="site-chrome.css" />
     <link rel="stylesheet" href="home-contact.css" />
+    <link rel="stylesheet" href="hero-background.css" />
+    <script src="hero-background.js" defer></script>
     <script src="site-chrome.js" defer></script>
   </head>
   <body
@@ -54,22 +56,8 @@
         class="relative flex min-h-[100svh] items-end overflow-hidden"
         data-page="home"
       >
-        <div id="heroMedia" class="absolute inset-0 z-0">
-          <video
-            id="heroVideo"
-            class="h-full w-full object-cover"
-            autoplay=""
-            muted=""
-            loop=""
-            playsinline=""
-            poster="assets/Landingpage/landing-page-fallback.jpg"
-          >
-            <source
-              src="https://pub-7c35d354f58947c690a1af63934b929f.r2.dev/LandingpageQuille.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </div>
+        <!-- Moving background: React Bits "Beams" in Quille blues (hero-background.js) -->
+        <div id="heroMedia" class="hero-beams absolute inset-0 z-0" data-hero-beams aria-hidden="true"></div>
         <div
           class="absolute inset-0 z-[1]"
           style="background:linear-gradient(180deg,rgba(0,5,13,0.55) 0%,rgba(2,12,21,0.55) 45%,rgba(0,5,13,0.98) 100%);"
@@ -78,11 +66,8 @@
           class="absolute inset-0 z-[1]"
           style="background:radial-gradient(60% 50% at 15% 80%,rgba(36,90,134,0.35) 0%,transparent 70%);"
         ></div>
-        <div
-          aria-hidden="true"
-          class="pointer-events-none absolute inset-0 z-[1] opacity-80"
-          style="background-image:linear-gradient(rgba(255,255,255,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.07) 1px,transparent 1px),linear-gradient(rgba(74,134,189,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(74,134,189,0.04) 1px,transparent 1px);background-size:120px 120px,120px 120px,24px 24px,24px 24px;background-position:-1px -1px,-1px -1px,-1px -1px,-1px -1px;mask-image:radial-gradient(ellipse 85% 75% at 50% 45%,#000 35%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 85% 75% at 50% 45%,#000 35%,transparent 100%);"
-        ></div>
+        <!-- Mouse-reactive dots: React Bits "Dot Grid" (hero-background.js) -->
+        <div class="hero-dots absolute inset-0 z-[1]" data-hero-dots aria-hidden="true"></div>
 
         <div
           id="heroContent"
@@ -1306,7 +1291,6 @@
 
       /* ---------- Reduced motion fallback ---------- */
       if(reduceMotion){
-        const v = document.getElementById('heroVideo'); v.removeAttribute('autoplay'); v.pause();
         document.querySelectorAll('[data-step]').forEach(s => s.classList.remove('lg:opacity-30'));
         document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', () => closeMenu()));
       }
@@ -1477,7 +1461,7 @@
 
         // Hero exit
         gsap.to('#heroContent', { yPercent: -18, opacity: 0.2, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
-        gsap.to('#heroVideo', { yPercent: 12, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
+        gsap.to('#heroMedia', { yPercent: 12, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
 
         // Marquee with scroll velocity
         const marquee = gsap.to('[data-marquee]', { xPercent: -50, repeat: -1, duration: 32, ease: 'none' });

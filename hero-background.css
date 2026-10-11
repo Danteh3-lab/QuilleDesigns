@@ -1,0 +1,6 @@
+/* Beams and Dot Grid styles from React Bits (https://reactbits.dev) by David Haz. MIT + Commons Clause License, Copyright (c) 2026 David Haz. */
+.beams-container{position:relative;width:100%;height:100%;overflow:hidden}.beams-canvas{position:absolute;inset:0;display:block;width:100%;height:100%}.dot-grid{position:relative;width:100%;height:100%}.dot-grid__canvas{position:absolute;inset:0;display:block;width:100%;height:100%;pointer-events:none}
+/* Quille: hero background layers. Without WebGL2 the navy gradient below stays as a still background. */
+.hero-beams, .hero-dots { position: absolute; inset: 0; }
+.hero-beams { z-index: 0; background: radial-gradient(70% 60% at 68% 18%, rgba(36, 90, 134, 0.38), transparent 70%), #00050d; }
+.hero-dots { z-index: 1; pointer-events: none; }

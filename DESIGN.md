@@ -62,7 +62,7 @@ Native CSS/IntersectionObserver handle entrances and reveals. A duplicated, assi
 
 Portfolio films autoplay muted and inline when visible, including Smartwigi and Terzol. The two homepage cards stay on their normal thumbnails until visitors choose to play them. Set muting in HTML and JavaScript before loading preview sources. Shared Pause previews pauses eligible films. Playback stops offscreen, in background tabs, with dialogs open, when filtered out and with reduced motion. Reduced motion shows posters without automatic video requests.
 
-The separate homepage retains its existing process frame sequence and hero film.
+The separate homepage retains its existing process frame sequence. The homepage hero no longer plays a film (client request, 2026-10-11): hero-background.js renders React Bits “Beams” (light-blue #7fb2e0 beams on ink #00050d) with a mouse-reactive React Bits “Dot Grid” above the darkening overlays (dots #2a4a68, lighting to #d6e9fa near the cursor; a click sends a small shock wave). Both are WebGL2, pause offscreen and in background tabs, follow reduced motion, and fall back to a still navy gradient without WebGL2. The components run without React through a small useRef/useEffect shim; the source and licence notice live in the bundle header (MIT + Commons Clause, David Haz).
 
 ## Portfolio CMS
 

@@ -26,6 +26,8 @@ const files = [
   "contact.css",
   "contact.js",
   "home-contact.css",
+  "hero-background.js",
+  "hero-background.css",
   "brandmark.css",
   "portfolio-gallery.css",
   "portfolio.js",
