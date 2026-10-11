@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Quille Designs — Afspraken &amp; aanvragen</title>
+    <link rel="icon" type="image/png" href="/assets/branding/favicon.png?v=4" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/brandmark.css" />
+    <link rel="stylesheet" href="/portfolio-gallery.css" />
+    <link rel="stylesheet" href="/admin/admin.css" />
+    <script src="/admin/bookings.js" defer></script>
+  </head>
+  <body class="cms-admin">
+    <header class="admin-header">
+      <a
+        class="admin-brand site-brandmark-link"
+        href="/admin"
+        aria-label="Quille Designs"
+      >
+        <span class="site-brandmark">
+          <img
+            src="/assets/branding/quille-designs.png"
+            width="1774"
+            height="887"
+            alt=""
+            fetchpriority="high"
+          />
+        </span>
+      </a>
+      <div class="header-actions">
+        <button type="button" disabled id="languageButton">EN</button
+        ><a href="/admin" data-label="Portfolio manager">Portfolio beheer</a
+        ><a
+          href="/contact.html"
+          target="_blank"
+          rel="noopener"
+          data-label="View contact page"
+          >Contactpagina bekijken</a
+        ><a href="/cdn-cgi/access/logout" data-label="Sign out">Uitloggen</a>
+      </div>
+    </header>
+    <main class="admin-shell">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow" data-label="Studio inbox">Studio inbox</p>
+          <h1 data-label="Appointments &amp; enquiries">
+            Afspraken &amp; aanvragen
+          </h1>
+          <p id="signedIn" class="muted"></p>
+        </div>
+        <button type="button" disabled id="refreshButton" data-label="Refresh">
+          Vernieuwen
+        </button>
+      </div>
+      <div id="errorBanner" class="error-banner" role="alert" hidden>
+        <p id="errorText"></p>
+        <button type="button" disabled id="retryButton" data-label="Reload">
+          Opnieuw laden</button
+        ><a
+          href="/admin/bookings"
+          id="loginLink"
+          data-label="Sign in again"
+          hidden
+          >Opnieuw inloggen</a
+        >
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+      <section class="panel" aria-labelledby="upcomingTitle">
+        <div class="panel-heading">
+          <h2 id="upcomingTitle" data-label="Upcoming appointments">
+            Komende afspraken
+          </h2>
+          <p class="muted" id="upcomingCount"></p>
+        </div>
+        <div id="upcomingList" class="inbox-list" aria-busy="true"></div>
+      </section>
+      <section class="panel" aria-labelledby="enquiryTitle">
+        <div class="panel-heading">
+          <h2 id="enquiryTitle" data-label="Enquiries">Aanvragen</h2>
+          <div class="segmented" role="group" aria-label="Filter">
+            <button
+              type="button"
+              disabled
+              data-filter="new"
+              aria-pressed="true"
+              data-label="New"
+            >
+              Nieuw</button
+            ><button
+              type="button"
+              disabled
+              data-filter="handled"
+              aria-pressed="false"
+              data-label="Handled"
+            >
+              Afgehandeld</button
+            ><button
+              type="button"
+              disabled
+              data-filter="all"
+              aria-pressed="false"
+              data-label="All"
+            >
+              Alles
+            </button>
+          </div>
+        </div>
+        <div id="enquiryList" class="inbox-list" aria-busy="true"></div>
+      </section>
+      <section class="panel" aria-labelledby="closedTitle">
+        <div class="panel-heading">
+          <h2 id="closedTitle" data-label="Closed days">Gesloten dagen</h2>
+        </div>
+        <p
+          class="muted"
+          data-label="Close a day for holidays or when you are unavailable. Customers can no longer book that day. Existing appointments stay; cancel them separately if needed."
+        >
+          Sluit een dag voor feestdagen of wanneer jullie niet beschikbaar zijn.
+          Klanten kunnen die dag dan niet meer boeken. Bestaande afspraken
+          blijven staan; annuleer ze zo nodig apart.
+        </p>
+        <form id="closedForm" class="closed-form" novalidate>
+          <label
+            ><span data-label="Date">Datum</span
+            ><input type="date" id="closedDate" required
+          /></label>
+          <button
+            type="submit"
+            disabled
+            class="primary"
+            id="closeDay"
+            data-label="Close day"
+          >
+            Dag sluiten
+          </button>
+        </form>
+        <p id="closedError" class="field-error" role="alert"></p>
+        <ul id="closedList" class="closed-list"></ul>
+      </section>
+      <details class="panel past-panel">
+        <summary data-label="Past appointments (last 60 days)">
+          Eerdere afspraken (laatste 60 dagen)
+        </summary>
+        <div id="pastList" class="inbox-list"></div>
+      </details>
+    </main>
+    <dialog
+      id="confirmDialog"
+      aria-labelledby="confirmTitle"
+      aria-describedby="confirmMessage"
+    >
+      <h2 id="confirmTitle"></h2>
+      <p id="confirmMessage"></p>
+      <div class="button-row">
+        <button type="button" id="confirmCancel" autofocus data-label="Keep">
+          Behouden</button
+        ><button type="button" id="confirmAction" class="danger"></button>
+      </div>
+    </dialog>
+  </body>
+</html>

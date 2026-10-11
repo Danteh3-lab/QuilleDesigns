@@ -1,0 +1,27 @@
+{
+  "name": "quille-portfolio-cms",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/dev.mjs",
+    "check": "tsc --noEmit",
+    "format:check": "prettier --check admin worker scripts/*.mjs tests playwright.config.mjs package.json tsconfig.json premium-ui.json wrangler.production.example.jsonc",
+    "test": "npm run build && node --import tsx --test --test-force-exit tests/*.test.ts",
+    "test:browser": "playwright test",
+    "verify": "npm run format:check && npm run check && npm test && npm run test:browser"
+  },
+  "dependencies": {
+    "jose": "^6.2.12"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261004.1",
+    "@playwright/test": "^1.63.0",
+    "esbuild": "^0.28.2",
+    "miniflare": "^5.20261001.0-alpha",
+    "prettier": "^3.9.9",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.147.0"
+  }
+}

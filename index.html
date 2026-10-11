@@ -16,11 +16,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-    <link rel="stylesheet" href="services.css?v=shared-chrome-1" />
+    <link rel="stylesheet" href="services.css?v=expertise-cards-2" />
     <link rel="stylesheet" href="showcase.css" />
     <link rel="stylesheet" href="brandmark.css?v=shared-chrome-1" />
     <link rel="stylesheet" href="process-images.css" />
     <link rel="stylesheet" href="site-chrome.css" />
+    <link rel="stylesheet" href="home-contact.css" />
     <script src="site-chrome.js" defer></script>
   </head>
   <body
@@ -37,13 +38,13 @@
     <header id="nav" class="site-header">
   <div id="navInner" class="site-nav-inner">
     <a href="#top" class="site-brandmark-link" aria-label="Quille Designs home"><span class="site-brandmark"><img src="assets/branding/quille-designs.png" width="1774" height="887" alt="" fetchpriority="high" /></span></a>
-    <nav class="site-primary-nav" aria-label="Primary"><a href="#top" data-nav-page="home">Home</a><a href="#process">About us</a><a href="#services" data-nav-page="services">Services</a><a href="portfolio.html" data-nav-page="portfolio">Portfolio</a><a href="#contact" data-nav-page="contact">Contact</a></nav>
-    <div class="site-nav-actions"><button class="site-language-toggle" type="button" data-language-toggle aria-label="Switch language to English"><span class="language-option is-active" data-language-option="nl">NL</span><span class="language-divider" aria-hidden="true">/</span><span class="language-option" data-language-option="en">EN</span></button><a href="#contact" class="site-project-link">Book an appointment <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 19 19 5M5 5h14v14"/></svg></a><button id="menuBtn" class="site-menu-button" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false" hidden><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></div>
+    <nav class="site-primary-nav" aria-label="Primary"><a href="#top" data-nav-page="home">Home</a><a href="#process">About us</a><a href="services.html" data-nav-page="services">Services</a><a href="portfolio.html" data-nav-page="portfolio">Portfolio</a><a href="contact.html" data-nav-page="contact">Contact</a></nav>
+    <div class="site-nav-actions"><button class="site-language-toggle" type="button" data-language-toggle aria-label="Switch language to English"><span class="language-option is-active" data-language-option="nl">NL</span><span class="language-divider" aria-hidden="true">/</span><span class="language-option" data-language-option="en">EN</span></button><a href="contact.html" class="site-project-link">Book an appointment <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 19 19 5M5 5h14v14"/></svg></a><button id="menuBtn" class="site-menu-button" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false" hidden><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></div>
   </div>
 </header>
 <dialog id="mobileMenu" class="site-mobile-menu" aria-labelledby="menuTitle" data-lenis-prevent>
   <div class="site-menu-heading"><span id="menuTitle">Quille</span><div class="site-menu-actions"><button class="site-language-toggle" type="button" data-language-toggle aria-label="Switch language to English"><span class="language-option is-active" data-language-option="nl">NL</span><span class="language-divider" aria-hidden="true">/</span><span class="language-option" data-language-option="en">EN</span></button><button id="menuClose" class="site-menu-button" type="button" aria-label="Close menu" autofocus><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="m8 8 8 8M16 8l-8 8"/></svg></button></div></div>
-  <nav aria-label="Mobile"><a href="#top" data-nav-page="home">Home</a><a href="#process">About us</a><a href="#services" data-nav-page="services">Services</a><a href="portfolio.html" data-nav-page="portfolio">Portfolio</a><a href="#contact" data-nav-page="contact">Contact</a></nav>
+  <nav aria-label="Mobile"><a href="#top" data-nav-page="home">Home</a><a href="#process">About us</a><a href="services.html" data-nav-page="services">Services</a><a href="portfolio.html" data-nav-page="portfolio">Portfolio</a><a href="contact.html" data-nav-page="contact">Contact</a></nav>
   <a class="site-menu-email" href="mailto:hello@quilledesigns.com">hello@quilledesigns.com</a>
 </dialog>
     <main id="top">
@@ -153,7 +154,7 @@
                 ></iconify-icon>
               </a>
               <a
-                href="#services"
+                href="services.html"
                 class="group inline-flex items-center gap-2 px-2 py-4 text-xs font-medium uppercase tracking-[0.2em] text-white/70 transition-colors hover:text-white"
               >
                 Our services
@@ -349,90 +350,137 @@
       <!-- SERVICES / FEATURES -->
       <section id="services" data-page="services" aria-labelledby="services-title">
         <div class="services-shell">
-          <p class="home-section-eyebrow home-section-eyebrow--light services-section-label">Services</p>
-          <div class="services-layout">
-            <div class="services-intro">
-              <h2 id="services-title" class="services-title">Make your business <span>easy to recognise.</span></h2>
-              <p class="services-description">We produce commercials, design posters, logos and business cards, and manage social media for your business.</p>
-              <a class="services-link" href="#contact">Discuss your brief
-                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 19 19 5M5 5h14v14"/></svg>
-              </a>
-              <p class="services-note">Video, print and social media for your business.</p>
-            </div>
-            <div>
-              <div class="services-list">
-                <details class="service-item">
-                  <summary class="service-summary">
-                    <div class="service-heading">
-                      <span class="service-category">Promo production</span>
-                      <h3>Commercials <span>for businesses</span></h3>
-                    </div>
-                    <span class="service-toggle" aria-hidden="true"></span>
-                  </summary>
-                  <div class="service-detail">
-                    <p>We produce commercials for businesses, from the shoot to the finished edit.</p>
-                    <ul class="service-deliverables" aria-label="Promo production services">
-                      <li>Commercial shoots</li>
-                      <li>Video editing</li>
-                      <li>Promo videos</li>
-                    </ul>
-                  </div>
-                </details>
-                <details class="service-item">
-                  <summary class="service-summary">
-                    <div class="service-heading">
-                      <span class="service-category">Print</span>
-                      <h3>Posters <span>for campaigns</span></h3>
-                    </div>
-                    <span class="service-toggle" aria-hidden="true"></span>
-                  </summary>
-                  <div class="service-detail">
-                    <p>We design posters for events, promotions and campaigns.</p>
-                    <ul class="service-deliverables" aria-label="Poster design services">
-                      <li>Event posters</li>
-                      <li>Promotional posters</li>
-                      <li>Campaign posters</li>
-                    </ul>
-                  </div>
-                </details>
-                <details class="service-item">
-                  <summary class="service-summary">
-                    <div class="service-heading">
-                      <span class="service-category">Design</span>
-                      <h3>Logos &amp; <span>business cards</span></h3>
-                    </div>
-                    <span class="service-toggle" aria-hidden="true"></span>
-                  </summary>
-                  <div class="service-detail">
-                    <p>We design logos and business cards that give your business a clear, recognisable look.</p>
-                    <ul class="service-deliverables" aria-label="Logo and business card design services">
-                      <li>Logo design</li>
-                      <li>Business card design</li>
-                    </ul>
-                  </div>
-                </details>
-                <details class="service-item">
-                  <summary class="service-summary">
-                    <div class="service-heading">
-                      <span class="service-category">Social</span>
-                      <h3>Managing <span>social media</span></h3>
-                    </div>
-                    <span class="service-toggle" aria-hidden="true"></span>
-                  </summary>
-                  <div class="service-detail">
-                    <p>We take care of the day-to-day social media for your business, so you can focus on running it.</p>
-                    <ul class="service-deliverables" aria-label="Social media management services">
-                      <li>Content planning</li>
-                      <li>Post design</li>
-                      <li>Scheduling</li>
-                      <li>Publishing</li>
-                    </ul>
-                  </div>
-                </details>
-              </div>
-              <p class="services-footer">Choose a service to see what we can do.</p>
-            </div>
+          <div class="services-header">
+            <h2 id="services-title" class="services-title services-section-label">Our expertise</h2>
+            <a class="services-all-link" href="services.html">All services</a>
           </div>
+          <ul class="expertise-grid">
+            <li class="expertise-card">
+              <div class="expertise-art expertise-art--promo" aria-hidden="true">
+                <img class="art-promo-still" src="assets/expertise/promo-smartwigi.jpg" width="960" height="540" alt="" loading="lazy" decoding="async" />
+                <svg viewBox="0 0 392 314" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="expertisePromoShade" x1="0" y1="46" x2="0" y2="222" gradientUnits="userSpaceOnUse">
+                      <stop offset="0" stop-color="#000" stop-opacity=".05"/>
+                      <stop offset="1" stop-color="#000" stop-opacity=".45"/>
+                    </linearGradient>
+                  </defs>
+                  <rect x="40" y="46" width="314" height="176" rx="14" fill="url(#expertisePromoShade)" stroke="#fff" stroke-opacity=".14"/>
+                  <rect x="54" y="58" width="46" height="15" rx="7.5" fill="#0a0d14" fill-opacity=".85"/>
+                  <circle cx="63" cy="65.5" r="3" fill="#e5484d"/>
+                  <rect x="70" y="63" width="22" height="5" rx="2.5" fill="#d9dee5"/>
+                  <circle cx="197" cy="134" r="28" fill="#000" fill-opacity=".3" stroke="#fff" stroke-width="2"/>
+                  <path d="M189 120 211 134 189 148Z" fill="#fff"/>
+                  <rect x="40" y="236" width="314" height="48" rx="8" fill="#15171c"/>
+                  <rect x="50" y="246" width="76" height="11" rx="3" fill="var(--expertise-accent)"/>
+                  <rect x="130" y="246" width="52" height="11" rx="3" fill="var(--expertise-accent-soft)" fill-opacity=".75"/>
+                  <rect x="186" y="246" width="104" height="11" rx="3" fill="#2a2d33"/>
+                  <rect x="294" y="246" width="50" height="11" rx="3" fill="var(--expertise-accent-deep)"/>
+                  <rect x="50" y="263" width="124" height="11" rx="3" fill="#2a2d33"/>
+                  <rect x="178" y="263" width="84" height="11" rx="3" fill="var(--expertise-accent)" fill-opacity=".7"/>
+                  <rect x="266" y="263" width="78" height="11" rx="3" fill="#2a2d33"/>
+                  <path d="M154 230h8l-4 6Z" fill="#fff"/>
+                  <path d="M158 234v56" stroke="#fff" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <div class="expertise-body">
+                <p class="expertise-number">01</p>
+                <h3><a class="expertise-link" href="services.html#promo-production">Promo production</a></h3>
+                <p class="expertise-description">We produce commercials for businesses, from the shoot to the finished edit.</p>
+                <ul class="expertise-tags" aria-label="Promo production services">
+                  <li>Commercial shoots</li>
+                  <li>Video editing</li>
+                  <li>Promo videos</li>
+                </ul>
+              </div>
+            </li>
+            <li class="expertise-card">
+              <div class="expertise-art expertise-art--posters" aria-hidden="true">
+                <img class="art-poster art-poster--left" src="assets/expertise/poster-1.jpg" width="560" height="560" alt="" loading="lazy" decoding="async" />
+                <img class="art-poster art-poster--right" src="assets/expertise/poster-3.jpg" width="560" height="560" alt="" loading="lazy" decoding="async" />
+                <img class="art-poster art-poster--front" src="assets/expertise/poster-2.jpg" width="560" height="560" alt="" loading="lazy" decoding="async" />
+              </div>
+              <div class="expertise-body">
+                <p class="expertise-number">02</p>
+                <h3><a class="expertise-link" href="services.html#poster-design">Posters</a></h3>
+                <p class="expertise-description">We design posters for events, promotions and campaigns.</p>
+                <ul class="expertise-tags" aria-label="Poster design services">
+                  <li>Event posters</li>
+                  <li>Promotional posters</li>
+                  <li>Campaign posters</li>
+                </ul>
+              </div>
+            </li>
+            <li class="expertise-card">
+              <div class="expertise-art expertise-art--logos" aria-hidden="true">
+                <img class="art-logo" style="--x:9.44%;--y:27.39%" src="assets/expertise/logo-1.jpg" width="240" height="240" alt="" loading="lazy" decoding="async" />
+                <img class="art-logo" style="--x:30.36%;--y:27.39%" src="assets/expertise/logo-2.jpg" width="240" height="240" alt="" loading="lazy" decoding="async" />
+                <img class="art-logo" style="--x:51.28%;--y:27.39%" src="assets/expertise/logo-3.jpg" width="240" height="240" alt="" loading="lazy" decoding="async" />
+                <img class="art-logo" style="--x:72.19%;--y:27.39%" src="assets/expertise/logo-4.jpg" width="240" height="240" alt="" loading="lazy" decoding="async" />
+                <img class="art-logo" style="--x:19.9%;--y:49.04%" src="assets/expertise/logo-5.jpg" width="240" height="240" alt="" loading="lazy" decoding="async" />
+                <img class="art-logo" style="--x:40.82%;--y:49.04%" src="assets/expertise/logo-6.jpg" width="240" height="240" alt="" loading="lazy" decoding="async" />
+                <img class="art-logo" style="--x:61.73%;--y:49.04%" src="assets/expertise/logo-7.jpg" width="240" height="240" alt="" loading="lazy" decoding="async" />
+                <svg viewBox="0 0 392 314" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M262 206v26l7-6.5 4.6 10.4 4.6-2-4.6-10.3 9.4-.6Z" fill="#fff" stroke="#111317" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="expertise-body">
+                <p class="expertise-number">03</p>
+                <h3><a class="expertise-link" href="services.html#logo-design">Logos &amp; business cards</a></h3>
+                <p class="expertise-description">We design logos and business cards that give your business a clear, recognisable look.</p>
+                <ul class="expertise-tags" aria-label="Logo and business card design services">
+                  <li>Logo design</li>
+                  <li>Business card design</li>
+                </ul>
+              </div>
+            </li>
+            <li class="expertise-card">
+              <div class="expertise-art expertise-art--social" aria-hidden="true">
+                <svg viewBox="0 0 392 314" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="134" y="28" width="124" height="258" rx="20" fill="#111317" stroke="#3a3d44" stroke-width="2"/>
+                </svg>
+                <img class="art-social-screen" src="assets/expertise/social-mage-ev.jpg" width="360" height="640" alt="" loading="lazy" decoding="async" />
+                <img class="art-social-thumb" src="assets/expertise/social-baby.jpg" width="360" height="640" alt="" loading="lazy" decoding="async" />
+                <svg viewBox="0 0 392 314" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="expertiseSocialShade" x1="0" y1="34" x2="0" y2="280" gradientUnits="userSpaceOnUse">
+                      <stop offset="0" stop-color="#000" stop-opacity=".35"/>
+                      <stop offset=".25" stop-color="#000" stop-opacity="0"/>
+                      <stop offset=".7" stop-color="#000" stop-opacity="0"/>
+                      <stop offset="1" stop-color="#000" stop-opacity=".55"/>
+                    </linearGradient>
+                  </defs>
+                  <rect x="140" y="34" width="112" height="246" rx="14" fill="url(#expertiseSocialShade)"/>
+                  <rect x="176" y="40" width="40" height="8" rx="4" fill="#000"/>
+                  <circle cx="156" cy="64" r="7" fill="#e8ecf1" stroke="var(--expertise-accent)" stroke-width="2.5"/>
+                  <rect x="168" y="59" width="44" height="4.5" rx="2.25" fill="#fff"/>
+                  <rect x="168" y="67" width="26" height="3.5" rx="1.75" fill="#fff" fill-opacity=".6"/>
+                  <path d="M236 211.5s-6.5-3.9-6.5-8.1a3.6 3.6 0 0 1 6.5-2.1 3.6 3.6 0 0 1 6.5 2.1c0 4.2-6.5 8.1-6.5 8.1Z" fill="#fff"/>
+                  <circle cx="236" cy="229" r="5.5" stroke="#fff" stroke-width="2"/>
+                  <rect x="150" y="266" width="92" height="3" rx="1.5" fill="#fff" fill-opacity=".35"/>
+                  <rect x="150" y="266" width="38" height="3" rx="1.5" fill="#fff"/>
+                  <rect x="40" y="92" width="80" height="34" rx="17" fill="#eef1f4"/>
+                  <path d="M60 117.5s-9-5.4-9-11.2a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.8-9 11.2-9 11.2Z" fill="var(--expertise-accent)"/>
+                  <rect x="76" y="102" width="30" height="5" rx="2.5" fill="#2a2d33"/>
+                  <rect x="76" y="111" width="18" height="4" rx="2" fill="#8a919b"/>
+                  <rect x="272" y="166" width="82" height="38" rx="19" fill="#eef1f4"/>
+                  <rect x="309" y="178" width="32" height="5" rx="2.5" fill="#2a2d33"/>
+                  <rect x="309" y="187" width="20" height="4" rx="2" fill="#8a919b"/>
+                </svg>
+              </div>
+              <div class="expertise-body">
+                <p class="expertise-number">04</p>
+                <h3><a class="expertise-link" href="services.html#social-media-management">Social media</a></h3>
+                <p class="expertise-description">We take care of the day-to-day social media for your business, so you can focus on running it.</p>
+                <ul class="expertise-tags" aria-label="Social media management services">
+                  <li>Content planning</li>
+                  <li>Post design</li>
+                  <li>Scheduling</li>
+                  <li>Publishing</li>
+                </ul>
+              </div>
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -441,7 +489,7 @@
         <div class="showcase-shell">
           <p class="home-section-eyebrow home-section-eyebrow--dark showcase-eyebrow">Selected work</p>
           <div class="showcase-heading">
-            <h2 id="showcase-title">Ideas, <span>out in the world.</span></h2>
+            <h2 id="showcase-title">Our latest <span>work.</span></h2>
             <p>Commercial films for Smartwigi and Terzol.</p>
           </div>
           <div class="showcase-track" id="showcase-track" tabindex="0" role="region" aria-label="Selected projects, scroll horizontally to explore" data-lenis-prevent>
@@ -1115,7 +1163,7 @@
               Let’s talk about your next project.
             </p>
             <a
-              href="#contact"
+              href="contact.html#booking"
               class="group inline-flex items-center gap-3 self-start border-b border-white/40 pb-2 text-xs font-medium uppercase tracking-[0.2em] transition-colors hover:border-white"
             >
               Book a first call
@@ -1130,237 +1178,29 @@
         </div>
       </section>
 
-      <!-- CONTACT -->
-      <section
-        id="contact"
-        class="relative overflow-hidden bg-[#020C15] py-24 md:py-32"
-        data-page="contact"
-      >
-        <div
-          class="absolute inset-x-0 top-0 h-px"
-          style="background:linear-gradient(90deg,transparent,rgba(36,90,134,0.6),transparent);"
-        ></div>
-        <div
-          aria-hidden="true"
-          class="absolute -bottom-40 left-1/2 h-[40rem] w-[60rem] -translate-x-1/2 rounded-full"
-          style="background:radial-gradient(ellipse,rgba(36,90,134,0.28) 0%,transparent 65%);"
-        ></div>
-        <div
-          class="relative mx-auto grid max-w-[1400px] gap-16 px-6 md:px-10 lg:grid-cols-12"
-        >
-          <div class="lg:col-span-5">
-            <p
-              data-reveal=""
-              class="mb-6 home-section-eyebrow home-section-eyebrow--dark"
-            >
-              Contact
-            </p>
-            <h2
-              data-reveal=""
-              class="mb-8 text-5xl font-bold uppercase leading-[0.92] tracking-tight sm:text-7xl"
-              style="font-family:'Syne',sans-serif;"
-            >
-              Tell people
-              <span class="font-light normal-case italic text-white/40">
-                what makes
-              </span>
-              you different.
-            </h2>
-            <p
-              data-reveal=""
-              class="mb-12 max-w-md text-base leading-relaxed text-white/55"
-            >
-              Tell us what you’re trying to do. We’ll reply within one business
-              day with a few questions or a clear next step.
-            </p>
-            <div data-reveal="" class="space-y-5">
-              <a
-                href="mailto:hello@quilledesigns.com"
-                class="group flex items-center gap-4 text-white/80 transition-colors hover:text-white"
-              >
-                <span
-                  class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 transition-all duration-300 group-hover:border-[#245A86] group-hover:bg-[#245A86]"
-                >
-                  <iconify-icon
-                    icon="solar:letter-linear"
-                    stroke-width="1.5"
-                    class="text-lg"
-                  ></iconify-icon>
-                </span>
-                <span class="text-sm">hello@quilledesigns.com</span>
-              </a>
-              <a
-                href="tel:+10000000000"
-                class="group flex items-center gap-4 text-white/80 transition-colors hover:text-white"
-              >
-                <span
-                  class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 transition-all duration-300 group-hover:border-[#245A86] group-hover:bg-[#245A86]"
-                >
-                  <iconify-icon
-                    icon="solar:phone-calling-linear"
-                    stroke-width="1.5"
-                    class="text-lg"
-                  ></iconify-icon>
-                </span>
-                <span class="text-sm">+1 (000) 000-0000</span>
-              </a>
-            </div>
+      <!-- CONTACT: routes visitors to the contact page -->
+      <section id="contact" class="home-contact" data-page="contact" aria-labelledby="home-contact-title">
+        <div class="home-contact-inner">
+          <div class="home-contact-head">
+            <p class="home-section-eyebrow home-section-eyebrow--dark">Contact</p>
+            <h2 id="home-contact-title">Let’s start<br /><span>your project.</span></h2>
+            <p class="home-contact-lead">Small job? Book an appointment right away. Bigger project? Tell us about it and we’ll get in touch.</p>
           </div>
-
-          <form
-            id="contactForm"
-            data-reveal=""
-            class="relative rounded-[4px] border border-white/[0.07] p-6 backdrop-blur-xl md:p-10 lg:col-span-6 lg:col-start-7"
-            style="background:linear-gradient(145deg,rgba(255,255,255,0.035),rgba(255,255,255,0.01));"
-            novalidate=""
-          >
-            <div class="grid gap-8 sm:grid-cols-2">
-              <label class="block">
-                <span class="text-xs uppercase tracking-[0.25em] text-white/40">
-                  Name
-                </span>
-                <input
-                  required=""
-                  name="name"
-                  type="text"
-                  placeholder="Jane Doe"
-                  class="mt-3 w-full border-0 border-b border-[#22272B] bg-transparent px-0 py-3 text-sm text-white placeholder-white/20 outline-none transition-colors duration-300 focus:border-[#4A86BD]"
-                />
-              </label>
-              <label class="block">
-                <span class="text-xs uppercase tracking-[0.25em] text-white/40">
-                  Email
-                </span>
-                <input
-                  required=""
-                  name="email"
-                  type="email"
-                  placeholder="jane@company.com"
-                  class="mt-3 w-full border-0 border-b border-[#22272B] bg-transparent px-0 py-3 text-sm text-white placeholder-white/20 outline-none transition-colors duration-300 focus:border-[#4A86BD]"
-                />
-              </label>
-            </div>
-
-            <fieldset class="mt-10">
-              <legend
-                class="mb-4 text-xs uppercase tracking-[0.25em] text-white/40"
-              >
-                I'm interested in
-              </legend>
-              <div class="flex flex-wrap gap-2" data-chips="multi">
-                <button
-                  type="button"
-                  aria-pressed="false"
-                  class="rounded-full border border-white/10 px-4 py-2 text-xs text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white aria-pressed:border-[#245A86] aria-pressed:bg-[#245A86] aria-pressed:text-white"
-                >
-                  Promo production
-                </button>
-                <button
-                  type="button"
-                  aria-pressed="false"
-                  class="rounded-full border border-white/10 px-4 py-2 text-xs text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white aria-pressed:border-[#245A86] aria-pressed:bg-[#245A86] aria-pressed:text-white"
-                >
-                  Poster design
-                </button>
-                <button
-                  type="button"
-                  aria-pressed="false"
-                  class="rounded-full border border-white/10 px-4 py-2 text-xs text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white aria-pressed:border-[#245A86] aria-pressed:bg-[#245A86] aria-pressed:text-white"
-                >
-                  Logo design
-                </button>
-                <button
-                  type="button"
-                  aria-pressed="false"
-                  class="rounded-full border border-white/10 px-4 py-2 text-xs text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white aria-pressed:border-[#245A86] aria-pressed:bg-[#245A86] aria-pressed:text-white"
-                >
-                  Business card design
-                </button>
-                <button
-                  type="button"
-                  aria-pressed="false"
-                  class="rounded-full border border-white/10 px-4 py-2 text-xs text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white aria-pressed:border-[#245A86] aria-pressed:bg-[#245A86] aria-pressed:text-white"
-                >
-                  Social media management
-                </button>
-              </div>
-            </fieldset>
-
-            <fieldset class="mt-10">
-              <legend
-                class="mb-4 text-xs uppercase tracking-[0.25em] text-white/40"
-              >
-                Budget
-              </legend>
-              <div class="flex flex-wrap gap-2" data-chips="single">
-                <button
-                  type="button"
-                  aria-pressed="false"
-                  class="rounded-[4px] border border-white/10 px-4 py-2 text-xs text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white aria-pressed:border-[#245A86] aria-pressed:bg-[#245A86]/25 aria-pressed:text-white"
-                >
-                  &lt; $5k
-                </button>
-                <button
-                  type="button"
-                  aria-pressed="false"
-                  class="rounded-[4px] border border-white/10 px-4 py-2 text-xs text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white aria-pressed:border-[#245A86] aria-pressed:bg-[#245A86]/25 aria-pressed:text-white"
-                >
-                  $5k to $15k
-                </button>
-                <button
-                  type="button"
-                  aria-pressed="false"
-                  class="rounded-[4px] border border-white/10 px-4 py-2 text-xs text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white aria-pressed:border-[#245A86] aria-pressed:bg-[#245A86]/25 aria-pressed:text-white"
-                >
-                  $15k to $40k
-                </button>
-                <button
-                  type="button"
-                  aria-pressed="false"
-                  class="rounded-[4px] border border-white/10 px-4 py-2 text-xs text-white/60 transition-all duration-300 hover:border-white/30 hover:text-white aria-pressed:border-[#245A86] aria-pressed:bg-[#245A86]/25 aria-pressed:text-white"
-                >
-                  $40k+
-                </button>
-              </div>
-            </fieldset>
-
-            <label class="mt-10 block">
-              <span class="text-xs uppercase tracking-[0.25em] text-white/40">
-                Project details
-              </span>
-              <textarea
-                name="message"
-                rows="3"
-                placeholder="What are you looking to achieve?"
-                class="mt-3 w-full resize-none border-0 border-b border-[#22272B] bg-transparent px-0 py-3 text-sm text-white placeholder-white/20 outline-none transition-colors duration-300 focus:border-[#4A86BD]"
-              ></textarea>
-            </label>
-
-            <div
-              class="mt-10 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center"
-            >
-              <p
-                id="formStatus"
-                class="text-xs text-white/40"
-                aria-live="polite"
-              >
-                We never share your details.
-              </p>
-              <button
-                type="submit"
-                data-magnetic=""
-                class="group inline-flex items-center gap-3 rounded-[4px] px-8 py-4 text-xs font-medium uppercase tracking-[0.2em] text-white transition-shadow duration-300 hover:shadow-[0_0_64px_rgba(36,90,134,0.75)]"
-                style="background:linear-gradient(135deg,#2E6DA4 0%,#245A86 45%,#123555 100%);box-shadow:0 0 40px rgba(36,90,134,0.45);"
-              >
-                <span id="submitLabel">Send enquiry</span>
-                <iconify-icon
-                  icon="solar:plain-2-linear"
-                  stroke-width="1.5"
-                  class="text-base transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-1"
-                ></iconify-icon>
-              </button>
-            </div>
-          </form>
+          <ul class="home-contact-options">
+            <li class="home-contact-option">
+              <p class="home-contact-kicker">01 · Small job</p>
+              <h3>Logo, poster or business card</h3>
+              <p>Choose a day and time that suit you — your appointment is confirmed straight away.</p>
+              <a class="home-contact-button" href="contact.html#booking">Book an appointment <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+            </li>
+            <li class="home-contact-option">
+              <p class="home-contact-kicker">02 · Bigger project</p>
+              <h3>Commercials or social media</h3>
+              <p>Tell us what you have in mind and we’ll contact you to plan it together.</p>
+              <a class="home-contact-button home-contact-button--light" href="contact.html#enquiry">Send an enquiry <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+            </li>
+          </ul>
+          <p class="home-contact-mail"><a href="mailto:hello@quilledesigns.com">hello@quilledesigns.com</a><span aria-hidden="true">·</span><span>Mon to Fri, 9:00 to 18:00</span></p>
         </div>
       </section>
     </main>
@@ -1369,9 +1209,9 @@
   <div class="site-footer-shell">
     <div class="site-footer-grid">
       <div class="site-footer-about"><a href="#top" class="site-footer-wordmark" aria-label="Quille Designs home"><span>Quille</span><span>Designs</span></a><p>We help businesses build clearer brands and better campaigns.</p></div>
-      <nav class="site-footer-studio" aria-label="Studio"><h2>Studio</h2><ul><li><a href="#services">Services</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="#process">Process</a></li><li><a href="#results">Results</a></li><li><a href="#testimonials">Clients</a></li></ul></nav>
-      <nav class="site-footer-services" aria-label="Services"><h2>Services</h2><ul><li><a href="#services">Promo production</a></li><li><a href="#services">Poster design</a></li><li><a href="#services">Logo &amp; business card design</a></li><li><a href="#services">Social media management</a></li></ul></nav>
-      <nav class="site-footer-contact" aria-label="Contact"><h2>Contact</h2><ul><li><a href="mailto:hello@quilledesigns.com">hello@quilledesigns.com</a></li><li><a href="#contact">Start a project</a></li><li class="site-hours">Mon to Fri, 9am to 6pm</li></ul></nav>
+      <nav class="site-footer-studio" aria-label="Studio"><h2>Studio</h2><ul><li><a href="services.html">Services</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="#process">Process</a></li><li><a href="#results">Results</a></li><li><a href="#testimonials">Clients</a></li></ul></nav>
+      <nav class="site-footer-services" aria-label="Services"><h2>Services</h2><ul><li><a href="services.html#promo-production">Promo production</a></li><li><a href="services.html#poster-design">Poster design</a></li><li><a href="services.html#logo-design">Logo design</a></li><li><a href="services.html#business-card-design">Business card design</a></li><li><a href="services.html#social-media-management">Social media management</a></li></ul></nav>
+      <nav class="site-footer-contact" aria-label="Contact"><h2>Contact</h2><ul><li><a href="mailto:hello@quilledesigns.com">hello@quilledesigns.com</a></li><li><a href="contact.html">Start a project</a></li><li class="site-hours">Mon to Fri, 9am to 6pm</li></ul></nav>
     </div>
     <div class="site-footer-bottom"><p>© <span id="year">2026</span> Quille Designs. All rights reserved.</p><a href="#top" class="site-back-top">Top <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V4m-7 7 7-7 7 7"/></svg></a></div>
   </div>
@@ -1462,39 +1302,7 @@
         }
       })();
 
-      document.querySelectorAll('.service-item').forEach(item => {
-        item.addEventListener('toggle', () => {
-          if (window.ScrollTrigger) ScrollTrigger.refresh();
-        });
-      });
-
       const closeMenu = () => window.quilleSite?.closeMenu();
-
-      /* ---------- Chips + form ---------- */
-      document.querySelectorAll('[data-chips]').forEach(group => {
-        const single = group.dataset.chips === 'single';
-        group.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => {
-          const on = btn.getAttribute('aria-pressed') === 'true';
-          if(single) group.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed','false'));
-          btn.setAttribute('aria-pressed', single ? 'true' : String(!on));
-        }));
-      });
-      const form = document.getElementById('contactForm');
-      const status = document.getElementById('formStatus');
-      form.addEventListener('submit', e => {
-        e.preventDefault();
-        const name = form.name.value.trim(), email = form.email.value.trim();
-        if(!name || !/^\S+@\S+\.\S+$/.test(email)){
-          status.textContent = 'Please add your name and a valid email.';
-          status.className = 'text-xs text-[#7FB2E0]';
-          return;
-        }
-        document.getElementById('submitLabel').textContent = 'Sent';
-        status.textContent = `Thanks ${name.split(' ')[0]}. We'll be in touch within one business day.`;
-        status.className = 'text-xs text-white/80';
-        form.reset();
-        form.querySelectorAll('[aria-pressed]').forEach(b => b.setAttribute('aria-pressed','false'));
-      });
 
       /* ---------- Reduced motion fallback ---------- */
       if(reduceMotion){

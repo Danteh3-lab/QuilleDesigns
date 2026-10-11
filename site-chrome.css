@@ -1,4 +1,4 @@
-/* Shared homepage and portfolio header/footer; brand colors live in brandmark.css. */
+/* Shared homepage, portfolio and services header/footer; brand colors live in brandmark.css. */
 .site-header, .site-footer, .site-mobile-menu { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 .site-header *, .site-footer *, .site-mobile-menu * { box-sizing: border-box; }
 .site-header a, .site-footer a, .site-mobile-menu a { color: inherit; text-decoration: none; }

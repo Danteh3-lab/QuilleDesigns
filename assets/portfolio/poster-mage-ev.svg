@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="70" y1="40" x2="1110" y2="886" gradientUnits="userSpaceOnUse"><stop stop-color="#193B58"/><stop offset=".55" stop-color="#0B1E30"/><stop offset="1" stop-color="#02070D"/></linearGradient>
+    <linearGradient id="car" x1="580" y1="382" x2="786" y2="551" gradientUnits="userSpaceOnUse"><stop stop-color="#A9C8E0"/><stop offset="1" stop-color="#477CA6"/></linearGradient>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h1200v900H0z"/>
+  <path d="M628 177 1027 701M808 177 409 701" stroke="#9BBBD5" stroke-opacity=".13"/>
+  <path d="M97 691h1006M160 646h880" stroke="#AFC8DA" stroke-opacity=".24"/>
+  <path d="m501 496 54-100c9-17 26-27 45-27h149c21 0 39 12 48 31l42 96 47 20c14 6 23 20 23 36v39H417v-41c0-16 10-31 25-37l59-17Z" fill="url(#car)" fill-opacity=".82"/>
+  <path d="m583 402-41 85h259l-37-83c-4-9-13-15-23-15H604c-9 0-17 5-21 13Z" fill="#0D2336"/>
+  <path d="M474 516h395" stroke="#D7E4ED" stroke-opacity=".68" stroke-width="3"/>
+  <circle cx="520" cy="580" r="37" fill="#07111B" stroke="#B8D0E3" stroke-width="8"/><circle cx="819" cy="580" r="37" fill="#07111B" stroke="#B8D0E3" stroke-width="8"/>
+  <text x="81" y="283" fill="#F4F7F9" font-family="Arial,sans-serif" font-size="86" font-weight="700" letter-spacing="-5">Mage EV</text>
+  <text x="88" y="350" fill="#9EBBD3" font-family="Arial,sans-serif" font-size="47" letter-spacing="1">Financing</text>
+</svg>

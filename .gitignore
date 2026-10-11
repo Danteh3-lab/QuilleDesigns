@@ -1,0 +1,12 @@
+node_modules/
+build/
+.local-state/
+.cms-backup/
+.wrangler/
+.dev.vars*
+.env*
+wrangler.production.jsonc
+test-results/
+playwright-report/
+# Video masters over 100 MB cannot be stored on GitHub; the site streams them from R2.
+assets/Material/*.mp4

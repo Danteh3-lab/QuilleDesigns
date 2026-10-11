@@ -1,0 +1,24 @@
+{
+  "profile": "product-admin",
+  "sourceRoots": ["admin"],
+  "locale": "nl-NL",
+  "canonicalMap": "UX-CONTRACT.md",
+  "requiredCapabilities": [
+    "Select/Listbox",
+    "Form",
+    "Scrollbar",
+    "Toast",
+    "CRUD"
+  ],
+  "ownership": { "Select/Listbox": "native" },
+  "requiredCommands": ["typecheck", "unit", "e2e"],
+  "commands": {
+    "typecheck": "npm run check",
+    "unit": "npm test",
+    "e2e": "npm run test:browser"
+  },
+  "evidence": {
+    "crudFullFlow": "tests/browser/cms.spec.mjs",
+    "failurePaths": "tests/cms.test.ts"
+  }
+}

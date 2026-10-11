@@ -5,7 +5,7 @@
   const menuButton = document.getElementById('menuBtn');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const portfolio = document.body.classList.contains('portfolio-gallery');
-  const page = portfolio ? 'portfolio' : 'home';
+  const page = document.body.dataset.sitePage || (portfolio ? 'portfolio' : 'home');
   document.querySelectorAll('[data-nav-page]').forEach(link => {
     if (link.dataset.navPage === page) link.setAttribute('aria-current', 'page');
   });

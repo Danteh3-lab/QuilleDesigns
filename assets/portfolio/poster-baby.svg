@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="70" y1="36" x2="1110" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#152D43"/><stop offset="1" stop-color="#07111B"/></linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="matrix(0 448 -480 0 877 325)" gradientUnits="userSpaceOnUse"><stop stop-color="#477CA6" stop-opacity=".54"/><stop offset="1" stop-color="#477CA6" stop-opacity="0"/></radialGradient>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h1200v900H0z"/><path fill="url(#glow)" d="M0 0h1200v900H0z"/>
+  <path d="M740 171c147 4 246 83 246 202 0 166-193 266-363 211-121-39-177-166-120-274 42-79 131-142 237-139Z" stroke="#A7C4DC" stroke-opacity=".32" stroke-width="2"/>
+  <path d="M737 218c107 1 183 58 183 147 0 121-143 196-268 156-91-29-131-122-88-202 30-58 97-102 173-101Z" stroke="#A7C4DC" stroke-opacity=".23"/>
+  <path d="M731 266c69 2 116 37 116 91 0 78-93 124-174 99-56-17-81-76-55-125 20-38 64-66 113-65Z" fill="#A7C4DC" fill-opacity=".13"/>
+  <path d="M879 95v654M116 704h968" stroke="#B8CADD" stroke-opacity=".15"/>
+  <text x="82" y="543" fill="#F4F7F9" font-family="Arial,sans-serif" font-size="172" font-weight="700" letter-spacing="-12">Baby</text>
+  <circle cx="1006" cy="148" r="5" fill="#8DB6D8"/><path d="m1006 132 1 32m-16-16h32" stroke="#8DB6D8" stroke-opacity=".55"/>
+</svg>

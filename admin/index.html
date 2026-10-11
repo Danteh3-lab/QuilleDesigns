@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Quille Designs — Portfolio beheer</title>
+    <link rel="icon" type="image/png" href="/assets/branding/favicon.png?v=4" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/brandmark.css" />
+    <link rel="stylesheet" href="/portfolio-gallery.css" />
+    <link rel="stylesheet" href="/admin/admin.css" />
+    <script src="/admin/admin.js" defer></script>
+  </head>
+  <body class="cms-admin">
+    <header class="admin-header">
+      <a
+        class="admin-brand site-brandmark-link"
+        href="/admin"
+        aria-label="Quille Designs"
+      >
+        <span class="site-brandmark">
+          <img
+            src="/assets/branding/quille-designs.png"
+            width="1774"
+            height="887"
+            alt=""
+            fetchpriority="high"
+          />
+        </span>
+      </a>
+      <div class="header-actions">
+        <button type="button" disabled id="languageButton">EN</button
+        ><a href="/admin/bookings" data-label="Appointments &amp; enquiries"
+          >Afspraken &amp; aanvragen</a
+        ><a
+          href="/portfolio.html"
+          target="_blank"
+          rel="noopener"
+          data-label="View portfolio"
+          >Portfolio bekijken</a
+        ><a href="/cdn-cgi/access/logout" data-label="Sign out">Uitloggen</a>
+      </div>
+    </header>
+    <main class="admin-shell">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow" data-label="Studio content">Studio content</p>
+          <h1 data-label="Portfolio manager">Portfolio beheer</h1>
+          <p id="signedIn" class="muted"></p>
+        </div>
+        <button
+          type="button"
+          disabled
+          class="primary"
+          id="newProject"
+          data-label="Add project"
+        >
+          Project toevoegen
+        </button>
+      </div>
+      <div id="errorBanner" class="error-banner" role="alert" hidden>
+        <p id="errorText"></p>
+        <button type="button" disabled id="retryButton" data-label="Reload">
+          Opnieuw laden</button
+        ><a href="/admin" id="loginLink" data-label="Sign in again" hidden
+          >Opnieuw inloggen</a
+        >
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+      <section id="listPanel" class="panel">
+        <div class="panel-heading">
+          <h2 data-label="Projects">Projecten</h2>
+          <label class="group-label"
+            ><span data-label="Gallery row">Galerijrij</span
+            ><select id="groupFilter">
+              <option value="all" data-label="All projects">
+                Alle projecten
+              </option>
+              <option value="landscape" data-label="Landscape films">
+                Liggende films
+              </option>
+              <option value="portrait" data-label="Portrait films">
+                Staande films
+              </option>
+              <option value="logo" data-label="Brand identities">
+                Merkidentiteiten
+              </option>
+            </select></label
+          >
+        </div>
+        <div id="projectList" class="project-list" aria-busy="true"></div>
+        <div class="pagination">
+          <button
+            type="button"
+            disabled
+            id="previousPage"
+            data-label="Previous"
+          >
+            Vorige
+          </button>
+          <p id="pageStatus"></p>
+          <button type="button" disabled id="nextPage" data-label="Next">
+            Volgende
+          </button>
+        </div>
+      </section>
+      <section id="editPanel" class="panel" hidden>
+        <div class="panel-heading">
+          <h2 id="editorTitle"></h2>
+          <button type="button" disabled id="closeEditor" data-label="Cancel">
+            Annuleren
+          </button>
+        </div>
+        <form id="projectForm" novalidate>
+          <div class="form-grid">
+            <label class="wide"
+              ><span data-label="Project title">Projecttitel</span
+              ><input name="title" maxlength="160" required /><span
+                class="field-error"
+                data-error="title"
+              ></span
+            ></label>
+            <label
+              ><span data-label="Category">Categorie</span
+              ><select name="category">
+                <option value="video" data-label="Video">Video</option>
+                <option value="logo" data-label="Logo">Logo</option>
+              </select></label
+            >
+            <label id="orientationField"
+              ><span data-label="Video format">Videoformaat</span
+              ><select name="orientation">
+                <option value="landscape" data-label="Landscape">
+                  Liggend
+                </option>
+                <option value="portrait" data-label="Portrait">Staand</option>
+              </select></label
+            >
+            <div class="wide upload-field">
+              <label for="posterURL" data-label="Poster / artwork URL"
+                >Poster / illustratie URL</label
+              ><input
+                id="posterURL"
+                name="poster_url"
+                required
+                maxlength="2048"
+              /><span class="field-error" data-error="poster_url"></span
+              ><label class="file-picker"
+                ><span data-label="Upload artwork">Illustratie uploaden</span
+                ><input
+                  type="file"
+                  id="posterFile"
+                  accept="image/jpeg,image/png,image/webp"
+              /></label>
+              <p class="help" data-label="JPEG, PNG or WebP. Maximum 20 MiB.">
+                JPEG, PNG of WebP. Maximaal 20 MiB.
+              </p>
+              <div id="videoCoverControls">
+                <p
+                  class="help"
+                  data-label="Video uploads create a cover automatically when this field is empty. You can replace it with your own image."
+                >
+                  Video-uploads maken automatisch een omslag als dit veld leeg
+                  is. Je kunt deze vervangen door je eigen afbeelding.
+                </p>
+                <button
+                  type="button"
+                  disabled
+                  id="useVideoCover"
+                  data-label="Use video thumbnail"
+                >
+                  Videominiatuur gebruiken
+                </button>
+              </div>
+              <img id="posterPreview" class="poster-preview" alt="" hidden />
+            </div>
+            <div class="wide upload-field">
+              <label for="mediaURL" data-label="Media URL">Media URL</label
+              ><input
+                id="mediaURL"
+                name="media_url"
+                required
+                maxlength="2048"
+              /><span class="field-error" data-error="media_url"></span
+              ><label class="file-picker"
+                ><span data-label="Upload media">Media uploaden</span
+                ><input
+                  type="file"
+                  id="mediaFile"
+                  accept="video/mp4,video/webm,image/jpeg,image/png,image/webp"
+              /></label>
+              <p
+                class="help"
+                data-label="MP4 / WebM up to 2 GiB, or artwork up to 20 MiB. Direct HTTPS file URLs are supported."
+              >
+                MP4 / WebM tot 2 GiB, of illustraties tot 20 MiB. Directe
+                HTTPS-bestandslinks zijn toegestaan.
+              </p>
+            </div>
+            <div id="uploadPanel" class="wide upload-progress" hidden>
+              <p id="uploadName"></p>
+              <progress id="uploadProgress" max="100" value="0"></progress>
+              <p id="uploadMessage" role="status"></p>
+              <div class="button-row">
+                <button
+                  type="button"
+                  disabled
+                  id="retryUpload"
+                  data-label="Retry upload"
+                  hidden
+                >
+                  Upload opnieuw proberen</button
+                ><button
+                  type="button"
+                  disabled
+                  id="cancelUpload"
+                  data-label="Cancel upload"
+                >
+                  Upload annuleren
+                </button>
+              </div>
+            </div>
+            <label class="wide"
+              ><span data-label="Alt text">Alt-tekst</span
+              ><textarea
+                class="resize-none"
+                name="alt_text"
+                required
+                maxlength="600"
+                rows="3"
+              ></textarea
+              ><span class="field-error" data-error="alt_text"></span
+            ></label>
+            <label
+              ><span data-label="Caption">Bijschrift</span
+              ><input name="caption" maxlength="160" /></label
+            ><label
+              ><span data-label="Display order">Weergavevolgorde</span
+              ><input
+                name="display_order"
+                type="number"
+                min="0"
+                max="1000000"
+                step="1"
+                required /><span
+                class="field-error"
+                data-error="display_order"
+              ></span
+            ></label>
+            <label class="wide"
+              ><span data-label="Description">Omschrijving</span
+              ><textarea
+                class="resize-none"
+                name="description"
+                maxlength="1000"
+                rows="3"
+              ></textarea>
+            </label>
+            <label
+              ><span data-label="Artwork width">Breedte illustratie</span
+              ><input
+                name="width"
+                type="number"
+                min="1"
+                max="20000"
+                required /><span
+                class="field-error"
+                data-error="width"
+              ></span></label
+            ><label
+              ><span data-label="Artwork height">Hoogte illustratie</span
+              ><input
+                name="height"
+                type="number"
+                min="1"
+                max="20000"
+                required /><span class="field-error" data-error="height"></span
+            ></label>
+            <label class="checkbox wide"
+              ><input name="published" type="checkbox" /><span
+                data-label="Published on the website"
+                >Gepubliceerd op de website</span
+              ></label
+            >
+            <p
+              class="help wide"
+              data-label="Unpublishing removes the project from the website. Existing public media links remain accessible."
+            >
+              Na het intrekken verdwijnt het project van de website. Bestaande
+              openbare medialinks blijven toegankelijk.
+            </p>
+          </div>
+          <div class="form-actions">
+            <button
+              type="submit"
+              class="primary"
+              id="saveProject"
+              data-label="Save project"
+            >
+              Project opslaan</button
+            ><button
+              type="button"
+              disabled
+              id="discardProject"
+              data-label="Cancel"
+            >
+              Annuleren
+            </button>
+          </div>
+        </form>
+      </section>
+      <section id="featuredPanel" class="panel">
+        <div class="panel-heading">
+          <h2 data-label="Homepage videos">Video’s op de homepage</h2>
+        </div>
+        <p
+          class="muted"
+          data-label="Choose two different published videos. Replace a featured video here before unpublishing or deleting it."
+        >
+          Kies twee verschillende gepubliceerde video’s. Vervang een uitgelichte
+          video hier voordat je deze intrekt of verwijdert.
+        </p>
+        <form id="featuredForm" novalidate>
+          <div class="featured-grid">
+            <label
+              ><span data-label="First featured card"
+                >Eerste uitgelichte kaart</span
+              ><select id="featuredOne" required></select></label
+            ><label
+              ><span data-label="Second featured card"
+                >Tweede uitgelichte kaart</span
+              ><select id="featuredTwo" required></select
+            ></label>
+          </div>
+          <p id="featuredError" class="field-error" role="alert"></p>
+          <button
+            type="submit"
+            class="primary"
+            id="saveFeatured"
+            data-label="Save homepage videos"
+          >
+            Homepage video’s opslaan
+          </button>
+        </form>
+      </section>
+    </main>
+    <dialog
+      id="confirmDialog"
+      aria-labelledby="confirmTitle"
+      aria-describedby="confirmMessage"
+    >
+      <h2 id="confirmTitle"></h2>
+      <p id="confirmMessage"></p>
+      <div class="button-row">
+        <button
+          type="button"
+          disabled
+          id="confirmCancel"
+          autofocus
+          data-label="Cancel"
+        >
+          Annuleren</button
+        ><button
+          type="button"
+          disabled
+          id="confirmAction"
+          class="danger"
+        ></button>
+      </div>
+    </dialog>
+  </body>
+</html>

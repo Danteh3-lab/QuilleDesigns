@@ -2,12 +2,39 @@
   'use strict';
 
   const englishToDutch = new Map(Object.entries({
+    "Services | Quille Designs": "Diensten | Quille Designs",
+    "Commercials, posters, logos, business cards and social media management for your business. Explore the services of Quille Designs.": "Reclames, posters, logo’s, visitekaartjes en socialmediabeheer voor je bedrijf. Bekijk de diensten van Quille Designs.",
+    "Skip to services": "Ga naar de diensten",
+    "Make your brand": "Maak je merk",
+    "impossible to miss.": "onmogelijk te missen.",
+    "Commercials, posters, logos, business cards and social media. Choose what your business needs — we keep every piece recognisable.": "Reclames, posters, logo’s, visitekaartjes en social media. Kies wat je bedrijf nodig heeft — wij zorgen voor een herkenbaar geheel.",
+    "01 — Video": "01 — Video",
+    "02 — Print": "02 — Drukwerk",
+    "03 — Identity": "03 — Identiteit",
+    "04 — Stationery": "04 — Huisstijldrukwerk",
+    "05 — Social": "05 — Social media",
+    "Promo": "Reclame",
+    "production": "productie",
+    "Poster": "Poster",
+    "design": "ontwerp",
+    "Logo": "Logo",
+    "Business card": "Visitekaartje",
+    "Business cards that give your business a clear, recognisable look.": "Visitekaartjes die je bedrijf een duidelijke, herkenbare uitstraling geven.",
+    "Business card design services": "Diensten voor visitekaartjesontwerp",
+    "Logo design services": "Diensten voor logo-ontwerp",
+    "A consistent visual identity": "Een herkenbare visuele identiteit",
+    "Your next project": "Je volgende project",
+    "Combine services into one campaign.": "Combineer diensten tot één campagne.",
+    "Combine services": "Combineer diensten",
+    "into one campaign.": "tot één campagne.",
+    "Tell us what your business needs. We’ll help you choose a direction.": "Vertel ons wat je bedrijf nodig heeft. We helpen je een richting te kiezen.",
     'Quille Designs | Marketing & Design Studio': 'Quille Designs | Marketing- en ontwerpbureau',
     'Our work | Quille Designs': 'Ons werk | Quille Designs',
     'Quille Designs is an independent creative studio. We create commercials, posters, logos and business cards, and manage social media for businesses.': 'Quille Designs is een onafhankelijke creatieve studio. We maken reclames, posters, logo’s en visitekaartjes en beheren social media voor bedrijven.',
     'We create commercials, posters, logos and business cards for businesses, and manage their social media.': 'We maken reclames, posters, logo’s en visitekaartjes voor bedrijven en beheren hun social media.',
     'Explore brand identities and films by Quille Designs. Browse selected projects and view the artwork in full.': 'Bekijk het werk van Quille Designs: merkidentiteiten, films en volledige projectbeelden.',
     'Services': 'Diensten',
+    'Our expertise': 'Onze expertise',
     'Start a project': 'Project starten',
     'Book an appointment': 'Afspraak boeken',
     'About us': 'Over ons',
@@ -80,6 +107,63 @@
     'management': 'beheer',
     'Post design': 'Postontwerp',
     'Scheduling': 'Inplannen',
+    'All services': 'Alle diensten',
+    'Logos & business cards': 'Logo’s & visitekaartjes',
+    'Skip to the booking form': 'Ga naar het boekingsformulier',
+    'Let’s start': 'Laten we je',
+    'your project.': 'project starten.',
+    'Small job? Book an appointment right away. Bigger project? Tell us about it and we’ll get in touch.': 'Kleine opdracht? Maak meteen een afspraak. Groter project? Vertel ons erover en we nemen contact met je op.',
+    'Phone': 'Telefoon',
+    'Hours': 'Openingstijden',
+    'Mon to Fri, 9:00 to 18:00': 'Ma t/m vr, 9:00 tot 18:00',
+    '01 · Small job': '01 · Kleine opdracht',
+    'For a logo, poster or business card. Choose a day and time that suit you — your appointment is confirmed straight away.': 'Voor een logo, poster of visitekaartje. Kies een dag en tijd die jou uitkomen — je afspraak staat meteen vast.',
+    'Choose a time': 'Kies een tijd',
+    '02 · Bigger project': '02 · Groter project',
+    'Send an enquiry': 'Aanvraag sturen',
+    'For commercials and social media management. Tell us what you have in mind and we’ll contact you to plan it together.': 'Voor reclames en socialmediabeheer. Vertel ons wat je in gedachten hebt, dan nemen we contact op om het samen te plannen.',
+    'Describe your project': 'Beschrijf je project',
+    'Small job': 'Kleine opdracht',
+    'Appointments last 30 minutes, Monday to Friday between 9:00 and 18:00 (Suriname time).': 'Een afspraak duurt 30 minuten, maandag tot en met vrijdag tussen 9:00 en 18:00 (Surinaamse tijd).',
+    'What do you need?': 'Wat heb je nodig?',
+    'Choose a day': 'Kies een dag',
+    'Your details': 'Je gegevens',
+    'How should we reach you?': 'Hoe kunnen we je bereiken?',
+    'Phone call': 'Telefonisch',
+    'Video call': 'Videogesprek',
+    'Anything we should know? (optional)': 'Moeten we nog iets weten? (optioneel)',
+    'Bigger project': 'Groter project',
+    'For commercials and social media management. The more you tell us, the better we can prepare.': 'Voor reclames en socialmediabeheer. Hoe meer je vertelt, hoe beter we ons kunnen voorbereiden.',
+    'What is it about?': 'Waar gaat het om?',
+    'Something else': 'Iets anders',
+    'Your project': 'Je project',
+    'Tell us about your project': 'Vertel ons over je project',
+    'Phone (optional)': 'Telefoon (optioneel)',
+    'Company (optional)': 'Bedrijf (optioneel)',
+    'What happens next': 'Wat er daarna gebeurt',
+    'We read your enquiry': 'We lezen je aanvraag',
+    'Your message goes straight to our team.': 'Je bericht komt direct bij ons team terecht.',
+    'We get in touch': 'We nemen contact op',
+    'By email or phone, to talk through your goals.': 'Per e-mail of telefoon, om je doelen door te nemen.',
+    'We plan it together': 'We plannen het samen',
+    'You know exactly what we will make and when.': 'Je weet precies wat we maken en wanneer.',
+    'Book an appointment for a logo, poster or business card, or send an enquiry for commercials and social media. Contact Quille Designs.': 'Maak een afspraak voor een logo, poster of visitekaartje, of stuur een aanvraag voor reclames en social media. Neem contact op met Quille Designs.',
+    'How can we help?': 'Hoe kunnen we helpen?',
+    'Small jobs': 'Kleine opdrachten',
+    'Bigger projects': 'Grotere projecten',
+    'Contact options': 'Contactopties',
+    'Earlier days': 'Eerdere dagen',
+    'Later days': 'Latere dagen',
+    'What do you want to make, for whom, and when should it be ready?': 'Wat wil je laten maken, voor wie, en wanneer moet het klaar zijn?',
+    'Logo, poster or business card': 'Logo, poster of visitekaartje',
+    'Choose a day and time that suit you — your appointment is confirmed straight away.': 'Kies een dag en tijd die jou uitkomen — je afspraak staat meteen vast.',
+    'Commercials or social media': 'Reclames of social media',
+    'Tell us what you have in mind and we’ll contact you to plan it together.': 'Vertel ons wat je in gedachten hebt, dan nemen we contact op om het samen te plannen.',
+    'Your appointment': 'Je afspraak',
+    'Service': 'Dienst',
+    'Day': 'Dag',
+    'Time': 'Tijd',
+    'Duration': 'Duur',
     'Choose a service to see what we can do.': 'Kies een dienst en bekijk wat we voor je kunnen doen.',
     'Selected work': 'Uitgelicht werk',
     'Ideas,': 'Ideeën,',
@@ -191,6 +275,10 @@
     'See selected work': 'Bekijk geselecteerd werk',
     'In the collection': 'In de collectie',
     'Selected film': 'Geselecteerde film',
+    'Selected commercial films.': 'Geselecteerde reclamefilms.',
+    'No projects are currently published.': 'Er zijn momenteel geen projecten gepubliceerd.',
+    'Projects are temporarily unavailable. Please try again later.': 'Projecten zijn tijdelijk niet beschikbaar. Probeer het later opnieuw.',
+    'Projects unavailable': 'Projecten niet beschikbaar',
     'Design that tells a story.': 'Ontwerp dat een verhaal vertelt.',
     'Selected projects': 'Geselecteerde projecten',
     'Logo identities': 'Logo-identiteiten',
@@ -327,12 +415,20 @@
 
     let match;
     if (language === 'nl') {
+      if ((match = text.match(/^Commercial films for (.+) and (.+)\.$/))) return `Reclamefilms voor ${match[1]} en ${match[2]}.`;
+      if ((match = text.match(/^Watch (.+) video$/))) return `Bekijk de video van ${match[1]}`;
+      if ((match = text.match(/^Play (.+) commercial$/))) return `Speel de reclamefilm van ${match[1]} af`;
+      if ((match = text.match(/^View (.+) project$/))) return `Bekijk het project van ${match[1]}`;
       if ((match = text.match(/^Thanks (.+)\. We'll be in touch within one business day\.$/))) return `Bedankt, ${match[1]}. We nemen binnen één werkdag contact met je op.`;
       if ((match = text.match(/^(\d+) projects?$/i))) return `${match[1]} ${match[1] === '1' ? 'project' : 'projecten'}`;
       if ((match = text.match(/^View (\d+) of (\d+)$/))) return `Weergave ${match[1]} van ${match[2]}`;
       if ((match = text.match(/^View complete (.+) poster$/))) return `Volledige poster van ${match[1]} bekijken`;
       if ((match = text.match(/^(.+) video$/))) return `Video van ${match[1]}`;
     } else {
+      if ((match = text.match(/^Reclamefilms voor (.+) en (.+)\.$/))) return `Commercial films for ${match[1]} and ${match[2]}.`;
+      if ((match = text.match(/^Bekijk de video van (.+)$/))) return `Watch ${match[1]} video`;
+      if ((match = text.match(/^Speel de reclamefilm van (.+) af$/))) return `Play ${match[1]} commercial`;
+      if ((match = text.match(/^Bekijk het project van (.+)$/))) return `View ${match[1]} project`;
       if ((match = text.match(/^Bedankt, (.+)\. We nemen binnen één werkdag contact met je op\.$/))) return `Thanks ${match[1]}. We'll be in touch within one business day.`;
       if ((match = text.match(/^(\d+) projecten?$/i))) return `${match[1]} ${match[1] === '1' ? 'project' : 'projects'}`;
       if ((match = text.match(/^Weergave (\d+) van (\d+)$/))) return `View ${match[1]} of ${match[2]}`;
@@ -344,7 +440,7 @@
 
   function shouldSkipText(node) {
     const parent = node.parentElement;
-    return !parent || !!parent.closest('script,style,#scrubText,.showcase-art,.showcase-mockup,[data-marquee]');
+    return !parent || !!parent.closest('script,style,#scrubText,.showcase-art,.showcase-mockup,[data-marquee],[data-client-content]');
   }
 
   function localizeTextNode(node, language) {

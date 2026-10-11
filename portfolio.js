@@ -58,7 +58,7 @@
   function syncPreviews() {
     previews.forEach(syncPreview);
     previewToggle.hidden = motionPreference.matches
-      || sections.find(section => section.dataset.category === 'video').hidden;
+      || !sections.some(section => section.dataset.category === 'video' && !section.hidden);
     previewToggle.textContent = previewsPaused ? 'Resume previews' : 'Pause previews';
     previewToggle.setAttribute('aria-pressed', String(previewsPaused));
   }

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="102" y1="27" x2="1066" y2="891" gradientUnits="userSpaceOnUse"><stop stop-color="#0E263A"/><stop offset="1" stop-color="#02070D"/></linearGradient>
+    <linearGradient id="beam" x1="705" y1="156" x2="705" y2="753" gradientUnits="userSpaceOnUse"><stop stop-color="#79A9D0" stop-opacity=".75"/><stop offset="1" stop-color="#245A86" stop-opacity="0"/></linearGradient>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h1200v900H0z"/>
+  <path d="M737 147 1037 753H435l302-606Z" fill="url(#beam)" fill-opacity=".48"/>
+  <ellipse cx="737" cy="474" rx="174" ry="256" stroke="#AAC5DC" stroke-opacity=".42" stroke-width="2"/>
+  <ellipse cx="737" cy="474" rx="126" ry="187" stroke="#AAC5DC" stroke-opacity=".3"/>
+  <ellipse cx="737" cy="474" rx="80" ry="119" fill="#80A9C8" fill-opacity=".12" stroke="#C0D5E5" stroke-opacity=".42"/>
+  <path d="M697 585c10 24 29 37 40 37s30-13 40-37" stroke="#D7E4ED" stroke-opacity=".8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M111 187h978M111 713h978" stroke="#B8CADD" stroke-opacity=".15"/>
+  <text x="79" y="532" fill="#F4F7F9" font-family="Arial,sans-serif" font-size="128" font-weight="700" letter-spacing="-8">Fake Alexa</text>
+  <circle cx="1066" cy="113" r="5" fill="#8DB6D8"/>
+</svg>

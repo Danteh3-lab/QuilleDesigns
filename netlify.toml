@@ -1,0 +1,3 @@
+[build]
+  # This is a plain HTML/CSS/JS site; publish the project root without a build step.
+  publish = "."
