@@ -21,7 +21,7 @@
 
 /* Header: large title left, "All services" link right */
 .services-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 56px; }
-.services-title { margin: 0; font-family: 'Montserrat', sans-serif; font-size: clamp(48px, 5.4vw, 80px); font-weight: 700; line-height: 1; letter-spacing: -.035em; color: var(--service-ink); }
+.services-title { margin: 0; font-family: 'Montserrat', sans-serif; font-size: clamp(48px, 5.4vw, 80px); font-weight: 700; line-height: 1; letter-spacing: -.055em; color: var(--service-ink); }
 .services-all-link { flex: 0 0 auto; display: inline-flex; align-items: center; min-height: 44px; margin-bottom: 4px; color: var(--service-ink); font-size: 14px; font-weight: 500; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; transition: color .2s; }
 .services-all-link:hover { color: var(--service-blue); }
 .services-all-link:focus-visible, .expertise-link:focus-visible { outline: 3px solid #4a86bd; outline-offset: 5px; }
