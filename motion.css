@@ -1,0 +1,15 @@
+/* Quille Designs scroll motion (motion.js). Only applies when motion.js runs (html.qd-motion). */
+.qd-line { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .1em; margin-bottom: -.1em; }
+.qd-line-inner { display: inline-block; will-change: transform; }
+h2 .qd-line + .qd-line { margin-top: 0; }
+/* Headings that had separate lines (via <br>) keep them. */
+h2 br + .qd-line, h2 .qd-line:has(+ br) { display: inline-block; }
+
+/* Light sections sliding over the dark section before them. */
+.qd-motion .qd-sheet { position: relative; z-index: 3; border-radius: var(--qd-sheet-radius, 0px) var(--qd-sheet-radius, 0px) 0 0; box-shadow: 0 -30px 60px rgba(0, 5, 13, .35); }
+.qd-sheet-shade { position: absolute; inset: 0; z-index: 30; pointer-events: none; background: #00050d; opacity: 0; }
+.qd-motion [data-marquee] { will-change: transform; }
+
+@media (prefers-reduced-motion: reduce) {
+  .qd-line, .qd-line-inner { display: inline; overflow: visible; }
+}

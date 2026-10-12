@@ -40,6 +40,8 @@ const files = [
   "services.css",
   "process-images.css",
   "about-threads.js",
+  "motion.js",
+  "motion.css",
 ];
 async function copyDir(from, to) {
   await mkdir(to, { recursive: true });

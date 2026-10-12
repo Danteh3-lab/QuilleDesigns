@@ -246,6 +246,8 @@ test("local Worker, D1 and R2 integration", async (t) => {
       const home = await (await call("/")).text();
       assert.ok(home.includes('data-video-title="Mage EV"'));
       assert.ok(home.includes("data-hero-band"));
+      // Scroll motion (headings, image curtains, sliding sections, marquee lean).
+      assert.ok(home.includes("motion.js") && home.includes("motion.css"));
       // About us: Threads background instead of the Mage EV frame sequence.
       assert.ok(home.includes("data-process-threads") && home.includes("about-threads.js") && !home.includes("mage-ev-sequence"));
       // The logo intro plays on every homepage visit, not once per session.

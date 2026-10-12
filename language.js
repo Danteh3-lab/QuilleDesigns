@@ -166,6 +166,8 @@
     'Duration': 'Duur',
     'Choose a service to see what we can do.': 'Kies een dienst en bekijk wat we voor je kunnen doen.',
     'Selected work': 'Uitgelicht werk',
+    'Our latest': 'Ons nieuwste',
+    'work.': 'werk.',
     'Ideas,': 'Ideeën,',
     'out in the world.': 'klaar voor de wereld.',
     'Commercial films for Smartwigi and Terzol.': 'Reclamefilms voor Smartwigi en Terzol.',
