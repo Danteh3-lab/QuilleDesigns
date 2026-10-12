@@ -42,6 +42,8 @@ const files = [
   "about-threads.js",
   "motion.js",
   "motion.css",
+  "results-charts.js",
+  "results-charts.css",
   "horizon.js",
   "horizon.css",
 ];

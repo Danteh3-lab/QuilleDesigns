@@ -31,6 +31,8 @@
     <script src="hero-background.js" defer></script>
     <script src="site-chrome.js" defer></script>
     <link rel="stylesheet" href="motion.css" />
+    <link rel="stylesheet" href="results-charts.css" />
+    <script src="results-charts.js" defer></script>
     <link rel="stylesheet" href="horizon.css" />
     <script src="horizon.js" defer></script>
     <script src="motion.js" defer></script>
@@ -791,76 +793,81 @@
               client can track their progress in a live dashboard.
             </p>
           </div>
-          <div
-            class="grid grid-cols-2 border-l border-t border-[#00050D]/10 lg:grid-cols-4"
-          >
-            <div
-              data-reveal=""
-              class="group relative border-b border-r border-[#00050D]/10 p-6 transition-colors duration-500 hover:bg-[#245A86]/[0.06] md:p-10"
-            >
-              <p
-                class="text-5xl font-bold tracking-tight md:text-7xl"
-                style="font-family:'Montserrat',sans-serif;"
-              >
-                <span data-count="140">140</span>
-                <span class="text-[#4A86BD]">+</span>
-              </p>
-              <p
-                class="mt-4 text-xs uppercase tracking-[0.25em] text-[#00050D]/50"
-              >
-                Projects launched
-              </p>
+          <div data-reveal="" class="results-dash">
+            <div class="results-dash-bar">
+              <span class="results-dash-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <p class="results-dash-title">Quille client dashboard</p>
+              <p class="results-dash-range">Averages · last 12 months</p>
             </div>
-            <div
-              data-reveal=""
-              class="group relative border-b border-r border-[#00050D]/10 p-6 transition-colors duration-500 hover:bg-[#245A86]/[0.06] md:p-10"
-            >
-              <p
-                class="text-5xl font-bold tracking-tight md:text-7xl"
-                style="font-family:'Montserrat',sans-serif;"
-              >
-                <span data-count="3.8" data-decimals="1">3.8</span>
-                <span class="text-[#4A86BD]">x</span>
-              </p>
-              <p
-                class="mt-4 text-xs uppercase tracking-[0.25em] text-[#00050D]/50"
-              >
-                Average ad return
-              </p>
-            </div>
-            <div
-              data-reveal=""
-              class="group relative border-b border-r border-[#00050D]/10 p-6 transition-colors duration-500 hover:bg-[#245A86]/[0.06] md:p-10"
-            >
-              <p
-                class="text-5xl font-bold tracking-tight md:text-7xl"
-                style="font-family:'Montserrat',sans-serif;"
-              >
-                <span data-count="96">96</span>
-                <span class="text-[#4A86BD]">%</span>
-              </p>
-              <p
-                class="mt-4 text-xs uppercase tracking-[0.25em] text-[#00050D]/50"
-              >
-                Client retention
-              </p>
-            </div>
-            <div
-              data-reveal=""
-              class="group relative border-b border-r border-[#00050D]/10 p-6 transition-colors duration-500 hover:bg-[#245A86]/[0.06] md:p-10"
-            >
-              <p
-                class="text-5xl font-bold tracking-tight md:text-7xl"
-                style="font-family:'Montserrat',sans-serif;"
-              >
-                <span data-count="212">212</span>
-                <span class="text-[#4A86BD]">%</span>
-              </p>
-              <p
-                class="mt-4 text-xs uppercase tracking-[0.25em] text-[#00050D]/50"
-              >
-                Avg. traffic growth
-              </p>
+            <div class="results-dash-grid">
+              <figure class="results-card results-card--traffic" data-results-chart="">
+                <div class="results-card-head">
+                  <h3 class="results-card-title">Traffic</h3>
+                  <p class="results-card-label">Avg. traffic growth</p>
+                </div>
+                <p class="results-figure"><span data-count="212">212</span><span class="results-unit">%</span></p>
+                <div class="results-columns">
+                  <span class="results-level" aria-hidden="true"></span>
+                  <div class="results-col results-col--before">
+                    <span class="results-col-bar"></span>
+                    <span class="results-col-label">Before</span>
+                  </div>
+                  <div class="results-col results-col--after">
+                    <span class="results-col-pill">+212%</span>
+                    <span class="results-col-bar"></span>
+                    <span class="results-col-label">After</span>
+                  </div>
+                </div>
+                <figcaption>Website visits, before and after</figcaption>
+              </figure>
+              <figure class="results-card results-card--retention" data-results-chart="">
+                <div class="results-card-head">
+                  <h3 class="results-card-title">Retention</h3>
+                  <p class="results-card-label">Client retention</p>
+                </div>
+                <div class="results-ring-wrap">
+                  <svg class="results-ring" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+                    <circle class="results-ring-track" cx="60" cy="60" r="52"></circle>
+                    <circle class="results-ring-value" cx="60" cy="60" r="52" pathLength="100" stroke-dasharray="100 100" stroke-dashoffset="4"></circle>
+                  </svg>
+                  <p class="results-figure results-figure--ring"><span data-count="96">96</span><span class="results-unit">%</span></p>
+                </div>
+                <figcaption>96 of every 100 clients stay</figcaption>
+              </figure>
+              <figure class="results-card results-card--return" data-results-chart="">
+                <div class="results-card-head">
+                  <h3 class="results-card-title">Ad return</h3>
+                  <p class="results-card-label">Average ad return</p>
+                </div>
+                <p class="results-figure"><span data-count="3.8" data-decimals="1">3.8</span><span class="results-unit">×</span></p>
+                <div class="results-bars">
+                  <div>
+                    <p class="results-bar-meta">Spent</p>
+                    <p class="results-bar-line"><span class="results-bar results-bar--spend"></span><strong>1×</strong></p>
+                  </div>
+                  <div>
+                    <p class="results-bar-meta">Returned</p>
+                    <p class="results-bar-line"><span class="results-bar results-bar--return"></span><strong>3.8×</strong></p>
+                  </div>
+                </div>
+                <figcaption>Return on every 1 spent on ads</figcaption>
+              </figure>
+              <figure class="results-card results-card--projects" data-results-chart="">
+                <div class="results-projects-copy">
+                  <div class="results-card-head">
+                    <h3 class="results-card-title">Projects</h3>
+                    <p class="results-card-label">Projects launched</p>
+                  </div>
+                  <p class="results-figure"><span data-count="140">140</span><span class="results-unit">+</span></p>
+                </div>
+                <div class="results-dots-wrap">
+                  <div class="results-dots" aria-hidden="true">
+                    <span class="results-dots-layer results-dots-layer--grid"></span>
+                    <span class="results-dots-layer results-dots-layer--fill"></span>
+                  </div>
+                  <figcaption>1 dot = 1 project</figcaption>
+                </div>
+              </figure>
             </div>
           </div>
         </div>
