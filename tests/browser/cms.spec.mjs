@@ -151,7 +151,9 @@ test("public portfolio and homepage retain controls and media behavior", async (
   await expect(page.locator("#hero video")).toHaveCount(0);
   await expect(page.locator("[data-hero-band] canvas")).toHaveCount(1);
   await expect(page.locator("[data-hero-dots] canvas")).toHaveCount(1);
-  await expect(page.locator(".process-background-still")).toHaveCount(1);
+  // The About us film was replaced by the moving Threads background.
+  await expect(page.locator("[data-process-threads]")).toHaveCount(1);
+  await expect(page.locator("[data-process-canvas]")).toHaveCount(0);
   await page.locator("[data-showcase-play]").first().click();
   await expect(page.locator(".showcase-video")).toHaveCount(1);
   await expect(page.locator(".showcase-video")).toHaveJSProperty(
@@ -485,7 +487,7 @@ test("server-rendered portfolio and featured media links work without JavaScript
   }
 });
 
-test("homepage hero background moves and the process sequence advances on scroll", async ({
+test("homepage hero background moves and the About us threads mount on scroll", async ({
   page,
 }) => {
   test.setTimeout(90000);
@@ -505,26 +507,11 @@ test("homepage hero background moves and the process sequence advances on scroll
       document.querySelector("#process").getBoundingClientRect().top + scrollY,
     ),
   );
-  const canvas = page.locator("[data-process-canvas]");
-  await expect(canvas).toHaveClass(/is-ready/, { timeout: 20000 });
-  const frameHash = (element) => {
-    const data = element
-      .getContext("2d")
-      .getImageData(0, 0, element.width, element.height).data;
-    let value = 2166136261;
-    for (let i = 0; i < data.length; i += 64)
-      value = Math.imul(value ^ data[i], 16777619);
-    return String(value);
-  };
-  const first = await canvas.evaluate(frameHash);
-  await page.evaluate(() => {
-    const process = document.querySelector("#process");
-    scrollTo(0, process.getBoundingClientRect().bottom + scrollY - innerHeight);
-  });
-  await expect
-    .poll(() => canvas.evaluate(frameHash), {
-      timeout: 15000,
-    })
-    .not.toBe(first);
-  await expect(page.locator("#processSequenceStatus")).toBeHidden();
+  // The Threads background mounts once the About us section comes near.
+  const threads = page.locator("[data-process-threads] canvas");
+  await expect(threads).toHaveCount(1, { timeout: 20000 });
+  expect(
+    await threads.evaluate((canvas) => canvas.width * canvas.height),
+  ).toBeGreaterThan(0);
+  await expect(page.locator("#process")).toHaveClass(/process-threads-ready/);
 });

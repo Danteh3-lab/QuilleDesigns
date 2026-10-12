@@ -39,6 +39,7 @@ const files = [
   "showcase.css",
   "services.css",
   "process-images.css",
+  "about-threads.js",
 ];
 async function copyDir(from, to) {
   await mkdir(to, { recursive: true });
