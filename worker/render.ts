@@ -18,7 +18,7 @@ function card(p: Project) {
   <a class="project-link" href="${escape(p.media_url)}" data-media="${video ? "video" : "image"}" data-title="${escape(p.title)}" data-poster="${escape(p.poster_url)}" aria-label="${escape(video ? `Watch ${p.title} video` : `View complete ${p.title} poster`)}">
   <div class="project-visual ${video ? "film" : "identity"}-visual">${video ? `<img class="film-backdrop" src="${escape(p.poster_url)}" width="${p.width}" height="${p.height}" alt="" loading="lazy" decoding="async" aria-hidden="true" />` : ""}
   <img class="project-image" src="${escape(p.poster_url)}" width="${p.width}" height="${p.height}" alt="${escape(p.alt_text)}" loading="lazy" decoding="async" />
-  ${video ? `<video class="film-preview" data-preview autoplay muted loop playsinline preload="none" poster="${escape(p.poster_url)}" aria-hidden="true" tabindex="-1"></video>` : ""}
+  ${video ? `<video class="film-preview" data-preview muted loop playsinline preload="none" poster="${escape(p.poster_url)}" aria-hidden="true" tabindex="-1"></video>` : ""}
   <span class="project-tags" aria-hidden="true"><span>${video ? "Film" : "Identity"}</span><span>${video ? "Commercial" : "Logo design"}</span></span><span class="project-open" aria-hidden="true">${arrow}</span></div>
   <div class="project-caption"><div><p>${escape(p.caption || (video ? "Selected film" : "Original identity"))}</p><h3 data-client-content>${escape(p.title)}</h3><span class="project-description" ${p.id.length === 36 ? "data-client-content" : ""}>${escape(p.description)}</span></div><span class="project-type" aria-hidden="true">${video ? "Play film" : "View artwork"} ${arrow}</span></div></a></article>`;
 }

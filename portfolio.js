@@ -18,9 +18,11 @@
   const visiblePreviews = new Set();
   const pendingPreviews = new Set();
   let previewsPaused = false;
+  // Film previews stay on their posters. Set to true to play them muted when visible.
+  const AUTOPLAY_PREVIEWS = false;
 
   function shouldPlayPreview(video) {
-    return visiblePreviews.has(video) && !previewsPaused && !motionPreference.matches
+    return AUTOPLAY_PREVIEWS && visiblePreviews.has(video) && !previewsPaused && !motionPreference.matches
       && !document.hidden && !viewer.open && !menu.open
       && !video.closest('[data-category]').hidden;
   }
@@ -57,7 +59,7 @@
 
   function syncPreviews() {
     previews.forEach(syncPreview);
-    previewToggle.hidden = motionPreference.matches
+    previewToggle.hidden = !AUTOPLAY_PREVIEWS || motionPreference.matches
       || !sections.some(section => section.dataset.category === 'video' && !section.hidden);
     previewToggle.textContent = previewsPaused ? 'Resume previews' : 'Pause previews';
     previewToggle.setAttribute('aria-pressed', String(previewsPaused));
