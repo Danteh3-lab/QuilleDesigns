@@ -1,0 +1,39 @@
+/* Quille Designs intro (intro.js). Brand surface, navy ink and Quille blue. */
+html.qd-intro-pending, html.qd-intro-active { overflow: hidden; }
+/* Cover the page before the first paint so the site never flashes before the intro. */
+html.qd-intro-pending::after { content: ""; position: fixed; inset: 0; z-index: 2147483000; background: #e6eff7; }
+.qd-intro {
+  position: fixed; inset: 0; z-index: 2147483001;
+  display: grid; place-items: center;
+  background-color: #e6eff7;
+  background-image: repeating-linear-gradient(135deg, rgb(18 53 85 / .035) 0 1px, transparent 1px 16px);
+  transform: translateY(0);
+  transition: transform .75s cubic-bezier(.76, 0, .24, 1);
+  cursor: pointer;
+}
+.qd-intro.is-leaving { transform: translateY(-100%); }
+.qd-intro-stage { width: min(560px, 78vw); transition: transform .75s cubic-bezier(.76, 0, .24, 1), opacity .5s ease; }
+.qd-intro.is-leaving .qd-intro-stage { transform: translateY(-40px); opacity: 0; }
+.qd-intro-logo { display: block; width: 100%; height: auto; overflow: visible; }
+
+/* 1. The D lines and the Q's blue ring draw as outlines. */
+.qd-intro-line, .qd-intro-ring, .qd-intro-q { stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: 1; fill-opacity: 0; }
+.qd-intro-q { stroke-opacity: .55; }
+/* 2. The shapes fill in with the logo colours. */
+.is-playing .qd-intro-line { animation: qd-draw .55s cubic-bezier(.65, 0, .35, 1) forwards, qd-fill .25s ease .45s forwards; }
+.is-playing .qd-intro-ring { animation: qd-draw .55s cubic-bezier(.65, 0, .35, 1) .1s forwards, qd-fill .3s ease .5s forwards; }
+.is-playing .qd-intro-q { animation: qd-draw .45s cubic-bezier(.65, 0, .35, 1) .15s forwards, qd-fill .3s ease .45s forwards; }
+/* 3. The divider grows and the wordmark wipes in from the left. */
+.qd-intro-divider { transform-box: fill-box; transform-origin: 50% 50%; transform: scaleY(0); }
+.qd-intro-wipe { transform-box: fill-box; transform-origin: 0 50%; transform: scaleX(0); }
+.is-playing .qd-intro-divider { animation: qd-grow-y .35s cubic-bezier(.22, 1, .36, 1) .6s forwards; }
+.is-playing .qd-intro-wipe { animation: qd-grow-x .55s cubic-bezier(.22, 1, .36, 1) .75s forwards; }
+/* A thin progress line along the bottom edge. */
+.qd-intro-bar { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: linear-gradient(90deg, #245a86, #4a86bd, #7fb2e0); transform: scaleX(0); transform-origin: 0 50%; }
+.is-playing .qd-intro-bar { animation: qd-grow-x 1.35s cubic-bezier(.4, 0, .2, 1) forwards; }
+
+@keyframes qd-draw { to { stroke-dashoffset: 0; } }
+@keyframes qd-fill { to { fill-opacity: 1; stroke-opacity: 0; } }
+@keyframes qd-grow-y { to { transform: scaleY(1); } }
+@keyframes qd-grow-x { to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .qd-intro { display: none; } }

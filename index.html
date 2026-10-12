@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>(function(){try{var r=document.documentElement,force=/[?&]intro\b/.test(location.search);if(!force&&(sessionStorage.getItem('qd-intro-seen')||matchMedia('(prefers-reduced-motion: reduce)').matches||navigator.webdriver))return;r.classList.add('qd-intro-pending');setTimeout(function(){r.classList.remove('qd-intro-pending')},4000)}catch(e){}})();</script>
+    <link rel="stylesheet" href="intro.css" />
+    <script src="intro.js" defer></script>
     <title>Quille Designs | Marketing &amp; Design Studio</title>
     <meta
       name="description"
@@ -1454,10 +1457,17 @@
         gsap.set('[data-hero-line]', { yPercent: 110 });
         gsap.set('[data-hero-fade]', { autoAlpha: 0, y: 24 });
         gsap.set('#heroMedia', { scale: 1.15 });
-        gsap.timeline({ defaults: { ease: 'expo.out' } })
+        // Waits for the logo intro (intro.js) when it is showing.
+        const introShowing = document.documentElement.classList.contains('qd-intro-pending') || window.quilleIntro?.active;
+        const heroIntro = gsap.timeline({ defaults: { ease: 'expo.out' }, paused: introShowing })
           .to('#heroMedia', { scale: 1, duration: 2.4 }, 0)
           .to('[data-hero-line]', { yPercent: 0, duration: 1.4, stagger: 0.12 }, 0.2)
           .to('[data-hero-fade]', { autoAlpha: 1, y: 0, duration: 1.1, stagger: 0.08 }, 0.7);
+        if (introShowing) {
+          const playHero = () => heroIntro.play();
+          document.addEventListener('quille-intro-leave', playHero, { once: true });
+          document.addEventListener('quille-intro-done', playHero, { once: true });
+        }
 
         // Hero exit
         gsap.to('#heroContent', { yPercent: -18, opacity: 0.2, ease: 'none', scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });

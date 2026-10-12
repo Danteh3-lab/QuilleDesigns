@@ -28,6 +28,8 @@ const files = [
   "home-contact.css",
   "hero-background.js",
   "hero-background.css",
+  "intro.js",
+  "intro.css",
   "brandmark.css",
   "portfolio-gallery.css",
   "portfolio.js",
