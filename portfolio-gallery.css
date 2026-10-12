@@ -370,6 +370,8 @@ html:has(.portfolio-gallery dialog[open]) { overflow: hidden; }
 /* The whole card face is the brand logo, on the logo's own background colour. */
 .brand-logo { position: absolute; z-index: 0; inset: 0; display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr); place-items: center; padding: 6%; background: var(--gallery-white); }
 .brand-logo.is-light-logo { background: var(--gallery-media); }
+.brand-card .brand-logo.is-full-logo { padding: 0; }
+.brand-card .brand-logo.is-full-logo img { object-fit: cover; }
 .brand-logo img { width: 100%; height: 100%; object-fit: contain; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
 .brand-card:is(:hover,:focus-within) .brand-logo img { transform: scale(1.05); }
 .brand-wordmark { position: relative; z-index: 1; max-width: 80%; color: var(--gallery-white); font: 600 clamp(30px, 3.4vw, 44px)/1 var(--gallery-font-display); letter-spacing: -.04em; text-align: center; overflow-wrap: anywhere; }

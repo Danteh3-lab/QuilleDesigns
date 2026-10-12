@@ -270,6 +270,11 @@
           const plate = image.parentElement;
           plate.classList.add('is-opaque-logo');
           plate.style.backgroundColor = `rgb(${corner[0]} ${corner[1]} ${corner[2]})`;
+          // Artwork already made in the card's shape fills it edge to edge, untrimmed, losing at most a thin edge.
+          if (Math.abs(image.naturalWidth / image.naturalHeight / (plate.clientWidth / plate.clientHeight) - 1) < 0.08) {
+            plate.classList.add('is-full-logo');
+            return;
+          }
           if (right < 0) return;
           const scale = image.naturalWidth / width;
           const pad = Math.round(Math.max(right - left, bottom - top) * 0.04);
