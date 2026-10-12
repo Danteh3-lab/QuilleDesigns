@@ -1,6 +1,7 @@
 // Procedural soundtrack for the Quille Designs promo, 120 BPM, synced to promo.js timings.
 import { writeFileSync } from 'node:fs';
-const SR = 48000, DUR = 20, N = SR * DUR;
+const SR = 48000, DUR = 22, N = SR * DUR;
+const SH = 2.0, SVC = [4.0, 5.0, 6.0, 7.0]; // one extra bar for the slower WHAT WE DO section (matches promo.js)
 const L = new Float32Array(N), R = new Float32Array(N);
 const RL = new Float32Array(N), RR = new Float32Array(N); // reverb send
 const TAU = Math.PI * 2;
@@ -27,7 +28,7 @@ function voice(t0, dur, fn, { gain = 1, pan = 0, send = 0 } = {}) {
   const i0 = Math.max(0, Math.floor(t0 * SR)), i1 = Math.min(N, Math.floor((t0 + dur) * SR));
   const gl = gain * Math.cos((pan + 1) * Math.PI / 4) * Math.SQRT2, gr = gain * Math.sin((pan + 1) * Math.PI / 4) * Math.SQRT2;
   for (let i = i0; i < i1; i++) {
-    const t = i / SR - t0; let v = fn(t, i);
+    const t = Math.max(0, i / SR - t0); let v = fn(t, i);
     let l, r; if (typeof v === 'number') { l = v * gl; r = v * gr; } else { l = v[0] * gain; r = v[1] * gain; }
     L[i] += l; R[i] += r; if (send) { RL[i] += l * send; RR[i] += r * send; }
   }
@@ -142,61 +143,61 @@ bell(2.32, N_('A4'), .8, 0, 1.2); // circle closes
 riser(1.6, 1.4, 1.1); reverseSwell(3.0, 1.0, 1);
 whoosh(2.45, .58, 300, 4000, 1.2, 0, 0, 1.0); // zoom through the portal
 
-// Hit + groove 3.0–14.5
+// Hit + groove 3.0–16.5
 impact(3.0, 1.0);
-const bars = [['Dm', 3], ['Bb', 5], ['F', 7], ['C', 9], ['Dm', 11], ['Bb', 13]];
+const bars = [['Dm', 3], ['Bb', 5], ['C', 7], ['F', 9], ['C', 11], ['Dm', 13], ['Bb', 15]];
 for (const [c, t0] of bars) {
-  const len = Math.min(2, 14.5 - t0);
+  const len = Math.min(2, 16.5 - t0);
   pad(t0, len, CH[c].pad, { g: .32, cut0: 900, cut1: 2400, att: .05, rel: .25, send: .4 });
-  for (let e = 0; e < len * 4 - .01; e++) { const tt = t0 + e * .25; if (tt >= 14.5) break; bassNote(tt, .22, CH[c].bass * (e === 7 ? 2 : 1), e % 2 ? .75 : 1); }
+  for (let e = 0; e < len * 4 - .01; e++) { const tt = t0 + e * .25; if (tt >= 16.5) break; bassNote(tt, .22, CH[c].bass * (e === 7 ? 2 : 1), e % 2 ? .75 : 1); }
 }
-for (let t = 3.0; t < 14.49; t += .5) {
+for (let t = 3.0; t < 16.49; t += .5) {
   const n = Math.round((t - 3) / .5);
   kick(t, n === 0 ? 1.15 : 1);
   if (n % 2 === 1) clap(t);
   hat(t + .25, 1, n % 4 === 3);
   if (t > 4) hat(t + .125, .45), hat(t + .375, .45);
 }
-// clients section arp (11.5–14.5)
-for (let t = 11.5, k = 0; t < 14.0; t += .125, k++) { const c = t < 13 ? CH.Dm : CH.Bb; pluck(t, c.arp[k % 5], .9 + .3 * (k % 4 === 0), k % 2 ? .4 : -.4); }
+// clients section arp (13.5–16.5)
+for (let t = 11.5 + SH, k = 0; t < 14.0 + SH; t += .125, k++) { const c = t < 13 + SH ? CH.Dm : CH.Bb; pluck(t, c.arp[k % 5], .9 + .3 * (k % 4 === 0), k % 2 ? .4 : -.4); }
 // fill + build to the logo
-for (let i = 0; i < 12; i++) snare(14.0 + i * (.5 / 12) * (1 - i * .03), .4 + i * .05);
-riser(13.9, 1.1, 1.2); reverseSwell(15.0, .8, 1.2);
-whoosh(14.25, .75, 200, 3000, 1.0, -.8, .8, 1.2); // orbit spiral in
+for (let i = 0; i < 12; i++) snare(14.0 + SH + i * (.5 / 12) * (1 - i * .03), .4 + i * .05);
+riser(13.9 + SH, 1.1, 1.2); reverseSwell(15.0 + SH, .8, 1.2);
+whoosh(14.25 + SH, .75, 200, 3000, 1.0, -.8, .8, 1.2); // orbit spiral in
 
 // transitions / UI sounds
 whoosh(3.8, .4, 500, 2500, .8, -.8, .2);                // text flies off
-[4.0, 4.5, 5.0, 5.5].forEach((t, i) => { whoosh(t - .08, .35, 900, 5000, .55, .6, -.2, 2); blip(t, [587.33, 659.25, 698.46, 880][i], .7, .2); });
-whoosh(6.2, .8, 150, 2500, 1.0, 0, 0, 1);              // phone expands to fullscreen
-impact(6.96, .45);
-whoosh(9.0, .55, 400, 2000, .7, .5, -.2);              // editor rises
-whoosh(9.42, .5, 2500, 600, .6, .9, .3);               // phone slides in
-[9.75, 10.0].forEach(t => blip(t, 1174.66, .5, .4));    // chips
-blip(10.55, 1318.5, .9, .5); bell(10.55, 1318.5, .35, .5, 3);        // heart
+SVC.forEach((t, i) => { whoosh(t - .08, .35, 900, 5000, .55, .6, -.2, 2); blip(t, [587.33, 659.25, 698.46, 880][i], .7, .2); });
+whoosh(6.2 + SH, .8, 150, 2500, 1.0, 0, 0, 1);              // phone expands to fullscreen
+impact(6.96 + SH, .45);
+whoosh(9.0 + SH, .55, 400, 2000, .7, .5, -.2);              // editor rises
+whoosh(9.42 + SH, .5, 2500, 600, .6, .9, .3);               // phone slides in
+[9.75 + SH, 10.0 + SH].forEach(t => blip(t, 1174.66, .5, .4));    // chips
+blip(10.55 + SH, 1318.5, .9, .5); bell(10.55 + SH, 1318.5, .35, .5, 3);        // heart
 diamondTicks();
-whoosh(11.15, .55, 300, 6000, 1.5, .9, -.9, 1.1);      // whip pan
-for (let i = 0; i < 7; i++) blip(11.75 + i * .1, [587.33, 698.46, 880, 1046.5, 880, 1174.66, 1396.9][i], .8, -.6 + i * .2); // logo pops
+whoosh(11.15 + SH, .55, 300, 6000, 1.5, .9, -.9, 1.1);      // whip pan
+for (let i = 0; i < 7; i++) blip(11.75 + SH + i * .1, [587.33, 698.46, 880, 1046.5, 880, 1174.66, 1396.9][i], .8, -.6 + i * .2); // logo pops
 
-// Logo resolve 15–20
-impact(15.0, 1.25);
-bell(15.0, N_('F4'), .9, -.2, .7); bell(15.0, N_('C5'), .7, .2, .7);
-pad(15.0, 1.45, CH.F.pad, { g: .28, cut0: 300, cut1: 1400, att: .5, rel: .3, send: .7 });
-penScratch(15.08, 16.3);
-[[15.08, 'F4'], [15.22, 'A4'], [15.32, 'C5'], [15.45, 'E5'], [15.6, 'G4']].forEach(([t, n], i) => bell(t, N_(n), .45, -.5 + i * .25, 1.5));
-kick(16.45, 1.2); impact(16.45, .55);
-pad(16.45, 3.0, [N_('F2'), N_('C3'), N_('A3'), N_('E4'), N_('G4'), N_('C5')], { g: .38, cut0: 1800, cut1: 700, att: .02, rel: .55, send: .7 });
-bell(16.45, N_('A5'), .8, .3, .9); bell(16.45, N_('F5'), .6, -.3, .9);
-tick(17.02, .8, 1800); tick(17.12, .6, 2400, -.3); tick(17.3, .6, 2800, .3);
-whoosh(17.05, .5, 800, 3500, .45, -.6, .2, 2);
-whoosh(17.85, .6, 1200, 4000, .35, .4, -.2, 2);
-whoosh(18.1, .6, 1200, 4000, .3, -.4, .2, 2);
-blip(18.6, 880, .5); blip(18.7, 1318.5, .4, .2);
-for (let i = 0; i < 8; i++) bell(19.0 + i * .07, [N_('C5'), N_('E5'), N_('G4') * 2, N_('A5'), N_('C5') * 2, N_('E5') * 2, N_('G4') * 4, N_('A5') * 2][i], .22, -.6 + i * .17, 2.5); // shine glitter
-voice(16.45, 3.55, t => Math.sin(TAU * 43.65 * t) * Math.exp(-t * .8) * .2, {}); // low F tail
+// Logo resolve 17–22
+impact(15.0 + SH, 1.25);
+bell(15.0 + SH, N_('F4'), .9, -.2, .7); bell(15.0 + SH, N_('C5'), .7, .2, .7);
+pad(15.0 + SH, 1.45, CH.F.pad, { g: .28, cut0: 300, cut1: 1400, att: .5, rel: .3, send: .7 });
+penScratch(15.08 + SH, 16.3 + SH);
+[[15.08 + SH, 'F4'], [15.22 + SH, 'A4'], [15.32 + SH, 'C5'], [15.45 + SH, 'E5'], [15.6 + SH, 'G4']].forEach(([t, n], i) => bell(t, N_(n), .45, -.5 + i * .25, 1.5));
+kick(16.45 + SH, 1.2); impact(16.45 + SH, .55);
+pad(16.45 + SH, 3.0, [N_('F2'), N_('C3'), N_('A3'), N_('E4'), N_('G4'), N_('C5')], { g: .38, cut0: 1800, cut1: 700, att: .02, rel: .55, send: .7 });
+bell(16.45 + SH, N_('A5'), .8, .3, .9); bell(16.45 + SH, N_('F5'), .6, -.3, .9);
+tick(17.02 + SH, .8, 1800); tick(17.12 + SH, .6, 2400, -.3); tick(17.3 + SH, .6, 2800, .3);
+whoosh(17.05 + SH, .5, 800, 3500, .45, -.6, .2, 2);
+whoosh(17.85 + SH, .6, 1200, 4000, .35, .4, -.2, 2);
+whoosh(18.1 + SH, .6, 1200, 4000, .3, -.4, .2, 2);
+blip(18.6 + SH, 880, .5); blip(18.7 + SH, 1318.5, .4, .2);
+for (let i = 0; i < 8; i++) bell(19.0 + SH + i * .07, [N_('C5'), N_('E5'), N_('G4') * 2, N_('A5'), N_('C5') * 2, N_('E5') * 2, N_('G4') * 4, N_('A5') * 2][i], .22, -.6 + i * .17, 2.5); // shine glitter
+voice(16.45 + SH, 3.55, t => Math.sin(TAU * 43.65 * t) * Math.exp(-t * .8) * .2, {}); // low F tail
 
 function diamondTicks() {
   // keyframe diamonds on the editor timeline: playhead 9.3→11.5 across 0..1
-  for (const k of [.06, .2, .44, .42, .6, .88]) tick(9.3 + k * 2.2, .55, 3200, .2);
+  for (const k of [.06, .2, .44, .42, .6, .88]) tick(9.3 + SH + k * 2.2, .55, 3200, .2);
 }
 
 // ---------------- reverb (Schroeder/Freeverb-ish) on send bus
@@ -222,8 +223,8 @@ for (let i = 0; i < N; i++) { L[i] += wl[i] * .9; R[i] += wr[i] * .9; }
 const hpL = new Biquad().set('hp', 25), hpR = new Biquad().set('hp', 25);
 let peak = 0;
 for (let i = 0; i < N; i++) { L[i] = hpL.p(L[i]); R[i] = hpR.p(R[i]); peak = Math.max(peak, Math.abs(L[i]), Math.abs(R[i])); }
-let ss = 0; for (let i = 4 * SR; i < 14 * SR; i++) ss += L[i] * L[i] + R[i] * R[i];
-const rms = Math.sqrt(ss / (20 * SR)); const pre = .17 / rms;
+let ss = 0; for (let i = 4 * SR; i < (14 + SH) * SR; i++) ss += L[i] * L[i] + R[i] * R[i];
+const rms = Math.sqrt(ss / (DUR * SR)); const pre = .17 / rms;
 let env = 0; const thr = .82;
 for (let i = 0; i < N; i++) {
   let l = L[i] * pre, r = R[i] * pre;

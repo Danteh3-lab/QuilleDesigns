@@ -1,12 +1,13 @@
 import { chromium } from 'playwright-core';
 import { spawn } from 'node:child_process';
-import { mkdirSync } from 'node:fs';
+import { mkdirSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const [mode = 'stills', ...args] = process.argv.slice(2);
 const here = path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1'));
-const exe = path.join(process.env.LOCALAPPDATA, 'ms-playwright/chromium-1217/chrome-win64/chrome.exe');
+const exe = [path.join(process.env.LOCALAPPDATA, 'ms-playwright/chromium-1217/chrome-win64/chrome.exe'), 'C:/Program Files/Google/Chrome/Application/chrome.exe'].find(f => existsSync(f));
+const FFMPEG = process.env.FFMPEG || 'ffmpeg';
 const browser = await chromium.launch({ executablePath: exe, args: ['--allow-file-access-from-files', '--disable-gpu-vsync', '--force-color-profile=srgb'] });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
 page.on('console', m => console.log('[page]', m.text()));
@@ -23,12 +24,12 @@ if (mode === 'stills') {
     await stage.screenshot({ path: path.join(here, 'stills', `t${t.toFixed(2).padStart(5, '0')}.png`) });
   }
 } else {
-  const FPS = +(args[0] || 60), SUB = +(args[1] || 4), SHUTTER = .6, DUR = 20;
+  const FPS = +(args[0] || 60), SUB = +(args[1] || 4), SHUTTER = .6, DUR = await page.evaluate(() => window.DUR);
   const out = args[2] || path.join(here, 'video_silent.mp4');
   const N = DUR * FPS, F0 = +(args[3] || 0), F1 = +(args[4] || N);
-  const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-c:v', 'mjpeg', '-framerate', String(FPS * SUB), '-i', '-',
+  const ff = spawn(FFMPEG, ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-c:v', 'mjpeg', '-framerate', String(FPS * SUB), '-i', '-',
     '-vf', SUB > 1 ? `tmix=frames=${SUB},select='eq(mod(n\,${SUB})\,${SUB - 1})',setpts=N/${FPS}/TB` : 'null',
-    '-r', String(FPS), '-c:v', 'libx264', '-preset', 'slow', '-crf', '15', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out], { stdio: ['pipe', 'inherit', 'inherit'] });
+    '-r', String(FPS), ...(process.env.NVENC ? ['-c:v', 'h264_nvenc', '-preset', 'p7', '-tune', 'hq', '-rc', 'vbr', '-cq', '16', '-b:v', '0', '-profile:v', 'high'] : ['-c:v', 'libx264', '-preset', 'slow', '-crf', '15']), '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out], { stdio: ['pipe', 'inherit', 'inherit'] });
   const t0 = Date.now();
   for (let f = F0; f < F1; f++) {
     for (let k = 0; k < SUB; k++) {

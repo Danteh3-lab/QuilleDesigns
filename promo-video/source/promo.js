@@ -1,7 +1,9 @@
 /* Quille Designs — 20s promo. Deterministic timeline: window.seek(t) paints time t. */
 (() => {
 'use strict';
-const W = 1920, H = 1080, DUR = 20;
+const W = 1920, H = 1080, DUR = 22;
+const SVC_STEP = 1.0; // seconds per WHAT WE DO item (2 beats @120 BPM)
+const SH = 2.0;       // everything after the services section is pushed back one bar
 const C = { ink: '#00050d', navy: '#00162a', navy2: '#123555', blue: '#0074f3', accent: '#245a86', mid: '#4a86bd', light: '#7fb2e0', pale: '#e6eff7', muted: '#486883' };
 
 // ---------- utils
@@ -139,6 +141,7 @@ const chip1 = chip('● Promo production', 150, 912);
 const chip2 = chip('● Social media', 1540, 150);
 
 updates.push(t => {
+  t -= SH;
   const on = t >= 6.9 && t < 11.75;
   show(s3, on); if (!on) return;
   const pull = tw(t, 6.95, 8.3, E.outExpo);
@@ -220,6 +223,7 @@ for (let k = 0; k < 4; k++) for (const p of PARTNERS) {
 const s4ring = sv('svg', s4, { width: W, height: H, style: 'position:absolute;inset:0;z-index:1' });
 const orbitEllipse = sv('ellipse', s4ring, { cx: 960, cy: 495, rx: 720, ry: 280, fill: 'none', stroke: 'rgba(127,178,224,.22)', 'stroke-width': 1.5, 'stroke-dasharray': '4 10' });
 updates.push(t => {
+  t -= SH;
   const on = t >= 11.2 && t < 15.1;
   show(s4, on); if (!on) return;
   const enter = tw(t, 11.3, 11.85, E.outExpo);
@@ -266,7 +270,7 @@ const ITEMS = [
   { word: 'PROMOS', sub: 'Promo production', src: 'img/film-smartwigi.jpg', shape: [840, 473, 22] },
   { word: 'SOCIAL', sub: 'Social media', src: 'img/film-mage-ev.jpg', shape: [340, 604, 46] },
 ];
-const TI = i => 4.0 + .5 * i;
+const TI = i => 4.0 + SVC_STEP * i;
 const lag = mk('div', s2b, abs({ border: `1.5px solid rgba(127,178,224,.55)` }));
 const card = mk('div', s2b, abs({ overflow: 'hidden', background: '#000', boxShadow: '0 40px 140px rgba(0,116,243,.32), 0 30px 80px rgba(0,0,0,.6)' }));
 const layers = ITEMS.map(it => { const l = mk('div', card, abs({ inset: 0, overflow: 'hidden' })); const im = img(it.src, l); return { l, im }; });
@@ -291,17 +295,17 @@ function shapeAt(t) {
   const e0 = tw(t, TI(0) - .05, TI(0) + .55, E.outExpo);
   [w, h, r] = ITEMS[0].shape.map(v => v * e0); r = 260;
   for (let i = 1; i < ITEMS.length; i++) {
-    const e = tw(t, TI(i) - .06, TI(i) + .42, E.outExpo);
+    const e = tw(t, TI(i) - .06, TI(i) + .55, E.outExpo);
     if (e <= 0) break;
     const [pw, ph, pr] = ITEMS[i - 1].shape, [nw, nh, nr] = ITEMS[i].shape;
     w = lerp(pw, nw, e); h = lerp(ph, nh, e); r = lerp(Math.min(pr, pw / 2), nr, e);
   }
-  const ex = tw(t, 6.22, 6.98, E.inOutExpo);
+  const ex = tw(t, 6.22 + SH, 6.98 + SH, E.inOutExpo);
   if (ex > 0) { w = lerp(w, W, ex); h = lerp(h, H, ex); r = lerp(r, 0, ex); cx = lerp(cx, 960, ex); cy = lerp(cy, 540, ex); }
   return { w, h, r, cx, cy, ex };
 }
 updates.push(t => {
-  const on = t >= 3.8 && t < 7.0;
+  const on = t >= 3.8 && t < 7.0 + SH;
   show(s2b, on); if (!on) return;
   const s = shapeAt(t), sl = shapeAt(t - .09);
   Object.assign(card.style, { left: `${s.cx - s.w / 2}px`, top: `${s.cy - s.h / 2}px`, width: `${s.w}px`, height: `${s.h}px`, borderRadius: `${s.r}px` });
@@ -312,7 +316,7 @@ updates.push(t => {
   notch.style.opacity = (ph * (1 - P(s.ex, 0, .15))).toFixed(3);
   let wipeShown = false;
   layers.forEach(({ l, im }, i) => {
-    const e = i === 0 ? 1 : tw(t, TI(i) - .06, TI(i) + .34, E.outExpo);
+    const e = i === 0 ? 1 : tw(t, TI(i) - .06, TI(i) + .45, E.outExpo);
     show(l, t >= TI(i) - .06 || i === 0);
     l.style.clipPath = i === 0 ? '' : `inset(${(100 * (1 - e)).toFixed(2)}% 0 0 0)`;
     im.style.transform = `scale(${lerp(1.35, 1.0, tw(t, TI(i) - .06, TI(i) + 1.1, E.outCubic))})`;
@@ -321,21 +325,21 @@ updates.push(t => {
   show(wipeBar, wipeShown);
   // words
   words.forEach((cs, i) => {
-    const tin = TI(i), tout = i < 3 ? TI(i + 1) - .02 : 6.1;
+    const tin = TI(i), tout = i < 3 ? TI(i + 1) - .02 : 6.1 + SH;
     cs.forEach((c, k) => {
-      const e = tw(t, tin + k * .022, tin + .5 + k * .022, E.outExpo);
+      const e = tw(t, tin + k * .03, tin + .65 + k * .03, E.outExpo);
       const o = tw(t, tout + k * .014, tout + .2 + k * .014, E.inCubic);
       c.style.transform = `translateY(${(1 - e) * 105 - o * 105}%)`;
     });
   });
   subs.forEach((sb, i) => {
-    const tin = TI(i) + .08, tout = i < 3 ? TI(i + 1) - .02 : 6.1;
-    const e = tw(t, tin, tin + .45), o = tw(t, tout, tout + .18, E.inCubic);
+    const tin = TI(i) + .08, tout = i < 3 ? TI(i + 1) - .02 : 6.1 + SH;
+    const e = tw(t, tin, tin + .6), o = tw(t, tout, tout + .18, E.inCubic);
     sb.style.transform = `translateY(${(1 - e) * 100 - o * 100}%)`;
   });
-  { const k = clamp(Math.floor((t - 3.95) / .5), 0, 3); digStrip.style.transform = `translateY(${k === 0 ? 0 : -72 * (k - 1 + tw(t, TI(k) - .05, TI(k) + .35))}px)`; }
+  { const k = clamp(Math.floor((t - 3.95) / SVC_STEP), 0, 3); digStrip.style.transform = `translateY(${k === 0 ? 0 : -72 * (k - 1 + tw(t, TI(k) - .05, TI(k) + .35))}px)`; }
   segF.forEach((f, i) => f.style.transform = `scaleX(${tw(t, TI(i), TI(i) + .45, E.outExpo)})`);
-  const uiOut = tw(t, 6.08, 6.3, E.inCubic), uiIn = tw(t, 4.02, 4.5);
+  const uiOut = tw(t, 6.08 + SH, 6.3 + SH, E.inCubic), uiIn = tw(t, 4.02, 4.5);
   for (const el of [svcLabel, counter, segs]) { el.style.opacity = (uiIn * (1 - uiOut)).toFixed(3); el.style.transform = `translateY(${(1 - uiIn) * 30 - uiOut * 30}px)`; }
   svcLabelLine.style.transform = `scaleX(${uiIn})`;
   svcRing.style.opacity = (tw(t, 4.0, 4.6) * (1 - s.ex)).toFixed(3);
@@ -367,8 +371,9 @@ const bdefs = sv('defs', badge); sv('path', bdefs, { id: 'bcirc', d: 'M -100 0 A
 const bg2 = sv('g', badge);
 const btxt = sv('text', bg2, { fill: '#fff', 'font-family': 'Jost', 'font-weight': 500, 'font-size': 21, 'letter-spacing': 5.2 });
 const btp = sv('textPath', btxt, { href: '#bcirc' }); btp.textContent = 'QUILLE DESIGNS ✦ CREATIVE STUDIO ✦ ';
-sv('circle', badge, { r: 62, fill: C.ink });
-const barrow = sv('text', badge, { 'text-anchor': 'middle', y: 16, fill: '#fff', 'font-family': 'Montserrat', 'font-weight': 900, 'font-size': 44, 'letter-spacing': -2 }); barrow.textContent = 'QD';
+sv('circle', badge, { r: 72, fill: '#fff', style: 'filter:drop-shadow(0 6px 14px rgba(0,22,42,.35))' });
+const bmark = sv('g', badge, { transform: 'scale(.158) translate(-338.5 -345.5)' }); // QD mark (mark.js) centred on the disc
+for (const m of MARK) sv('path', bmark, { d: m.d, 'fill-rule': 'evenodd', fill: m.fill });
 // small tags
 const s2tag = mk('div', s2in, abs({ left: '154px', top: '880px', font: '500 22px Jost', letterSpacing: '.34em', color: 'rgba(255,255,255,.85)' }), 'BRANDING — MOTION — CONTENT');
 updates.push(t => {
@@ -514,6 +519,7 @@ const mlL = mk('div', mail, { width: '90px', height: '2px', background: C.blue, 
 const mailT = mk('div', mail, null, 'quilledesigns.sv@gmail.com');
 const mlR = mk('div', mail, { width: '90px', height: '2px', background: C.blue, transformOrigin: '0 50%' });
 updates.push(t => {
+  t -= SH;
   const on = t >= 14.8;
   show(s5, on); if (!on) return;
   // core charge + burst
@@ -588,13 +594,13 @@ const hTR = hudTxt({ right: '92px', top: '50px', textAlign: 'right' });
 const hBL = hudTxt({ left: '92px', bottom: '50px', fontVariantNumeric: 'tabular-nums' });
 const hBR = hudTxt({ right: '92px', bottom: '50px' }); hBR.textContent = 'BRANDING · MOTION · CONTENT';
 const prog = mk('div', hud, abs({ left: 0, bottom: 0, height: '4px', width: '100%', background: C.blue, transformOrigin: '0 50%' }));
-const SCN = [[0, '01 — THE LINE'], [3.0, '02 — MANIFESTO'], [4.0, '03 — SERVICES'], [7.0, '04 — SELECTED WORK'], [11.5, '05 — CLIENTS'], [15.0, '06 — QUILLE DESIGNS']];
+const SCN = [[0, '01 — THE LINE'], [3.0, '02 — MANIFESTO'], [4.0, '03 — SERVICES'], [7.0, '04 — SELECTED WORK'], [11.5, '05 — CLIENTS'], [15.0, '06 — QUILLE DESIGNS']].map(([s, l]) => [s >= 7 ? s + SH : s, l]);
 const flash = mk('div', stage, abs({ inset: 0, background: '#fff', opacity: 0, pointerEvents: 'none' }));
 const grain = mk('canvas', stage, abs({ inset: 0, width: '1920px', height: '1080px', mixBlendMode: 'overlay', opacity: .13, imageRendering: 'pixelated' })); grain.width = 960; grain.height = 540;
 const gctx = grain.getContext('2d'), gimg = gctx.createImageData(960, 540);
 const vign = mk('div', stage, abs({ inset: 0, background: 'radial-gradient(ellipse 75% 75% at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%)', pointerEvents: 'none' }));
-const HITS = [[3.0, 16], [7.0, 7], [15.0, 26], [16.45, 9]];
-const FLASHES = [[3.0, .4, 14], [6.96, .4, 16], [15.0, .65, 22], [16.45, .3, 16]];
+const HITS = [[3.0, 16], [7.0 + SH, 7], [15.0 + SH, 26], [16.45 + SH, 9]];
+const FLASHES = [[3.0, .4, 14], [6.96 + SH, .4, 16], [15.0 + SH, .65, 22], [16.45 + SH, .3, 16]];
 updates.push(t => {
   // camera shake
   let sx = 0, sy = 0, sr = 0;
@@ -603,7 +609,7 @@ updates.push(t => {
   let fl = 0; for (const [h, a, k] of FLASHES) if (t >= h) fl += a * Math.exp(-(t - h) * k);
   flash.style.opacity = Math.min(1, fl).toFixed(3);
   // hud
-  const light = tw(t, 16.5, 16.9, E.outCubic);
+  const light = tw(t, 16.5 + SH, 16.9 + SH, E.outCubic);
   hud.style.color = light > .5 ? `rgba(18,53,85,${.55})` : `rgba(255,255,255,${.6})`;
   hud.style.opacity = (tw(t, .3, 1.0) * (light > 0 && light < 1 ? Math.abs(light - .5) * 2 : 1)).toFixed(3);
   let lab = SCN[0][1]; for (const [s, l] of SCN) if (t >= s) lab = l; hTR.textContent = lab;
@@ -618,6 +624,7 @@ updates.push(t => {
   gctx.putImageData(gimg, 0, 0);
 });
 
+window.DUR = DUR;
 window.seek = t => { for (const u of updates) u(t); };
 window.READY = (async () => {
   await document.fonts.ready;
