@@ -368,7 +368,7 @@ html:has(.portfolio-gallery dialog[open]) { overflow: hidden; }
 .brand-visual:has(.brand-wordmark) { background: var(--gallery-media); }
 .brand-card:is(:hover,:focus-within) .project-open { opacity: 1; transform: none; }
 /* The whole card face is the brand logo, on the logo's own background colour. */
-.brand-logo { position: absolute; z-index: 0; inset: 0; display: grid; place-items: center; padding: 14% 16%; background: var(--gallery-white); }
+.brand-logo { position: absolute; z-index: 0; inset: 0; display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr); place-items: center; padding: 6%; background: var(--gallery-white); }
 .brand-logo.is-light-logo { background: var(--gallery-media); }
 .brand-logo img { width: 100%; height: 100%; object-fit: contain; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
 .brand-card:is(:hover,:focus-within) .brand-logo img { transform: scale(1.05); }
