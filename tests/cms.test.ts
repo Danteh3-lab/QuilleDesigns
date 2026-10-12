@@ -245,7 +245,7 @@ test("local Worker, D1 and R2 integration", async (t) => {
       assert.ok(!(await conditional.text()).includes('id="project-smartwigi"'));
       const home = await (await call("/")).text();
       assert.ok(home.includes('data-video-title="Mage EV"'));
-      assert.ok(home.includes("data-hero-beams"));
+      assert.ok(home.includes("data-hero-band"));
       assert.ok(!home.includes("LandingpageQuille.mp4"));
       p = await project("baby");
       const created = await call("/api/admin/projects", "POST", {

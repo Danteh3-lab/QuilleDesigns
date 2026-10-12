@@ -41,12 +41,12 @@ test("the homepage hero starts only after loading reaches 100%", async ({
   const intro = page.locator(".qd-intro");
   await expect(intro).toBeVisible();
   // While the intro is loading, the moving background has not started yet.
-  await expect(page.locator("[data-hero-beams] canvas")).toHaveCount(0);
+  await expect(page.locator("[data-hero-band] canvas")).toHaveCount(0);
   await expect(page.locator("[data-hero-dots] canvas")).toHaveCount(0);
   await expect(intro.locator(".qd-intro-count")).toHaveText("100%", {
     timeout: 6000,
   });
-  await expect(page.locator("[data-hero-beams] canvas")).toHaveCount(1);
+  await expect(page.locator("[data-hero-band] canvas")).toHaveCount(1);
   await expect(page.locator("[data-hero-dots] canvas")).toHaveCount(1);
   await expect(intro).toHaveCount(0, { timeout: 8000 });
 });

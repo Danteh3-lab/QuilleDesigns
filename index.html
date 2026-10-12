@@ -59,18 +59,13 @@
         class="relative flex min-h-[100svh] items-end overflow-hidden"
         data-page="home"
       >
-        <!-- Moving background: React Bits "Beams" in Quille blues (hero-background.js) -->
-        <div id="heroMedia" class="hero-beams absolute inset-0 z-0" data-hero-beams aria-hidden="true"></div>
-        <div
-          class="absolute inset-0 z-[1]"
-          style="background:linear-gradient(180deg,rgba(0,5,13,0.55) 0%,rgba(2,12,21,0.55) 45%,rgba(0,5,13,0.98) 100%);"
-        ></div>
-        <div
-          class="absolute inset-0 z-[1]"
-          style="background:radial-gradient(60% 50% at 15% 80%,rgba(36,90,134,0.35) 0%,transparent 70%);"
-        ></div>
+        <!-- Moving background: React Bits landing band in Quille blue (hero-background.js) -->
+        <div id="heroMedia" class="hero-band-stage" aria-hidden="true">
+          <div class="hero-band" data-hero-band></div>
+        </div>
         <!-- Mouse-reactive dots: React Bits "Dot Grid" (hero-background.js) -->
-        <div class="hero-dots absolute inset-0 z-[1]" data-hero-dots aria-hidden="true"></div>
+        <div class="hero-dots" data-hero-dots aria-hidden="true"></div>
+        <div class="hero-bottom-fade" aria-hidden="true"></div>
 
         <div
           id="heroContent"

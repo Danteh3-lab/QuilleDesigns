@@ -1,6 +1,10 @@
-/* Beams and Dot Grid styles from React Bits (https://reactbits.dev) by David Haz. MIT + Commons Clause License, Copyright (c) 2026 David Haz. */
-.beams-container{position:relative;width:100%;height:100%;overflow:hidden}.beams-canvas{position:absolute;inset:0;display:block;width:100%;height:100%}.dot-grid{position:relative;width:100%;height:100%}.dot-grid__canvas{position:absolute;inset:0;display:block;width:100%;height:100%;pointer-events:none}
-/* Quille: hero background layers. Without WebGL2 the navy gradient below stays as a still background. */
-.hero-beams, .hero-dots { position: absolute; inset: 0; }
-.hero-beams { z-index: 0; background: radial-gradient(70% 60% at 68% 18%, rgba(36, 90, 134, 0.38), transparent 70%), #00050d; }
-.hero-dots { z-index: 1; pointer-events: none; }
+/* Dot Grid styles from React Bits. */
+.dot-grid{position:relative;width:100%;height:100%}.dot-grid__canvas{position:absolute;inset:0;display:block;width:100%;height:100%;pointer-events:none}
+/* Quille: hero background layers (hero-background.js). Landing band and Dot Grid
+   from React Bits (https://reactbits.dev) by David Haz. MIT + Commons Clause License,
+   Copyright (c) 2026 David Haz. Without WebGL2 the navy gradient stays as a still background. */
+.hero-band-stage { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: radial-gradient(70% 60% at 68% 18%, rgba(36, 90, 134, 0.32), transparent 70%), #00050d; }
+/* The band is taller than the hero and anchored to the bottom, so it rises into view. */
+.hero-band { position: absolute; left: 0; right: 0; bottom: 0; height: 150%; mix-blend-mode: screen; pointer-events: none; }
+.hero-dots { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.hero-bottom-fade { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(180deg, rgba(0, 5, 13, 0.25) 0%, rgba(0, 5, 13, 0) 30%, rgba(0, 5, 13, 0) 62%, rgba(0, 5, 13, 0.45) 82%, rgba(0, 5, 13, 0.98) 100%); }

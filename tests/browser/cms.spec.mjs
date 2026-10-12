@@ -147,9 +147,9 @@ test("public portfolio and homepage retain controls and media behavior", async (
   await page.goto("/");
   await expect(page.locator(".showcase-card")).toHaveCount(2);
   await expect(page.locator(".showcase-video")).toHaveCount(0);
-  // The hero video was replaced by the moving Beams + Dot Grid background.
+  // The hero video was replaced by the moving landing band + Dot Grid background.
   await expect(page.locator("#hero video")).toHaveCount(0);
-  await expect(page.locator("[data-hero-beams] canvas")).toHaveCount(1);
+  await expect(page.locator("[data-hero-band] canvas")).toHaveCount(1);
   await expect(page.locator("[data-hero-dots] canvas")).toHaveCount(1);
   await expect(page.locator(".process-background-still")).toHaveCount(1);
   await page.locator("[data-showcase-play]").first().click();
@@ -491,9 +491,9 @@ test("homepage hero background moves and the process sequence advances on scroll
   test.setTimeout(90000);
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/");
-  // The moving hero background (Beams + Dot Grid) replaces the old video.
+  // The moving hero background (landing band + Dot Grid) replaces the old video.
   await expect(page.locator("html")).toHaveClass(/hero-bg-ready/);
-  for (const layer of ["[data-hero-beams]", "[data-hero-dots]"]) {
+  for (const layer of ["[data-hero-band]", "[data-hero-dots]"]) {
     const size = await page
       .locator(`${layer} canvas`)
       .evaluate((canvas) => canvas.width * canvas.height);
