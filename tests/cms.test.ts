@@ -135,7 +135,7 @@ test("local Worker, D1 and R2 integration", async (t) => {
       assert.ok(smartwigi.includes(`id="project-${id}"`), id);
     assert.ok(smartwigi.includes('src="assets/partners/smartwigi%20OG.jpg"'));
     assert.ok(smartwigi.includes("<b>03</b> <span>films</span>"));
-    assert.ok(html.includes('src="assets/partners/Sansoer%20Partner.png"'));
+    assert.ok(html.includes('src="assets/partners/Sansoer%20Partner%20OG.jpg"'));
     assert.ok(html.includes("Films coming soon"));
     assert.equal(
       (html.match(/data-media="video"/g) || []).length,
@@ -186,6 +186,29 @@ test("local Worker, D1 and R2 integration", async (t) => {
       (await (await call("/api/admin/brands")).json()).at(-1).logo_url,
       "assets/partners/Sansoer%20Partner.png",
     );
+    // A new brand whose slug is taken by another brand ("terzol" is Terzol Vastgoed) still gets added.
+    const clash = await call("/api/admin/projects", "POST", {
+      ...baby,
+      published: true,
+      brand: "Terzol",
+      brand_logo_url: "assets/partners/smartwigi%20OG.jpg",
+    });
+    assert.equal(clash.status, 201);
+    const clashBrand = (await (await call("/api/admin/brands")).json()).find(
+      (b: any) => b.name === "Terzol",
+    );
+    assert.equal(clashBrand?.id, "terzol-2");
+    assert.equal(clashBrand?.logo_url, "assets/partners/smartwigi%20OG.jpg");
+    const { id: clashId } = await clash.json();
+    assert.equal(
+      (
+        await call(`/api/admin/projects/${clashId}`, "DELETE", {
+          revision: (await project(clashId)).revision,
+        })
+      ).status,
+      200,
+    );
+    await db.prepare("DELETE FROM brands WHERE id='terzol-2'").run();
     const logo = await project("yuchel");
     const updated = await call("/api/admin/projects/yuchel", "PUT", {
       ...logo,

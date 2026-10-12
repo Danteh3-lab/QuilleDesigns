@@ -110,10 +110,22 @@ async function brandStatements(
     if (!asset?.content_type.startsWith("image/"))
       fail(400, "validation", "Choose a completed image upload for the logo.");
   }
+  // A new name whose slug is already used by another brand ("Terzol" vs "Terzol Vastgoed")
+  // gets a numbered id, so the insert is not silently ignored.
+  const slug = brandSlug(p.brand);
+  const taken = new Set(
+    (
+      await env.DB.prepare("SELECT id FROM brands WHERE id=? OR id LIKE ?")
+        .bind(slug, `${slug}-%`)
+        .all<{ id: string }>()
+    ).results.map((row) => row.id),
+  );
+  let id = slug;
+  for (let n = 2; taken.has(id); n++) id = `${slug}-${n}`;
   return [
     env.DB.prepare(
       "INSERT OR IGNORE INTO brands(id,name,logo_url,display_order) SELECT ?,?,?,COALESCE(MAX(display_order),-10)+10 FROM brands",
-    ).bind(brandSlug(p.brand), p.brand, logoURL),
+    ).bind(id, p.brand, logoURL),
     ...(logoURL
       ? [
           env.DB.prepare(
@@ -329,18 +341,18 @@ export async function projectAPI(
       await checkUploads(env, p);
       const brand = await brandStatements(env, p, input.brand_logo_url);
       const keys = Object.keys(p);
-      const [result] = await env.DB.batch([
-        env.DB.prepare(
-          `UPDATE projects SET ${keys.map((k) => `${k}=?`).join(",")},revision=revision+1 WHERE id=? AND revision=?`,
-        ).bind(...Object.values(p), id, revision),
-        ...brand,
-      ]);
-      if (!result.meta.changes)
-        fail(
-          409,
-          "stale_revision",
-          "This project changed. Reload before saving.",
-        );
+      // The guard aborts the whole batch, brand changes included, if the project changed meanwhile.
+      await guardBatch(
+        env,
+        "EXISTS(SELECT 1 FROM projects WHERE id=? AND revision=?)",
+        [id, revision],
+        [
+          env.DB.prepare(
+            `UPDATE projects SET ${keys.map((k) => `${k}=?`).join(",")},revision=revision+1 WHERE id=? AND revision=?`,
+          ).bind(...Object.values(p), id, revision),
+          ...brand,
+        ],
+      );
       return json({ saved: true });
     }
     if (method === "DELETE" && !match[2]) {
