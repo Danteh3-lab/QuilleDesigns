@@ -1,7 +1,7 @@
 /*
  * Quille Designs intro: the QD mark draws itself, the wordmark slides in and
- * the screen lifts away like a curtain. Shown once per browser session, about
- * 1.5 seconds, skippable with a click or key, never with reduced motion.
+ * the screen lifts away like a curtain. Plays every time the homepage opens
+ * and once per browser session on the other pages, about 1.5 seconds, skippable with a click or key, never with reduced motion.
  * A small inline script in each page's <head> adds html.qd-intro-pending
  * before first paint; this file builds the overlay and removes that class.
  */

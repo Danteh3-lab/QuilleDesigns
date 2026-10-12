@@ -246,6 +246,8 @@ test("local Worker, D1 and R2 integration", async (t) => {
       const home = await (await call("/")).text();
       assert.ok(home.includes('data-video-title="Mage EV"'));
       assert.ok(home.includes("data-hero-band"));
+      // The logo intro plays on every homepage visit, not once per session.
+      assert.ok(home.includes("qd-intro-pending") && !home.includes("qd-intro-seen"));
       assert.ok(!home.includes("LandingpageQuille.mp4"));
       p = await project("baby");
       const created = await call("/api/admin/projects", "POST", {
