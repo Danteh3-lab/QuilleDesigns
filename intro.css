@@ -32,8 +32,8 @@ html.qd-intro-pending::after { content: ""; position: fixed; inset: 0; z-index: 
 /* Loading progress: a 0-100% counter and a blue line along the bottom edge, driven by intro.js. */
 .qd-intro-bar { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: linear-gradient(90deg, #245a86, #4a86bd, #7fb2e0); transform: scaleX(0); transform-origin: 0 50%; }
 .qd-intro-progress { position: absolute; right: clamp(16px, 4vw, 48px); bottom: clamp(20px, 4vw, 40px); display: flex; align-items: baseline; gap: 14px; color: #123555; }
-.qd-intro-label { font: 600 11px/1 'Plus Jakarta Sans', system-ui, sans-serif; letter-spacing: .28em; text-transform: uppercase; color: #486883; }
-.qd-intro-count { min-width: 4ch; text-align: right; font: 700 clamp(40px, 6vw, 72px)/1 'Syne', system-ui, sans-serif; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+.qd-intro-label { font: 600 11px/1 'Jost', system-ui, sans-serif; letter-spacing: .28em; text-transform: uppercase; color: #486883; }
+.qd-intro-count { min-width: 4ch; text-align: right; font: 700 clamp(40px, 6vw, 72px)/1 'Montserrat', system-ui, sans-serif; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
 .qd-intro.is-leaving .qd-intro-progress { opacity: 0; transition: opacity .3s ease; }
 
 @keyframes qd-draw { to { stroke-dashoffset: 0; } }

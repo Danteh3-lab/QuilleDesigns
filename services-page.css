@@ -9,8 +9,8 @@ html:has(.services-page) {
   --services-dark-accent: #7fb2e0;
   --services-dark-muted: #b1beca;
   --services-dark-line: #314353;
-  --services-display: 'Syne', sans-serif;
-  --services-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --services-display: 'Montserrat', sans-serif;
+  --services-body: 'Jost', system-ui, sans-serif;
   --services-scrollbar-thumb: #7892a9;
   --services-scrollbar-hover: #486883;
   --services-scrollbar-active: #245a86;

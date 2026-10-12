@@ -12,10 +12,10 @@ html:has(.portfolio-gallery), html:has(.cms-admin) {
   --gallery-accent-soft: #dce9f5;
   --gallery-media: #10233a;
   --gallery-glass: rgb(255 255 255 / .55);
-  --gallery-font-display: 'Inter Tight', system-ui, sans-serif;
-  --gallery-font-body: 'Inter Tight', system-ui, sans-serif;
-  --gallery-font-serif: 'Instrument Serif', Georgia, serif;
-  --gallery-font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --gallery-font-display: 'Montserrat', system-ui, sans-serif;
+  --gallery-font-body: 'Jost', system-ui, sans-serif;
+  --gallery-font-serif: 'Montserrat', system-ui, sans-serif;
+  --gallery-font-mono: 'Jost', system-ui, sans-serif;
   --gallery-radius: 12px;
   --scrollbar-thumb: #607f99;
   --scrollbar-hover: #245a86;

@@ -14,8 +14,8 @@ html:has(.contact-page) {
   --contact-dark-line: #314353;
   --contact-error: #a12c39;
   --contact-success: #1f6b4a;
-  --contact-display: 'Syne', sans-serif;
-  --contact-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --contact-display: 'Montserrat', sans-serif;
+  --contact-body: 'Jost', system-ui, sans-serif;
   --contact-radius: 24px;
   scrollbar-gutter: stable;
 }

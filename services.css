@@ -21,7 +21,7 @@
 
 /* Header: large title left, "All services" link right */
 .services-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 56px; }
-.services-title { margin: 0; font-family: 'Syne', sans-serif; font-size: clamp(48px, 5.4vw, 80px); font-weight: 700; line-height: 1; letter-spacing: -.055em; color: var(--service-ink); }
+.services-title { margin: 0; font-family: 'Montserrat', sans-serif; font-size: clamp(48px, 5.4vw, 80px); font-weight: 700; line-height: 1; letter-spacing: -.055em; color: var(--service-ink); }
 .services-all-link { flex: 0 0 auto; display: inline-flex; align-items: center; min-height: 44px; margin-bottom: 4px; color: var(--service-ink); font-size: 14px; font-weight: 500; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; transition: color .2s; }
 .services-all-link:hover { color: var(--service-blue); }
 .services-all-link:focus-visible, .expertise-link:focus-visible { outline: 3px solid #4a86bd; outline-offset: 5px; }
@@ -67,8 +67,8 @@
 .expertise-art--social > svg:last-of-type { z-index: 1; }
 
 .expertise-body { display: flex; flex: 1; flex-direction: column; padding: 32px 26px 28px; }
-.expertise-number { margin: 0 0 14px; color: var(--service-blue); font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .14em; }
-.expertise-card h3 { margin: 0; font-family: 'Syne', sans-serif; font-size: clamp(24px, 1.9vw, 30px); font-weight: 600; line-height: 1.12; letter-spacing: -.04em; }
+.expertise-number { margin: 0 0 14px; color: var(--service-blue); font-family: 'Jost', system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .14em; }
+.expertise-card h3 { margin: 0; font-family: 'Montserrat', sans-serif; font-size: clamp(24px, 1.9vw, 30px); font-weight: 600; line-height: 1.12; letter-spacing: -.04em; }
 .expertise-link { color: inherit; text-decoration: none; transition: color .2s; }
 /* The whole card is clickable through the title link */
 .expertise-link::after { content: ''; position: absolute; inset: 0; z-index: 4; border-radius: inherit; }
