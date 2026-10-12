@@ -248,6 +248,8 @@ test("local Worker, D1 and R2 integration", async (t) => {
       assert.ok(home.includes("data-hero-band"));
       // Scroll motion (headings, image curtains, sliding sections, marquee lean).
       assert.ok(home.includes("motion.js") && home.includes("motion.css"));
+      // One shared horizon background wraps partners, testimonials and contact.
+      assert.ok(home.includes("data-horizon") && home.includes("horizon.js") && home.indexOf("data-horizon") < home.indexOf('id="brands"') && home.indexOf('id="brands"') < home.indexOf('id="contact"'));
       // About us: Threads background instead of the Mage EV frame sequence.
       assert.ok(home.includes("data-process-threads") && home.includes("about-threads.js") && !home.includes("mage-ev-sequence"));
       // The logo intro plays on every homepage visit, not once per session.

@@ -42,6 +42,8 @@ const files = [
   "about-threads.js",
   "motion.js",
   "motion.css",
+  "horizon.js",
+  "horizon.css",
 ];
 async function copyDir(from, to) {
   await mkdir(to, { recursive: true });
