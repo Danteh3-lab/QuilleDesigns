@@ -14,7 +14,13 @@
   const intro = document.createElement('div');
   intro.className = 'qd-intro';
   intro.setAttribute('aria-hidden', 'true');
-  intro.innerHTML = '<div class="qd-intro-stage">' + LOGO + '</div><span class="qd-intro-bar"></span>';
+  intro.innerHTML = '<div class="qd-intro-stage">' + LOGO + '</div>' +
+    '<div class="qd-intro-progress"><span class="qd-intro-label">Loading</span><span class="qd-intro-count">0%</span></div>' +
+    '<span class="qd-intro-bar"></span>';
+  const count = intro.querySelector('.qd-intro-count');
+  const bar = intro.querySelector('.qd-intro-bar');
+  const label = intro.querySelector('.qd-intro-label');
+  try { if ((localStorage.getItem('quille-language') || 'nl') === 'nl') label.textContent = 'Laden'; } catch (_) { label.textContent = 'Laden'; }
   let leaving = false;
   let leaveTimer = 0;
   const done = () => {
@@ -34,13 +40,37 @@
     setTimeout(done, 1200);
     removeEventListener('keydown', leave);
   };
+  // 0 to 100%: follows a 1.35 s curve, holds at 90% while the page is still
+  // loading (at most 4 s in total), then completes and lifts the curtain.
+  const MIN_MS = 1350;
+  const MAX_MS = 4000;
+  let loaded = document.readyState === 'complete';
+  addEventListener('load', () => { loaded = true; }, { once: true });
+  const easeOut = t => 1 - Math.pow(1 - t, 3);
+  let shown = 0;
+  let begin = 0;
+  const tick = now => {
+    if (leaving) return;
+    if (!begin) begin = now;
+    const elapsed = now - begin;
+    const timed = easeOut(Math.min(1, elapsed / MIN_MS));
+    const ready = loaded || elapsed >= MAX_MS;
+    const target = ready ? timed : Math.min(timed, 0.9);
+    shown += (target - shown) * 0.25;
+    if (ready && elapsed >= MIN_MS && shown > 0.995) shown = 1;
+    count.textContent = Math.round(shown * 100) + '%';
+    bar.style.transform = 'scaleX(' + shown.toFixed(4) + ')';
+    if (shown >= 1) { setTimeout(leave, 120); return; }
+    requestAnimationFrame(tick);
+  };
   const start = () => {
     document.body.prepend(intro);
     root.classList.add('qd-intro-active');
     root.classList.remove('qd-intro-pending');
     window.quilleIntro = { active: true };
     requestAnimationFrame(() => intro.classList.add('is-playing'));
-    leaveTimer = setTimeout(leave, 1350);
+    requestAnimationFrame(tick);
+    leaveTimer = setTimeout(leave, MAX_MS + 1000);
     intro.addEventListener('pointerdown', leave);
     addEventListener('keydown', leave);
   };
