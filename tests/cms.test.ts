@@ -73,11 +73,12 @@ test("local Worker, D1 and R2 integration", async (t) => {
     async () => {
       const data = await (await call("/api/portfolio")).json();
       assert.equal(data.projects.length, 12);
-      for (const original of fixture)
-        assert.deepEqual(
-          data.projects.find((p: any) => p.id === original.id),
-          original,
+      for (const original of fixture) {
+        const { brand, brand_logo_url, ...imported } = data.projects.find(
+          (p: any) => p.id === original.id,
         );
+        assert.deepEqual(imported, original);
+      }
       assert.deepEqual(
         data.featured.map((p: any) => p.id),
         ["smartwigi", "terzol"],
@@ -88,6 +89,122 @@ test("local Worker, D1 and R2 integration", async (t) => {
       assert.ok(html.includes("project-yuchel"));
     },
   );
+  await t.test("films are grouped under one card per brand", async () => {
+    const data = await (await call("/api/portfolio")).json();
+    const brandOf = (id: string) =>
+      data.projects.find((p: any) => p.id === id).brand;
+    assert.deepEqual(
+      ["smartwigi", "fake-alexa", "baby", "terzol", "mage-ev"].map(brandOf),
+      [
+        "Smartwigi",
+        "Smartwigi",
+        "Smartwigi",
+        "Terzol Vastgoed",
+        "Sansoers Imports",
+      ],
+    );
+    assert.equal(brandOf("yuchel"), "");
+    assert.deepEqual(
+      data.brands.map((b: any) => b.id),
+      [
+        "smartwigi",
+        "terzol",
+        "sansoers-imports",
+        "ingrediently",
+        "xus-super-store",
+      ],
+    );
+    const html = await (await call("/portfolio.html")).text();
+    const cards = [
+      ...html.matchAll(
+        /<(details|article) class="brand-card[^"]*" id="brand-([\w-]+)"/g,
+      ),
+    ].map((m) => `${m[1]}:${m[2]}`);
+    assert.deepEqual(cards, [
+      "details:smartwigi",
+      "details:terzol",
+      "details:sansoers-imports",
+      "article:ingrediently",
+      "article:xus-super-store",
+    ]);
+    const smartwigi = html.slice(
+      html.indexOf('id="brand-smartwigi"'),
+      html.indexOf('id="brand-terzol"'),
+    );
+    for (const id of ["smartwigi", "fake-alexa", "baby"])
+      assert.ok(smartwigi.includes(`id="project-${id}"`), id);
+    assert.ok(smartwigi.includes('src="assets/partners/smartwigi%20OG.jpg"'));
+    assert.ok(smartwigi.includes("<b>03</b> <span>films</span>"));
+    assert.ok(html.includes('src="assets/partners/Sansoer%20Partner.png"'));
+    assert.ok(html.includes("Films coming soon"));
+    assert.equal(
+      (html.match(/data-media="video"/g) || []).length,
+      5,
+      "every film keeps its direct link",
+    );
+    const baby = await project("baby");
+    assert.equal(
+      (
+        await call("/api/admin/projects", "POST", {
+          ...baby,
+          published: false,
+          brand_logo_url: "javascript:alert(1)",
+        })
+      ).status,
+      400,
+    );
+    // A new brand name on a film adds that brand, with the logo given alongside.
+    const created = await call("/api/admin/projects", "POST", {
+      ...baby,
+      published: true,
+      brand: "  New Client  ",
+      brand_logo_url: "assets/partners/smartwigi%20OG.jpg",
+    });
+    assert.equal(created.status, 201);
+    const saved = await project((await created.json()).id);
+    assert.equal(saved.brand, "New Client");
+    const brands = await (await call("/api/admin/brands")).json();
+    assert.deepEqual(brands.at(-1), {
+      id: "new-client",
+      name: "New Client",
+      logo_url: "assets/partners/smartwigi%20OG.jpg",
+      display_order: 50,
+    });
+    const withNew = await (await call("/portfolio.html")).text();
+    assert.ok(
+      withNew.includes('<details class="brand-card" id="brand-new-client"'),
+    );
+    // Saving an existing brand with a new logo replaces that brand's logo.
+    const renamed = await call(`/api/admin/projects/${saved.id}`, "PUT", {
+      ...saved,
+      published: true,
+      brand: "new client",
+      brand_logo_url: "assets/partners/Sansoer%20Partner.png",
+    });
+    assert.equal(renamed.status, 200);
+    assert.equal(
+      (await (await call("/api/admin/brands")).json()).at(-1).logo_url,
+      "assets/partners/Sansoer%20Partner.png",
+    );
+    const logo = await project("yuchel");
+    const updated = await call("/api/admin/projects/yuchel", "PUT", {
+      ...logo,
+      published: true,
+      brand: "Ignored",
+    });
+    assert.equal(updated.status, 200);
+    assert.equal((await project("yuchel")).brand, "", "logos have no brand");
+    const current = await project(saved.id);
+    assert.equal(
+      (
+        await call(`/api/admin/projects/${saved.id}`, "DELETE", {
+          revision: current.revision,
+        })
+      ).status,
+      200,
+    );
+    await db.prepare("DELETE FROM brands WHERE id='new-client'").run();
+  });
   await t.test(
     "authorization fails closed on every admin entry path",
     async () => {
@@ -249,11 +366,22 @@ test("local Worker, D1 and R2 integration", async (t) => {
       // Scroll motion (headings, image curtains, sliding sections, marquee lean).
       assert.ok(home.includes("motion.js") && home.includes("motion.css"));
       // One shared horizon background wraps partners, testimonials and contact.
-      assert.ok(home.includes("data-horizon") && home.includes("horizon.js") && home.indexOf("data-horizon") < home.indexOf('id="brands"') && home.indexOf('id="brands"') < home.indexOf('id="contact"'));
+      assert.ok(
+        home.includes("data-horizon") &&
+          home.includes("horizon.js") &&
+          home.indexOf("data-horizon") < home.indexOf('id="brands"') &&
+          home.indexOf('id="brands"') < home.indexOf('id="contact"'),
+      );
       // About us: Threads background instead of the Mage EV frame sequence.
-      assert.ok(home.includes("data-process-threads") && home.includes("about-threads.js") && !home.includes("mage-ev-sequence"));
+      assert.ok(
+        home.includes("data-process-threads") &&
+          home.includes("about-threads.js") &&
+          !home.includes("mage-ev-sequence"),
+      );
       // The logo intro plays on every homepage visit, not once per session.
-      assert.ok(home.includes("qd-intro-pending") && !home.includes("qd-intro-seen"));
+      assert.ok(
+        home.includes("qd-intro-pending") && !home.includes("qd-intro-seen"),
+      );
       assert.ok(!home.includes("LandingpageQuille.mp4"));
       p = await project("baby");
       const created = await call("/api/admin/projects", "POST", {
@@ -478,6 +606,14 @@ test("local Worker, D1 and R2 integration", async (t) => {
     async () => {
       await db.prepare("DELETE FROM featured_slots").run();
       await db.prepare("UPDATE projects SET published=0").run();
+      // Brands from the brand list keep their cards, without any films.
+      const brandsOnly = await (await call("/portfolio")).text();
+      assert.equal(
+        (brandsOnly.match(/class="brand-card is-empty"/g) || []).length,
+        5,
+      );
+      assert.equal((brandsOnly.match(/class="project-card /g) || []).length, 0);
+      await db.prepare("DELETE FROM brands").run();
       const html = await (await call("/portfolio")).text();
       assert.ok(html.includes("No projects are currently published."));
       assert.equal((html.match(/class="project-card /g) || []).length, 0);

@@ -77,7 +77,24 @@ export async function createLocal({
         .split(/;\s*(?:\r?\n|$)/)
         .map((s) => s.trim())
         .filter(Boolean);
-      await db.batch(statements.map((s) => db.prepare(s)));
+      // A persisted database already has columns added by earlier runs; ADD COLUMN cannot be repeated.
+      const pending = [];
+      for (const s of statements) {
+        const added = s
+          .replace(/^(?:--[^\n]*\n\s*)+/, "")
+          .match(/^ALTER TABLE (\w+) ADD COLUMN (\w+)/i);
+        if (added) {
+          const { results } = await db
+            .prepare(
+              `SELECT 1 FROM pragma_table_info('${added[1]}') WHERE name=?`,
+            )
+            .bind(added[2])
+            .all();
+          if (results.length) continue;
+        }
+        pending.push(s);
+      }
+      await db.batch(pending.map((s) => db.prepare(s)));
     }
     const sign = async (claims = {}) =>
       new SignJWT({ email: "client@example.test", ...claims })

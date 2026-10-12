@@ -1,4 +1,4 @@
-import { Env, Project, body, fail, json } from "./types";
+import { Brand, Env, Project, body, fail, json } from "./types";
 export function text(
   value: unknown,
   name: string,
@@ -76,11 +76,52 @@ export function validateProject(
     alt_text: text(input.alt_text, "alt text", 600),
     caption: text(input.caption ?? "", "caption", 160, false),
     description: text(input.description ?? "", "description", 1000, false),
+    // Films are grouped under their brand on the portfolio; logos have none.
+    brand:
+      input.category === "video"
+        ? text(input.brand ?? "", "brand", 120, false)
+        : "",
     width: integer(input.width, "width", 1, 20000),
     height: integer(input.height, "height", 1, 20000),
     display_order: integer(input.display_order, "display order"),
     published: input.published ? 1 : 0,
   };
+}
+export const brandSlug = (value: string) =>
+  value
+    .normalize("NFKD")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "") || "brand";
+// Saving a film adds its brand to the brand list; a logo given with it becomes that brand's logo.
+async function brandStatements(
+  env: Env,
+  p: Omit<Project, "id" | "revision">,
+  logo: unknown,
+) {
+  if (!p.brand) return [];
+  const logoURL = String(logo ?? "").trim() ? mediaURL(logo) : "";
+  if (logoURL.startsWith("/media/")) {
+    const asset = await env.DB.prepare(
+      "SELECT content_type FROM uploads WHERE id=? AND status='complete'",
+    )
+      .bind(logoURL.slice(7))
+      .first<{ content_type: string }>();
+    if (!asset?.content_type.startsWith("image/"))
+      fail(400, "validation", "Choose a completed image upload for the logo.");
+  }
+  return [
+    env.DB.prepare(
+      "INSERT OR IGNORE INTO brands(id,name,logo_url,display_order) SELECT ?,?,?,COALESCE(MAX(display_order),-10)+10 FROM brands",
+    ).bind(brandSlug(p.brand), p.brand, logoURL),
+    ...(logoURL
+      ? [
+          env.DB.prepare(
+            "UPDATE brands SET logo_url=? WHERE name=? COLLATE NOCASE",
+          ).bind(logoURL, p.brand),
+        ]
+      : []),
+  ];
 }
 export async function guardBatch(
   env: Env,
@@ -97,17 +138,19 @@ export async function guardBatch(
   ]);
 }
 export async function publicData(env: Env) {
-  const [projects, featured] = await env.DB.batch([
+  const [projects, featured, brands] = await env.DB.batch([
     env.DB.prepare(
       "SELECT * FROM projects WHERE published=1 ORDER BY category DESC,orientation,display_order,id",
     ),
     env.DB.prepare(
       "SELECT p.*,f.slot FROM featured_slots f JOIN projects p ON p.id=f.project_id WHERE p.published=1 AND p.category='video' ORDER BY f.slot",
     ),
+    env.DB.prepare("SELECT * FROM brands ORDER BY display_order,name"),
   ]);
   return {
     projects: projects.results as unknown as Project[],
     featured: featured.results as unknown as (Project & { slot: number })[],
+    brands: brands.results as unknown as Brand[],
   };
 }
 export async function projectAPI(
@@ -172,6 +215,14 @@ export async function projectAPI(
         ).all()
       ).results,
     );
+  if (path === "/api/admin/brands" && method === "GET")
+    return json(
+      (
+        await env.DB.prepare(
+          "SELECT * FROM brands ORDER BY display_order,name",
+        ).all()
+      ).results,
+    );
   if (path === "/api/admin/projects") {
     if (method === "GET") {
       const url = new URL(request.url);
@@ -213,13 +264,15 @@ export async function projectAPI(
       const input = await body(request);
       const p = validateProject(input);
       await checkUploads(env, p);
+      const brand = await brandStatements(env, p, input.brand_logo_url);
       const id = crypto.randomUUID();
       const keys = Object.keys(p);
-      await env.DB.prepare(
-        `INSERT INTO projects(id,${keys.join(",")}) VALUES (?,${keys.map(() => "?").join(",")})`,
-      )
-        .bind(id, ...Object.values(p))
-        .run();
+      await env.DB.batch([
+        env.DB.prepare(
+          `INSERT INTO projects(id,${keys.join(",")}) VALUES (?,${keys.map(() => "?").join(",")})`,
+        ).bind(id, ...Object.values(p)),
+        ...brand,
+      ]);
       return json({ id, revision: 1 }, 201);
     }
   }
@@ -274,12 +327,14 @@ export async function projectAPI(
     if (method === "PUT" && !match[2]) {
       const p = validateProject(input);
       await checkUploads(env, p);
+      const brand = await brandStatements(env, p, input.brand_logo_url);
       const keys = Object.keys(p);
-      const result = await env.DB.prepare(
-        `UPDATE projects SET ${keys.map((k) => `${k}=?`).join(",")},revision=revision+1 WHERE id=? AND revision=?`,
-      )
-        .bind(...Object.values(p), id, revision)
-        .run();
+      const [result] = await env.DB.batch([
+        env.DB.prepare(
+          `UPDATE projects SET ${keys.map((k) => `${k}=?`).join(",")},revision=revision+1 WHERE id=? AND revision=?`,
+        ).bind(...Object.values(p), id, revision),
+        ...brand,
+      ]);
       if (!result.meta.changes)
         fail(
           409,

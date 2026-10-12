@@ -306,6 +306,11 @@
     'Commercial': 'Reclamefilm',
     'EV financing, explained.': 'EV-financiering uitgelegd.',
     'Play film': 'Film afspelen',
+    'View films': 'Bekijk films',
+    'Films coming soon': 'Films volgen binnenkort',
+    'Brand': 'Merk',
+    'Close brand films': 'Films van dit merk sluiten',
+    'Films for this brand': 'Films van dit merk',
     'A film with a twist.': 'Een film met een onverwachte wending.',
     'See the security cameras in action.': 'Bekijk de beveiligingscamera’s in actie.',
     'Original identity': 'Originele identiteit',
@@ -432,6 +437,8 @@
       if ((match = text.match(/^(\d+) projects?$/i))) return `${match[1]} ${match[1] === '1' ? 'project' : 'projecten'}`;
       if ((match = text.match(/^View (\d+) of (\d+)$/))) return `Weergave ${match[1]} van ${match[2]}`;
       if ((match = text.match(/^View complete (.+) poster$/))) return `Volledige poster van ${match[1]} bekijken`;
+      if ((match = text.match(/^View (.+) films$/))) return `Bekijk de films van ${match[1]}`;
+      if ((match = text.match(/^(.+) logo$/))) return `Logo van ${match[1]}`;
       if ((match = text.match(/^(.+) video$/))) return `Video van ${match[1]}`;
     } else {
       if ((match = text.match(/^Reclamefilms voor (.+) en (.+)\.$/))) return `Commercial films for ${match[1]} and ${match[2]}.`;
@@ -442,6 +449,8 @@
       if ((match = text.match(/^(\d+) projecten?$/i))) return `${match[1]} ${match[1] === '1' ? 'project' : 'projects'}`;
       if ((match = text.match(/^Weergave (\d+) van (\d+)$/))) return `View ${match[1]} of ${match[2]}`;
       if ((match = text.match(/^Volledige poster van (.+) bekijken$/))) return `View complete ${match[1]} poster`;
+      if ((match = text.match(/^Bekijk de films van (.+)$/))) return `View ${match[1]} films`;
+      if ((match = text.match(/^Logo van (.+)$/))) return `${match[1]} logo`;
       if ((match = text.match(/^Video van (.+)$/))) return `${match[1]} video`;
     }
     return null;

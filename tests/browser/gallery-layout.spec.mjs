@@ -11,17 +11,42 @@ test("CMS additions keep full rows aligned and incomplete rows centred at every 
   const created = [];
   const headers = { Origin: "http://127.0.0.1:8788", "X-CMS-Request": "1" };
   const kinds = ["landscape", "portrait", "logo"];
+  // One card per brand, in render order: listed brands with films, then films whose brand is
+  // not listed (one card each), then listed brands still waiting for films.
+  const slug = (value) =>
+    value
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+  const listed = new Set(baseline.brands.map((b) => b.name.toLowerCase()));
+  const videos = baseline.projects
+    .filter((project) => project.category === "video")
+    .sort(
+      (a, b) => a.display_order - b.display_order || (a.id < b.id ? -1 : 1),
+    );
+  const filmBrands = new Set(videos.map((p) => p.brand.trim().toLowerCase()));
+  const baselineBrands = [
+    ...baseline.brands
+      .filter((b) => filmBrands.has(b.name.toLowerCase()))
+      .map((b) => `brand-${b.id}`),
+    ...new Set(
+      videos
+        .filter((p) => !listed.has(p.brand.trim().toLowerCase()))
+        .map((p) => `brand-${slug(p.brand.trim() || p.title)}`),
+    ),
+    ...baseline.brands
+      .filter((b) => !filmBrands.has(b.name.toLowerCase()))
+      .map((b) => `brand-${b.id}`),
+  ];
 
   async function checkRows(viewportWidth) {
     const groups = await page.locator(".project-grid").evaluateAll((grids) =>
       grids.map((grid) => {
         const bounds = grid.getBoundingClientRect();
         return {
-          kind: grid.classList.contains("project-grid-landscape")
-            ? "landscape"
-            : grid.classList.contains("project-grid-portrait")
-              ? "portrait"
-              : "logo",
+          kind: grid.classList.contains("project-grid-brands")
+            ? "brand"
+            : "logo",
           left: bounds.left,
           right: bounds.right,
           width: bounds.width,
@@ -42,19 +67,15 @@ test("CMS additions keep full rows aligned and incomplete rows centred at every 
     for (const group of groups) {
       if (!group.width) continue; // Category filters remove whole groups from layout.
       const columns =
-        group.kind === "landscape"
+        group.kind === "brand"
           ? viewportWidth <= 760
             ? 1
-            : 2
-          : group.kind === "portrait"
-            ? viewportWidth <= 520
-              ? 1
-              : viewportWidth <= 1023
-                ? 2
-                : 3
-            : viewportWidth <= 760
+            : viewportWidth <= 1023
               ? 2
-              : 3;
+              : 3
+          : viewportWidth <= 760
+            ? 2
+            : 3;
       const rows = [];
       for (const card of group.cards) {
         const row = rows.at(-1);
@@ -85,13 +106,12 @@ test("CMS additions keep full rows aligned and incomplete rows centred at every 
             Math.max(...rows[index - 1].map((card) => card.bottom)) + 15,
           );
       }
-      const expected = baseline.projects
-        .filter(
-          (project) =>
-            (project.category === "logo" ? "logo" : project.orientation) ===
-            group.kind,
-        )
-        .map((project) => `project-${project.id}`);
+      const expected =
+        group.kind === "brand"
+          ? baselineBrands
+          : baseline.projects
+              .filter((project) => project.category === "logo")
+              .map((project) => `project-${project.id}`);
       expect(
         group.cards.slice(0, expected.length).map((card) => card.id),
       ).toEqual(expected);
@@ -134,7 +154,7 @@ test("CMS additions keep full rows aligned and incomplete rows centred at every 
         if (addition === 1 && width === 1440) {
           await page.setViewportSize({ width, height: 1200 });
           for (const artwork of await page
-            .locator(".project-grid-landscape .project-image")
+            .locator(".project-grid-brands .brand-logo img")
             .all()) {
             await artwork.scrollIntoViewIfNeeded();
             await expect
@@ -142,17 +162,15 @@ test("CMS additions keep full rows aligned and incomplete rows centred at every 
               .toBeGreaterThan(0);
           }
           await page
-            .locator(".project-grid-landscape")
+            .locator(".project-grid-brands")
             .screenshot({ path: "test-results/gallery-centred-desktop.png" });
           await page.locator("[data-filter=logo]").click();
           await checkRows(width);
           await page.locator("[data-filter=all]").click();
-          const orphan = page
-            .locator(".project-grid-landscape .project-link")
-            .last();
+          const orphan = page.locator(".project-grid-brands summary").last();
           await orphan.focus();
           await page.keyboard.press("Enter");
-          await expect(page.locator("#mediaViewer")).toBeVisible();
+          await expect(page.locator("#brandViewer")).toBeVisible();
           await page.keyboard.press("Escape");
           await expect(orphan).toBeFocused();
         }

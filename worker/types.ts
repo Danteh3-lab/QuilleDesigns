@@ -17,11 +17,18 @@ export interface Project {
   alt_text: string;
   caption: string;
   description: string;
+  brand: string;
   width: number;
   height: number;
   display_order: number;
   published: number;
   revision: number;
+}
+export interface Brand {
+  id: string;
+  name: string;
+  logo_url: string;
+  display_order: number;
 }
 export class HttpError extends Error {
   constructor(

@@ -356,3 +356,76 @@ html:has(.portfolio-gallery dialog[open]) { overflow: hidden; }
   .panel, .project-card, .button { border: 1px solid CanvasText; }
 }
 
+
+/* Films grouped by brand: one card per company opens a popup with all of its films. */
+.project-grid-brands > .brand-card { flex: 0 0 calc((100% - (var(--project-columns) - 1) * var(--project-gap)) / var(--project-columns)); }
+.brand-card { min-width: 0; overflow: hidden; border: 1px solid var(--gallery-line); border-radius: var(--gallery-radius); background: var(--gallery-white); transition: border-color .4s, box-shadow .4s; }
+.brand-card:hover, .brand-card:focus-within { border-color: var(--gallery-accent); box-shadow: 0 10px 24px -12px rgb(18 53 85 / .15); }
+.brand-summary { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "visual visual" "count cue" "name cue"; align-items: center; column-gap: 16px; padding-bottom: 20px; cursor: pointer; list-style: none; }
+.brand-summary::-webkit-details-marker { display: none; }
+.brand-summary:focus-visible { outline: 3px solid var(--gallery-accent); outline-offset: -3px; }
+.brand-visual { grid-area: visual; display: grid; place-items: center; aspect-ratio: 4 / 3; margin-bottom: 18px; background: var(--gallery-white); border-bottom: 1px solid var(--gallery-line); }
+.brand-visual:has(.brand-wordmark) { background: var(--gallery-media); }
+.brand-card:is(:hover,:focus-within) .project-open { opacity: 1; transform: none; }
+/* The whole card face is the brand logo, on the logo's own background colour. */
+.brand-logo { position: absolute; z-index: 0; inset: 0; display: grid; place-items: center; padding: 14% 16%; background: var(--gallery-white); }
+.brand-logo.is-light-logo { background: var(--gallery-media); }
+.brand-logo img { width: 100%; height: 100%; object-fit: contain; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
+.brand-card:is(:hover,:focus-within) .brand-logo img { transform: scale(1.05); }
+.brand-wordmark { position: relative; z-index: 1; max-width: 80%; color: var(--gallery-white); font: 600 clamp(30px, 3.4vw, 44px)/1 var(--gallery-font-display); letter-spacing: -.04em; text-align: center; overflow-wrap: anywhere; }
+.brand-count { grid-area: count; padding-left: 20px; font-size: 10px; }
+.brand-count b { color: var(--gallery-accent); font-weight: 600; }
+.brand-name { grid-area: name; margin-top: 4px; padding-left: 20px; font: 500 23px/1.15 var(--gallery-font-display); letter-spacing: -.03em; overflow-wrap: anywhere; }
+.brand-cue { grid-area: cue; padding-right: 20px; }
+.brand-films { display: grid; gap: 12px; padding: 0 16px 16px; }
+.js-ready .brand-films { display: none; }
+/* A brand without films yet: shown with its logo, not clickable. */
+.brand-card.is-empty .brand-summary { cursor: default; }
+.brand-card.is-empty:hover { border-color: var(--gallery-line); box-shadow: none; }
+.brand-card.is-empty:hover .brand-logo img { transform: none; }
+.brand-card.is-empty .brand-count { color: var(--gallery-muted); }
+
+.brand-viewer { width: min(1180px,calc(100vw - 40px)); max-height: calc(100dvh - 40px); overflow: auto; }
+.brand-viewer-title { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.brand-viewer-title .brand-logo { position: relative; inset: auto; flex: none; width: 112px; height: 52px; padding: 8px 12px; border: 1px solid var(--gallery-line); border-radius: 12px; }
+.brand-viewer-title .brand-logo.is-light-logo { border-color: transparent; }
+.brand-viewer-title h2 { overflow-wrap: anywhere; }
+.brand-stage { background: var(--gallery-media); }
+.brand-stage video { display: block; width: 100%; height: min(62dvh,700px); object-fit: contain; }
+.brand-now { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 16px 24px 0; }
+.brand-now h3 { font: 500 19px/1.25 var(--gallery-font-display); letter-spacing: -.02em; }
+.brand-viewer [hidden] { display: none !important; }
+/* A selection of the brand's films; the chosen one plays in the stage above. */
+.brand-reel { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 0; padding: 20px 24px 24px; list-style: none; }
+.brand-reel li { min-width: 0; }
+.brand-reel button { display: grid; gap: 8px; width: 100%; height: 100%; align-content: start; padding: 6px 6px 12px; border: 1px solid var(--gallery-line); border-radius: 12px; background: var(--gallery-white); color: var(--gallery-ink); text-align: left; transition: border-color .3s, box-shadow .3s; }
+.brand-reel button:hover { border-color: var(--gallery-accent); }
+.brand-reel button[aria-current=true] { border-color: var(--gallery-accent); box-shadow: 0 0 0 2px var(--gallery-accent); }
+.reel-thumb { position: relative; display: block; overflow: hidden; border-radius: 8px; background: var(--gallery-media); }
+.brand-reel img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; transition: transform .8s cubic-bezier(.2,.8,.2,1); }
+.brand-reel button:hover img { transform: scale(1.04); }
+.reel-play { position: absolute; left: 50%; top: 50%; display: grid; place-items: center; width: 46px; height: 46px; padding-left: 3px; border-radius: 50%; background: rgb(255 255 255 / .92); color: var(--gallery-ink); font-size: 14px; box-shadow: 0 8px 18px rgb(0 0 0 / .3); transform: translate(-50%, -50%); }
+.brand-reel button[aria-current=true] .reel-play { background: var(--gallery-accent); color: var(--gallery-white); }
+.brand-reel button > span:not(.reel-thumb) { padding: 0 4px; font: 500 13px/1.3 var(--gallery-font-display); overflow-wrap: anywhere; }
+.brand-reel small { display: block; padding: 0 4px; color: var(--gallery-muted); font-size: 10px; }
+
+@media (max-width: 1023px) {
+  .project-grid-brands { --project-columns: 2; }
+}
+@media (max-width: 760px) {
+  .project-grid-brands { --project-columns: 1; }
+  .brand-name { font-size: 20px; }
+}
+@media (max-width: 520px) {
+  .brand-viewer { width: calc(100vw - 20px); max-height: calc(100dvh - 20px); }
+  .brand-viewer-title { gap: 12px; }
+  .brand-viewer-title .brand-logo { width: 84px; height: 42px; }
+  .brand-stage video { height: min(52dvh,560px); }
+  .brand-now, .brand-reel { padding-inline: 16px; }
+  .brand-reel { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .brand-reel button > span:not(.reel-thumb) { font-size: 12px; }
+}
+@media (forced-colors: active) {
+  .brand-card { border: 1px solid CanvasText; }
+  .brand-reel button[aria-current=true] { outline: 3px solid Highlight; }
+}

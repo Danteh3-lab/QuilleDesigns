@@ -55,7 +55,7 @@ test("admin CRUD, featured guard, localization, upload error and mobile layout",
     page.locator(".project-row").filter({ hasText: "Edited identity" }),
   ).toBeVisible();
   await page.goto("/portfolio.html");
-  await expect(page.locator("#project-smartwigi")).toBeVisible();
+  await expect(page.locator("#brand-smartwigi")).toBeVisible();
   await expect(
     page.locator(".project-card").filter({ hasText: "Edited identity" }),
   ).toBeVisible();
@@ -109,7 +109,10 @@ test("public portfolio and homepage retain controls and media behavior", async (
   await page.goto("/portfolio.html");
   await expect(page.locator(".project-card")).toHaveCount(12);
   await expect(page.locator(".film-preview[src]")).toHaveCount(0);
-  for (const artwork of await page.locator(".project-image").all()) {
+  // Film stills sit inside the brand cards; the visible artwork is identities and brand logos.
+  for (const artwork of await page
+    .locator(".logo-card .project-image, .brand-card .brand-logo img")
+    .all()) {
     await artwork.scrollIntoViewIfNeeded();
     await expect
       .poll(() => artwork.evaluate((image) => image.naturalWidth))
@@ -129,7 +132,28 @@ test("public portfolio and homepage retain controls and media behavior", async (
   );
   await page.keyboard.press("Escape");
   await page.locator("[data-filter=video]").click();
-  await expect(page.locator(".project-card:visible")).toHaveCount(5);
+  // Films are grouped under one card per brand; the card opens a selection of that brand's films.
+  await expect(page.locator(".brand-card:visible")).toHaveCount(5);
+  await expect(page.locator(".brand-card.is-empty")).toHaveCount(2);
+  const brandSummary = page.locator("#brand-smartwigi summary");
+  await brandSummary.click();
+  await expect(page.locator("#brandViewer")).toBeVisible();
+  await expect(page.locator("#brandReel button")).toHaveCount(3);
+  await expect(page.locator("#brandStage video")).toHaveCount(0);
+  await page.locator("#brandReel button").nth(1).click();
+  await expect(page.locator("#brandStage video")).toHaveJSProperty(
+    "controls",
+    true,
+  );
+  await expect(page.locator("#brandNowTitle")).toHaveText("Fake Alexa");
+  await page.keyboard.press("Escape");
+  await expect(page.locator("#brandViewer")).not.toBeVisible();
+  await expect(brandSummary).toBeFocused();
+  await page.goto("/portfolio.html#project-baby");
+  await expect(page.locator("#brandViewer")).toBeVisible();
+  await expect(page.locator("#brandNowTitle")).toHaveText("Baby");
+  await page.keyboard.press("Escape");
+  await page.locator("[data-filter=video]").click();
   await page.setViewportSize({ width: 390, height: 844 });
   await page.locator("#menuBtn").click();
   await expect(page.locator("#mobileMenu")).toBeVisible();
@@ -468,6 +492,8 @@ test("server-rendered portfolio and featured media links work without JavaScript
     await expect(page.locator(".project-card")).toHaveCount(
       data.projects.length,
     );
+    // Without JavaScript a brand card expands in place to list its films.
+    await page.locator("#brand-smartwigi summary").click();
     await expect(page.locator("#project-smartwigi")).toBeVisible();
     await expect(
       page.locator("#project-smartwigi .project-link"),

@@ -133,6 +133,48 @@
                 <option value="logo" data-label="Logo">Logo</option>
               </select></label
             >
+            <div id="brandFields" class="wide form-grid">
+              <label
+                ><span data-label="Brand (company)">Merk (bedrijf)</span
+                ><input
+                  name="brand"
+                  maxlength="120"
+                  list="brandOptions"
+                  autocomplete="off"
+                /><datalist id="brandOptions"></datalist
+                ><span class="field-error" data-error="brand"></span>
+                <p
+                  class="help"
+                  data-label="Films with the same brand are shown together under one card on the portfolio."
+                >
+                  Films met hetzelfde merk staan samen onder één kaart in het
+                  portfolio.
+                </p></label
+              >
+              <div class="upload-field">
+                <label for="brandLogoURL" data-label="Brand logo URL"
+                  >Merklogo URL</label
+                ><input
+                  id="brandLogoURL"
+                  name="brand_logo_url"
+                  maxlength="2048"
+                /><span class="field-error" data-error="brand_logo_url"></span
+                ><label class="file-picker"
+                  ><span data-label="Upload logo">Logo uploaden</span
+                  ><input
+                    type="file"
+                    id="brandLogoFile"
+                    accept="image/png,image/webp,image/jpeg"
+                /></label>
+                <p
+                  class="help"
+                  data-label="Optional. Sets the logo on this brand's portfolio card. A new brand name adds a new card."
+                >
+                  Optioneel. Dit wordt het logo op de portfoliokaart van dit
+                  merk. Een nieuwe merknaam maakt een nieuwe kaart.
+                </p>
+              </div>
+            </div>
             <label id="orientationField"
               ><span data-label="Video format">Videoformaat</span
               ><select name="orientation">

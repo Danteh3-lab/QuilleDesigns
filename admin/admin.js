@@ -30,6 +30,13 @@
     Category: "Categorie",
     Video: "Video",
     Logo: "Logo",
+    "Brand (company)": "Merk (bedrijf)",
+    "Films with the same brand are shown together under one card on the portfolio.":
+      "Films met hetzelfde merk staan samen onder één kaart in het portfolio.",
+    "Brand logo URL": "Merklogo URL",
+    "Upload logo": "Logo uploaden",
+    "Optional. Sets the logo on this brand's portfolio card. A new brand name adds a new card.":
+      "Optioneel. Dit wordt het logo op de portfoliokaart van dit merk. Een nieuwe merknaam maakt een nieuwe kaart.",
     "Video format": "Videoformaat",
     Landscape: "Liggend",
     Portrait: "Staand",
@@ -252,6 +259,17 @@
         ? "/" + url
         : url;
   }
+  // Suggest the brand list so films group under the same spelling.
+  async function loadBrands() {
+    try {
+      const brands = await api("brands");
+      $("brandOptions").replaceChildren(
+        ...brands.map((brand) => new Option(brand.name)),
+      );
+    } catch {
+      /* Suggestions are optional. */
+    }
+  }
   async function loadList() {
     loading?.abort();
     loading = new AbortController();
@@ -261,6 +279,7 @@
       signal: loading.signal,
     });
     list = data.projects;
+    loadBrands();
     page = data.page;
     total = data.total;
     const url = new URL(location.href);
@@ -441,6 +460,8 @@
         alt_text: "",
         caption: "",
         description: "",
+        brand: "",
+        brand_logo_url: "",
         display_order: Math.max(-10, ...list.map((p) => p.display_order)) + 10,
         width: 1280,
         height: 720,
@@ -465,7 +486,8 @@
     $("featuredPanel").hidden = true;
     $("editPanel").hidden = false;
     dirty = !!restored;
-    $("orientationField").hidden = data.category === "logo";
+    $("orientationField").hidden = $("brandFields").hidden =
+      data.category === "logo";
     updatePoster();
     updateVideoCoverControls();
     form.elements.title.focus();
@@ -513,7 +535,8 @@
     updateVideoCoverControls();
   });
   form.elements.category.addEventListener("change", () => {
-    $("orientationField").hidden = form.elements.category.value === "logo";
+    $("orientationField").hidden = $("brandFields").hidden =
+      form.elements.category.value === "logo";
     updateVideoCoverControls();
   });
   form.elements.poster_url.addEventListener("change", updatePoster);
@@ -807,6 +830,7 @@
     $("uploadMessage").textContent = t("Creating video cover…");
     $("retryUpload").hidden = true;
     $("posterFile").disabled =
+      $("brandLogoFile").disabled =
       $("mediaFile").disabled =
       $("saveProject").disabled =
         true;
@@ -845,6 +869,7 @@
       generation.running = false;
       if (activeUpload === generation) {
         $("posterFile").disabled =
+          $("brandLogoFile").disabled =
           $("mediaFile").disabled =
           $("saveProject").disabled =
             false;
@@ -873,7 +898,8 @@
       ].includes(file.type) ||
       !file.size ||
       file.size > limit ||
-      (field === "poster_url" && !file.type.startsWith("image/")) ||
+      (["poster_url", "brand_logo_url"].includes(field) &&
+        !file.type.startsWith("image/")) ||
       (field === "media_url" &&
         (form.elements.category.value === "video") !==
           file.type.startsWith("video/"))
@@ -895,7 +921,10 @@
     $("uploadPanel").hidden = false;
     $("uploadName").textContent = file.name;
     $("retryUpload").hidden = true;
-    $("posterFile").disabled = $("mediaFile").disabled = true;
+    $("posterFile").disabled =
+      $("brandLogoFile").disabled =
+      $("mediaFile").disabled =
+        true;
     $("saveProject").disabled = true;
     updateVideoCoverControls();
     try {
@@ -1080,7 +1109,10 @@
       }
     } finally {
       upload.running = false;
-      $("posterFile").disabled = $("mediaFile").disabled = false;
+      $("posterFile").disabled =
+        $("brandLogoFile").disabled =
+        $("mediaFile").disabled =
+          false;
       $("saveProject").disabled = false;
       updateVideoCoverControls();
     }
@@ -1089,6 +1121,10 @@
   $("posterFile").addEventListener("change", (event) => {
     if (event.target.files[0])
       performUpload(event.target.files[0], "poster_url");
+  });
+  $("brandLogoFile").addEventListener("change", (event) => {
+    if (event.target.files[0])
+      performUpload(event.target.files[0], "brand_logo_url");
   });
   $("mediaFile").addEventListener("change", (event) => {
     if (event.target.files[0])

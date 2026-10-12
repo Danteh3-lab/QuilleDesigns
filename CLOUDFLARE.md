@@ -199,3 +199,7 @@ The first push (commit a775890) had no Wrangler config: Wrangler guessed a stati
 Migration 0003_bookings_inquiries.sql was applied to the production D1 database through the Cloudflare MCP on 2026-10-11 and recorded in `d1_migrations` (id 3). Future schema changes: apply the migration first (`npx wrangler d1 migrations apply quille-portfolio --remote --config wrangler.production.jsonc`), then push.
 
 Large video masters in `assets/Material/*.mp4` are ignored by Git (GitHub rejects files over 100 MB); the site streams them from R2. CLOUDFLARE.md and TESTING.md are kept out of the public repository because they list account/database IDs and the admin emails.
+
+## Portfolio brands migration (2026-10-12)
+
+Migration `0004_project_brands.sql` was applied to the production D1 database through the Cloudflare MCP on 2026-10-12, with the user's authorization, and recorded in `d1_migrations` (id 4). It adds `projects.brand` and a `brands` table (Smartwigi, Terzol Vastgoed, Sansoers Imports, Ingrediently, Xu's Super Store) and assigns the five films to their brands. Readback: 12 projects unchanged, featured slots smartwigi/terzol unchanged. The live Worker ignores the new column, so the site keeps working until the brand-card code is deployed. The Worker code (portfolio brand cards, admin Brand field, original partner logos) is **not deployed yet**.
